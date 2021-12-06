@@ -1,0 +1,212 @@
+$main-navigation-width: 15.25rem;
+$main-navigation-padding: 7rem .75rem .75rem;
+$main-navigation-bgcolor: $white;
+$nav-link-height: 4rem;
+$nav-link-padding: 0 1rem;
+$nav-link-spacing-after: .75rem;
+
+$page-header-spacing-after: 2.75rem;
+$page-padding: 0 2.25rem;
+$content-box-padding: 1.5rem;
+$content-box-bgcolor: $white;
+
+.white-box {
+    padding: $content-box-padding;
+    box-shadow: 0 0 .5rem 0 $shadow-1;
+    border: 0;
+    background-color: $content-box-bgcolor;
+    @include borderRadius(1rem);
+    .card-body {
+        padding: 0 !important;
+        // should be important to override .p-3
+    }
+    .card-title {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: .125rem;
+    }
+}
+.button-base {
+    border: 1px solid $purple-1;
+    @include borderRadius(.5rem);
+    &:hover {
+        box-shadow: 0 0 .75rem .125rem $shadow-1;
+    }
+}
+.button-light {
+    @extend .button-base;
+    background-color: $white-1;
+    color: $purple-1;
+}
+.button-purple {
+    @extend .button-base;
+    background-color: $purple-1;
+    color: $white-1;
+}
+
+// ugly moodle button group fix be like
+.show > .btn-outline-secondary.dropdown-toggle {
+    border-color: $primary;
+    color: darken($color: $primary, $amount: 8%);
+}
+.inputables {
+    button.dropdown-toggle,
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select.select {
+        @include borderRadius(.5rem);
+        border-color: $gray-2;
+        background-color: $white;
+        &:focus {
+            box-shadow: none;
+        }
+        &:focus, &:active, &:hover {
+            border-color: $primary;
+            color: darken($color: $primary, $amount: 8%);
+            background-color: $white;
+        }
+    }
+}
+
+body {
+    background-color: $body-bgcolor;
+}
+body:not(.uses-drawers).drawer-open-left {
+    margin-left: $main-navigation-width;
+}
+
+// top nav
+nav.navbar.fixed-top {
+    left: $main-navigation-width;
+    background-color: transparent !important;
+    // override .bg-white
+    border: 0;
+    z-index: 1109;
+    .primary-navigation {
+        display: none;
+    }
+    .navbar-brand {
+        position: fixed;
+        left: 0;
+        height: 5.5rem;
+        padding: 0 1.75rem !important;
+        margin: 1.5rem 0 0 !important;
+        width: $main-navigation-width;
+    }
+    button.navbar-toggler {
+        display: none !important;
+    }
+}
+
+// nav-drawer main-navigation
+#nav-drawer {
+	position: fixed;
+	top: 0;
+	left: 0;
+    min-height: 100vh;
+	width: $main-navigation-width;
+    background-color: $main-navigation-bgcolor;
+    box-shadow: .125rem 0 .5rem 0 $shadow-1;
+    z-index: 1099;
+    padding: $main-navigation-padding;
+    scrollbar-color: lighten($purple-2, 50%) $gray-1;
+    scrollbar-width: thin;
+    nav {
+        ul {
+            li {
+                margin-bottom: $nav-link-spacing-after;
+                .list-group-item {
+                    display: block;
+                    height: $nav-link-height;
+                    line-height: $nav-link-height;
+                    padding: $nav-link-padding;
+                    border: 0;
+                    &.active {
+                        background: -webkit-linear-gradient($purple-1, $purple-2);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                    &:focus, &:focus-visible {
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#page {
+    padding: $page-padding;
+    margin-top: 0;
+    #page-header {
+        border-bottom: 1px solid $gray-1;
+        margin-bottom: $page-header-spacing-after;
+        > div {
+            padding: 0 !important;
+        }
+        .card {
+            background-color: transparent;
+            padding: 0 1rem;
+            height: 4.5rem;
+            line-height: 4.5rem;
+            h1 {
+                font-size: 1.5rem;
+                font-weight: 400;
+                letter-spacing: .125rem;
+                text-transform: uppercase;
+            }
+            .card-body {
+                padding: 0 !important;
+                // should be important cause p-2
+            }
+        }
+    }
+    #page-content {
+        #region-main-box {
+            @extend .inputables;
+            section#region-main {
+                padding: 0;
+                background-color: transparent;
+                border: 0;
+                overflow-x: visible;
+                div[role="main"] {
+                    > div {
+                        @extend .white-box;
+                    }
+                    aside {
+                        section {
+                            @extend .white-box;
+                        }
+                    }
+                }
+            }
+            aside#block-region-side-pre {
+                section.card.block {
+                    @extend .white-box;
+                }
+            }
+            .btn.btn-primary {
+                @extend .button-light;
+            }
+            .btn.btn-secondary {
+                @extend .button-purple;
+            }
+            .btn.btn-danger {
+                @extend .button-light;
+                background-color: lighten($color: $pink, $amount: 30%);
+            }
+        }
+    }
+    table {
+        td.action {
+            white-space: nowrap;
+        }
+    }
+}
+
+footer#page-footer {
+    display: none;
+}

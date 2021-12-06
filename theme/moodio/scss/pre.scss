@@ -1,0 +1,27 @@
+$purple-1: #582156;
+$purple-2: #BA00B3;
+$purple-theme: darken($purple-2, 8%);
+$white-1: #F7F6F5;
+$gray-1: #DAD8D5;
+$gray-2: #CCC;
+
+$shadow-1: rgba(59, 46, 46, 0.125);
+
+$body-bgcolor: $white-1;
+
+$primary: $purple-theme;
+
+// supported browsers
+$browsers: '', '-moz-', '-webkit-', '-ms-';
+
+// style mixin
+@mixin transition($sec, $type: all, $accel: ease) {
+	@each $browser in $browsers {
+        #{$browser}transition: $type $sec $accel;
+    }
+}
+@mixin borderRadius($radius: 50%) {
+	@each $browser in $browsers {
+        #{$browser}border-radius: $radius;
+    }
+}
