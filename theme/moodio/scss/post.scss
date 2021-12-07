@@ -112,12 +112,14 @@ nav.navbar {
             // width: $main-navigation-width;
             display: none;
         }
-        // > div {
-        //     button.btn.nav-link {
-        //         // temporary hide the toggler button
-        //         display: none !important;
-        //     }
-        // }
+        > div {
+            button.btn.nav-link {
+                // temporary hide the toggler button
+                // display: none !important;
+                @extend .button-light;
+                background-color: $white-1 !important;
+            }
+        }
         // ul.usernav {
         //     li.nav-item {
         //         i.icon {
@@ -206,6 +208,11 @@ nav.navbar {
             }
         }
     }
+    // "customize this page" button
+    #page-header .card .card-body .singlebutton form button {
+        // display: none;
+        font-weight: 600;
+    }
     #page-content {
         #region-main-box {
             @extend .inputables;
@@ -281,7 +288,3 @@ footer#page-footer {
         box-shadow: none;
     }
 }
-// remove "customize this page" button
-// #page #page-header .card .card-body .singlebutton form button {
-//     display: none;
-// }
