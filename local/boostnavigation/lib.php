@@ -18,17 +18,48 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
     $contentbank = $navigation->find('contentbank', global_navigation::TYPE_CUSTOM);
     $contentbank->showinflatnavigation = false;
 
-    //admin menu only 
+    //remove my course menu
+    $mycoursesnode = $navigation->find('mycourses', global_navigation::TYPE_ROOTNODE);
+    $mycoursesnode->showinflatnavigation = false;
+    
+    $mycourseschildrennodeskeys = $mycoursesnode->get_children_key_list();
+    foreach ($mycourseschildrennodeskeys as $k) {
+        $mycoursesnode->find($k, null)->showinflatnavigation = false;
+    }
+
+    if ($PAGE->context->get_course_context(false) == true && $COURSE->id != SITEID) {
+        //remove badge node
+        $badgesnode = $navigation->find('badgesview', global_navigation::TYPE_SETTING)->remove();
+
+        //remove competencies node
+        $competenciesnode = $navigation->find('competencies', global_navigation::TYPE_SETTING)->remove();
+
+        //remove grade node
+        $gradesnode = $navigation->find('grades', global_navigation::TYPE_SETTING)->remove();
+
+        //remove participant node
+        $participantsnode = $navigation->find('participants', global_navigation::TYPE_CONTAINER)->remove();
+    }
+
+    //get role
+    $role_assignment = $DB->get_record_sql("select r.id from {role} r inner join {role_assignments} ra on r.id = ra.roleid where ra.userid=$USER->id");
+
+    //add menu class for mentor and participant
+    if($role_assignment->id == 3 || $role_assignment->id == 5) {
+        $nodeclass = $navigation->add('Classes', new moodle_url($CFG->wwwroot.'/local/class/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/folder', null));
+        $nodeclass->showinflatnavigation = true;
+    }
+
+
+    //admin and manager menu only 
     if (!has_capability('moodle/site:configview', context_system::instance())) {
-        $role_assignment = $DB->get_record_sql("select r.id from {role} r inner join {role_assignments} ra on r.id = ra.roleid where ra.userid=$USER->id");
         
-        if($role_assignment->id != 1){
+        if($role_assignment->id != 1) {
             return;
         }else{
 
         }
     }
-
 
     $node1 = $navigation->add('Users', null, navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/group', null));
     $node1->showinflatnavigation = true;
@@ -50,13 +81,17 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
 
     $node4 = $navigation->add('Statistics', null, navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/outcomes', null));
     $node4->showinflatnavigation = true;
+} 
 
-    // $strfoo = get_string('message', 'local_message');
-    // $main_node = $navigation->add('Management Panel', '/course/editcategory.php?parent=0', navigation_node::NODETYPE_LEAF, 'message', 'message',new pix_icon('i/settings', $strfoo));
-    // $main_node->nodetype = 1;
-    // $main_node->collapse = false;
-    // $main_node->forceopen = true;
-    // $main_node->isexpandable = true;
-    // $main_node->showinflatnavigation = true;    
+function local_boostnavigation_extend_navigation_course(navigation_node $navigation) {
+    global $PAGE, $COURSE;
+    // Create competencies node.
+    $competenciesnode = navigation_node::create(get_string('competencies', 'core_competency'),
+            new moodle_url('/admin/tool/lp/coursecompetencies.php', array('courseid' => $PAGE->course->id)),
+            navigation_node::TYPE_SETTING,
+            null,
+            'competencies2',
+            new pix_icon('i/competencies', ''));
+    // Add the competencies node.
+    $navigation->add_node($competenciesnode);
 }
- 
