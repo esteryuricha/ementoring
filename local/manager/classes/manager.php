@@ -52,7 +52,7 @@ class manager {
                 FROM {user} u 
                 INNER JOIN {role_assignments} ra 
                 ON u.id = ra.userid 
-                WHERE ra.roleid=1 and contextid=1";
+                WHERE ra.roleid=1 and contextid=1 and u.id!=$USER->id";
         return $DB->get_records_sql($sql);
     }
 

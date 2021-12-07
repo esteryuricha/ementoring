@@ -2,6 +2,7 @@
 use local_manager\manager;
 
 require_once(__DIR__.'/../../config.php');
+require_login();
 
 global $DB;
 
