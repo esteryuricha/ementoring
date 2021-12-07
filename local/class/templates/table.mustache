@@ -1,35 +1,38 @@
-<button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}'">Add New Class</button>
-<br><br>
-<table class="table table-bordered border-primary">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Status</th>
-            <th scope="col">Program Name</th>
-            <th scope="col">Class ID</th>
-            <th scope="col">Class Name</th>
-            <th scope="col">Class Mentor</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#classes}}
-        <tr>
-            <th scope="row">{{num}}</th>
-            <td>
-                {{#visible}}Aktif{{/visible}}
-                {{^visible}}Non-Aktif{{/visible}}
-            </td>
-            <td>{{program_name}}</td>
-            <td>{{idnumber}}</td>
-            <td>{{fullname}}</td>
-            <td>{{mentor}}</td>
-            <td>
-                <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}?id={{id}}'"><i class="fa fa-pencil"></i></button>
-                <button type="button" value="{{id}}" class="btn btn-danger local_class_delete_button"><i class="fa fa-trash"></i></button>
-                <button type="button" value="{{id}}" class="btn btn-info" onclick="location.href='{{viewUrl}}?id={{id}}'"><i class="fa fa-cog"></i></button>
-            </td>
-        </tr>
-        {{/classes}}
-    </tbody>
-</table>
+<div class="content-container">
+    <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}'">Add New Class</button>
+    <br><br>
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Status</th>
+                <th scope="col">Program Name</th>
+                <th scope="col">Class ID</th>
+                <th scope="col">Class Name</th>
+                <th scope="col">Class Mentor</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#classes}}
+            <tr>
+                <th scope="row">{{num}}</th>
+                <td>
+                    {{#visible}}Aktif{{/visible}}
+                    {{^visible}}Non-Aktif{{/visible}}
+                </td>
+                <td>{{program_name}}</td>
+                <td>{{idnumber}}</td>
+                <td>{{fullname}}</td>
+                <td>{{mentor}}</td>
+                <td class="action">
+                    <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}?id={{id}}'"><i class="fa fa-pencil"></i></button>
+                    <button type="button" value="{{id}}" class="btn btn-info" onclick="location.href='{{viewUrl}}?id={{id}}'"><i class="fa fa-cog"></i></button>
+                    <button type="button" value="{{id}}" class="btn btn-danger local_class_delete_button"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+            {{/classes}}
+        </tbody>
+    </table>
+
+</div>

@@ -10,6 +10,8 @@ $page-padding: 0 2.25rem;
 $content-box-padding: 1.5rem;
 $content-box-bgcolor: $white;
 
+$modal-padding: 1.5rem 1.5rem;
+
 .white-box {
     padding: $content-box-padding;
     box-shadow: 0 0 .5rem 0 $shadow-1;
@@ -21,9 +23,7 @@ $content-box-bgcolor: $white;
         // should be important to override .p-3
     }
     .card-title {
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: .125rem;
+        @extend .title-base
     }
 }
 .button-base {
@@ -42,6 +42,17 @@ $content-box-bgcolor: $white;
     @extend .button-base;
     background-color: $purple-1;
     color: $white-1;
+}
+.header-base {
+    height: 3.25rem;
+    line-height: 3.25rem;
+    border: 0;
+}
+.title-base {
+    font-size: 1rem;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+    font-weight: 400;
 }
 
 // ugly moodle button group fix be like
@@ -77,25 +88,39 @@ body:not(.uses-drawers).drawer-open-left {
 }
 
 // top nav
-nav.navbar.fixed-top {
-    left: $main-navigation-width;
-    background-color: transparent !important;
-    // override .bg-white
-    border: 0;
-    z-index: 1109;
-    .primary-navigation {
-        display: none;
-    }
-    .navbar-brand {
-        position: fixed;
-        left: 0;
-        height: 5.5rem;
-        padding: 0 1.75rem !important;
-        margin: 1.5rem 0 0 !important;
-        width: $main-navigation-width;
-    }
-    button.navbar-toggler {
-        display: none !important;
+nav.navbar {
+    box-shadow: none;
+    &.fixed-top {
+        @extend .header-base;
+        background-color: $white-1 !important;
+        border-bottom: 1px solid $gray-2;
+        // temporary move the left
+        // left: $main-navigation-width;
+        z-index: 1098;
+        .primary-navigation {
+            display: none;
+        }
+        .navbar-brand {
+            position: fixed;
+            left: 0;
+            height: 5.5rem;
+            padding: 0 1.75rem !important;
+            margin: 1.5rem 0 0 !important;
+            width: $main-navigation-width;
+        }
+        > div {
+            button.btn.nav-link {
+                // temporary hide the toggler button
+                display: none !important;
+            }
+        }
+        ul.usernav {
+            li.nav-item {
+                i.icon {
+                    // font-size: 2.25rem;
+                }
+            }
+        }
     }
 }
 
@@ -142,21 +167,17 @@ nav.navbar.fixed-top {
     padding: $page-padding;
     margin-top: 0;
     #page-header {
-        border-bottom: 1px solid $gray-1;
         margin-bottom: $page-header-spacing-after;
         > div {
             padding: 0 !important;
         }
         .card {
-            background-color: transparent;
+            @extend .header-base;
             padding: 0 1rem;
-            height: 4.5rem;
-            line-height: 4.5rem;
+            background-color: transparent;
             h1 {
+                @extend .title-base;
                 font-size: 1.5rem;
-                font-weight: 400;
-                letter-spacing: .125rem;
-                text-transform: uppercase;
             }
             .card-body {
                 padding: 0 !important;
@@ -188,16 +209,6 @@ nav.navbar.fixed-top {
                     @extend .white-box;
                 }
             }
-            .btn.btn-primary {
-                @extend .button-light;
-            }
-            .btn.btn-secondary {
-                @extend .button-purple;
-            }
-            .btn.btn-danger {
-                @extend .button-light;
-                background-color: lighten($color: $pink, $amount: 30%);
-            }
         }
     }
     table {
@@ -207,6 +218,46 @@ nav.navbar.fixed-top {
     }
 }
 
+// button styles
+#page, .modal {
+    .btn.btn-primary {
+        @extend .button-light;
+    }
+    .btn.btn-secondary {
+        @extend .button-purple;
+    }
+    .btn.btn-danger {
+        @extend .button-light;
+        background-color: lighten($color: $pink, $amount: 30%);
+    }
+    .btn.btn-info {
+        @extend .button-light;
+        background-color: lighten($color: $green-1, $amount: 30%);
+    }
+}
+
 footer#page-footer {
+    display: none;
+}
+
+.modal-content {
+    @include borderRadius(1rem);
+    padding: $modal-padding;
+    .modal-header {
+        h5, h6 {
+            @extend .title-base;
+        }
+    }
+}
+
+// additional cleanup rules
+#action-menu-toggle-1,
+.modal-dialog.modal-dialog-scrollable {
+    &:focus {
+        box-shadow: none;
+    }
+}
+// remove "customize this page" button
+#page #page-header .card .card-body .singlebutton form button {
     display: none;
 }
