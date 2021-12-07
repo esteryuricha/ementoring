@@ -12,6 +12,7 @@ class editevent extends moodleform {
 
         //active
         $mform->addElement('checkbox',  'visible',  'Active');
+        $mform->setDefault('visible', 1);
 
         //category ID
         $mform->addElement('text', 'idnumber', 'Program ID');

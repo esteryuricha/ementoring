@@ -33,10 +33,22 @@ if ($mform->is_cancelled()) {
 
     $manager = new manager();
 
+    $data = [
+        'name'  => $fromform->name,
+        'idnumber'  => $fromform->idnumber,
+        'visible'   => $fromform->visible ?? 0,
+        'visibleold'=> $fromform->visible ?? 0
+    ];
+
+    $datafordate = [
+        'startdate' => $fromform->startdate,
+        'enddate'   => $fromform->enddate
+    ];
+
     if($SESSION->current_id) { 
         $manager->update_event($fromform->visible ?? 0, $fromform->idnumber, $fromform->name, $fromform->startdate, $fromform->enddate);
     }else{
-        $manager->insert_event($fromform->visible ?? 0, $fromform->idnumber, $fromform->name, $fromform->startdate, $fromform->enddate);    
+        $manager->insert_event($data, $datafordate);    
     }
 
     redirect($CFG->wwwroot.'/local/event/index.php', 'success');

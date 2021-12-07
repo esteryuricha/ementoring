@@ -7,7 +7,7 @@ $CFG = new stdClass();
 $CFG->dbtype    = 'mariadb';
 $CFG->dblibrary = 'native';
 $CFG->dbhost    = 'localhost';
-$CFG->dbname    = 'moodledb';
+$CFG->dbname    = 'moodle';
 $CFG->dbuser    = 'root';
 $CFG->dbpass    = '';
 $CFG->prefix    = 'mdl_';
@@ -18,8 +18,8 @@ $CFG->dboptions = array (
   'dbcollation' => 'utf8mb4_unicode_ci',
 );
 
-$CFG->wwwroot   = 'http://localhost/lms-impala';
-$CFG->dataroot  = 'D:\\moodle_data';
+$CFG->wwwroot   = 'http://localhost/lms';
+$CFG->dataroot  = 'D:\\Dropbox\moodle_storage';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 0777;
