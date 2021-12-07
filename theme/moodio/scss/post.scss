@@ -1,5 +1,6 @@
 $main-navigation-width: 15.25rem;
-$main-navigation-padding: 7rem .75rem .75rem;
+// $main-navigation-padding: 7rem .75rem .75rem;
+$main-navigation-padding: .75rem .75rem;
 $main-navigation-bgcolor: $white;
 $nav-link-height: 4rem;
 $nav-link-padding: 0 1rem;
@@ -92,35 +93,38 @@ nav.navbar {
     box-shadow: none;
     &.fixed-top {
         @extend .header-base;
-        background-color: $white-1 !important;
         border-bottom: 1px solid $gray-2;
         // temporary move the left
         // left: $main-navigation-width;
         z-index: 1098;
+        @media screen and (min-width: $breakpoint-48) {
+            background-color: $white-1 !important;
+        }
         .primary-navigation {
             display: none;
         }
         .navbar-brand {
-            position: fixed;
-            left: 0;
-            height: 5.5rem;
-            padding: 0 1.75rem !important;
-            margin: 1.5rem 0 0 !important;
-            width: $main-navigation-width;
+            // position: fixed;
+            // left: 0;
+            // height: 5.5rem;
+            // padding: 0 1.75rem !important;
+            // margin: 1.5rem 0 0 !important;
+            // width: $main-navigation-width;
+            display: none;
         }
-        > div {
-            button.btn.nav-link {
-                // temporary hide the toggler button
-                // display: none !important;
-            }
-        }
-        ul.usernav {
-            li.nav-item {
-                i.icon {
-                    // font-size: 2.25rem;
-                }
-            }
-        }
+        // > div {
+        //     button.btn.nav-link {
+        //         // temporary hide the toggler button
+        //         display: none !important;
+        //     }
+        // }
+        // ul.usernav {
+        //     li.nav-item {
+        //         i.icon {
+        //             font-size: 2.25rem;
+        //         }
+        //     }
+        // }
     }
 }
 
@@ -137,12 +141,16 @@ nav.navbar {
     padding: $main-navigation-padding;
     scrollbar-color: lighten($purple-2, 50%) $gray-1;
     scrollbar-width: thin;
+    &.closed {
+	    left: 0;
+    }
     nav {
         ul {
             li {
                 margin-bottom: $nav-link-spacing-after;
                 .list-group-item {
-                    display: block;
+                    // ensure closed is useless in desktop
+                    display: block !important;
                     height: $nav-link-height;
                     line-height: $nav-link-height;
                     padding: $nav-link-padding;
@@ -161,10 +169,18 @@ nav.navbar {
             }
         }
     }
+    @media screen and (max-width: $breakpoint-48) {
+        width: 100%;
+        top: 3rem;
+        &.closed {
+            left: -100%;
+        }
+    }
 }
 
 #page {
     padding: $page-padding;
+    padding-left: $main-navigation-width + 2.25rem;
     margin-top: 0;
     #page-header {
         margin-bottom: $page-header-spacing-after;
@@ -215,6 +231,9 @@ nav.navbar {
         td.action {
             white-space: nowrap;
         }
+    }
+    @media screen and (max-width: $breakpoint-48) {
+        padding: $page-padding;
     }
 }
 

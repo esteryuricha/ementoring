@@ -26,3 +26,5 @@ $browsers: '', '-moz-', '-webkit-', '-ms-';
         #{$browser}border-radius: $radius;
     }
 }
+
+$breakpoint-48: 48rem;
