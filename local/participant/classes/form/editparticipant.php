@@ -35,7 +35,7 @@ class editparticipant extends moodleform {
         $mform->disabledIf('password', 'createpassword', 'checked');
 
         //photo
-        $mform->addElement('filepicker', 'picture', 'Photo', null, array('maxbytes' => 0, 'accepted_types' => '*'));
+        $mform->addElement('hidden', 'picture', 'Photo', null, array('maxbytes' => 0, 'accepted_types' => '*'));
         
         //button
         $this->add_action_buttons();

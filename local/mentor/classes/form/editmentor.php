@@ -35,7 +35,7 @@ class editmentor extends moodleform {
         $mform->disabledIf('password', 'createpassword', 'checked');
 
         //picture
-        $mform->addElement('filemanager', 'picture', 'Photo', null, array('accepted_types' => array('jpg', 'png'), 'maxfiles' => 1, 'maxbytes' => $CFG->maxbytes, 'subdirs' => 0));
+        $mform->addElement('hidden', 'picture', 'Photo', null, array('accepted_types' => array('jpg', 'png'), 'maxfiles' => 1, 'maxbytes' => $CFG->maxbytes, 'subdirs' => 0));
         
         //button
         $this->add_action_buttons();
