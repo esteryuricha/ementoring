@@ -18,8 +18,8 @@ $CFG->dboptions = array (
   'dbcollation' => 'utf8mb4_unicode_ci',
 );
 
-$CFG->wwwroot   = 'http://localhost/lms';
-$CFG->dataroot  = 'D:\\Dropbox\moodle_storage';
+$CFG->wwwroot   = 'http://localhost/lms-impala';
+$CFG->dataroot  = 'D:\\moodle_data';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 0777;
