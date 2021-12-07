@@ -15,22 +15,19 @@ class manager {
      * @return bool true if successful
      */
 
-    public function insert_event(int $visible, string $idnumber, string $name, int $startdate, int $enddate): bool {
+    public function insert_event(array $data, array $datafordate):bool {
         global $DB;
 
-        $recordtoinsert = new stdClass();
-        $recordtoinsert->name = $name;
-        $recordtoinsert->idnumber = $idnumber;
-        $recordtoinsert->visible = $visible;
-        $recordtoinsert->visibleold = $visible;
-
         try {
-            $categoryid = $DB->insert_record('course_categories', $recordtoinsert, true);
-        
+            \core_course_category::create($data);
+
+            //get last category id 
+            $categoryid = $DB->get_record_sql('SELECT id FROM {course_categories} ORDER BY id DESC LIMIT 1')->id;
+            
             $addtolocalevent = new stdClass();
             $addtolocalevent->category = $categoryid;
-            $addtolocalevent->startdate = $startdate;
-            $addtolocalevent->enddate = $enddate;
+            $addtolocalevent->startdate = $datafordate['startdate'];
+            $addtolocalevent->enddate = $datafordate['enddate'];
         
             return $DB->insert_record('local_event', $addtolocalevent, false);
         } catch(dml_exception $e) {
