@@ -200,6 +200,11 @@ nav.navbar {
                 // should be important cause p-2
             }
         }
+        #page-navbar {
+            ol.breadcrumb {
+                display: none;
+            }
+        }
     }
     #page-content {
         #region-main-box {
@@ -277,6 +282,6 @@ footer#page-footer {
     }
 }
 // remove "customize this page" button
-#page #page-header .card .card-body .singlebutton form button {
-    // display: none;
-}
+// #page #page-header .card .card-body .singlebutton form button {
+//     display: none;
+// }
