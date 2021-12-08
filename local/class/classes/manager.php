@@ -9,7 +9,7 @@ class manager {
         global $DB;
 
         //get program start date and end date
-        $course_category = $DB->get_record_sql("SELECT startdate, enddate from {course_categories} where id = '$category'");
+        $course_category = $DB->get_record_sql("SELECT startdate, enddate from {local_event} where id = '$category'");
 
         $recordtoinsert = new stdClass();
         $recordtoinsert->visible = $visible;
