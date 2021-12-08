@@ -9,7 +9,7 @@ class manager {
     /** Insert the data into our database table.
      */
 
-    public function insert_participant(int $suspended, string $firstname, string $lastname, string $email, string $password, string $picture): bool {
+    public function insert_participant(int $suspended, string $firstname, string $lastname, string $email, string $password, string $picture, string $phone1): bool {
         global $DB;
 
         //condition must be reverse, because in user table there's only suspended column
@@ -24,6 +24,7 @@ class manager {
         $recordtoinsert->password = hash_internal_user_password($password);
         $recordtoinsert->confirmed = 1;
         $recordtoinsert->mnethostid = 1;
+        $recordtoinsert->phone1 = $phone1;
     
         try {
             $userid = $DB->insert_record('user', $recordtoinsert);
@@ -48,7 +49,8 @@ class manager {
                 u.firstname, 
                 u.lastname, 
                 u.username, 
-                u.email
+                u.email,
+                u.phone1
                 FROM {user} u 
                 INNER JOIN {role_assignments} ra 
                 ON u.id = ra.userid 
@@ -56,7 +58,7 @@ class manager {
         return $DB->get_records_sql($sql);
     }
 
-    function update_participant(int $suspended, string $firstname, string $lastname, string $email, string $password, string $picture): bool {
+    function update_participant(int $suspended, string $firstname, string $lastname, string $email, string $password, string $picture, string $phone1): bool {
         global $DB, $SESSION;
 
         $id = $SESSION->current_id;
@@ -70,6 +72,7 @@ class manager {
         $recordtoupdate->lastname = $lastname;
         $recordtoupdate->username = $email;
         $recordtoupdate->email = $email;
+        $recordtoupdate->phone1 = $phone1;
         $recordtoupdate->id = $id;
 
         if($password)

@@ -25,5 +25,6 @@ $templatecontext = (object)[
 
 echo $OUTPUT->render_from_template('local_mentor/table', $templatecontext);
 
+
 echo $OUTPUT->footer();
 ?>

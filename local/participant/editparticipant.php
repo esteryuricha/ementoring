@@ -34,9 +34,9 @@ if ($mform->is_cancelled()) {
     $manager = new manager();
 
     if($SESSION->current_id) { 
-        $manager->update_participant($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password, $fromform->picture ?? null);
+        $manager->update_participant($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password, $fromform->picture ?? null, $fromform->phone1);
     }else{
-        $manager->insert_participant($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password, $fromform->picture ?? null);    
+        $manager->insert_participant($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password, $fromform->picture ?? null, $fromform->phone1);    
     }
 
     redirect($CFG->wwwroot.'/local/participant/index.php', 'success');
@@ -45,7 +45,7 @@ if ($mform->is_cancelled()) {
 
 if($id) {
     $sql = "SELECT (1 ^ suspended) AS visible,
-            firstname, lastname, email, picture
+            firstname, lastname, email, phone1
             FROM {user}
             WHERE id=$id";
     $participant = $DB->get_record_sql($sql);

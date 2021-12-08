@@ -29,10 +29,10 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
 
     if ($PAGE->context->get_course_context(false) == true && $COURSE->id != SITEID) {
         //remove badge node
-        $badgesnode = $navigation->find('badgesview', global_navigation::TYPE_SETTING)->remove();
+        // $badgesnode = $navigation->find('badgesview', global_navigation::TYPE_SETTING)->remove();
 
         //remove competencies node
-        $competenciesnode = $navigation->find('competencies', global_navigation::TYPE_SETTING)->remove();
+        // $competenciesnode = $navigation->find('competencies', global_navigation::TYPE_SETTING)->remove();
 
         //remove grade node
         $gradesnode = $navigation->find('grades', global_navigation::TYPE_SETTING)->remove();
