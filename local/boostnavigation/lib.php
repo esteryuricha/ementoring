@@ -82,16 +82,3 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
     $node4 = $navigation->add('Statistics', null, navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/outcomes', null));
     $node4->showinflatnavigation = true;
 } 
-
-function local_boostnavigation_extend_navigation_course(navigation_node $navigation) {
-    global $PAGE, $COURSE;
-    // Create competencies node.
-    $competenciesnode = navigation_node::create(get_string('competencies', 'core_competency'),
-            new moodle_url('/admin/tool/lp/coursecompetencies.php', array('courseid' => $PAGE->course->id)),
-            navigation_node::TYPE_SETTING,
-            null,
-            'competencies2',
-            new pix_icon('i/competencies', ''));
-    // Add the competencies node.
-    $navigation->add_node($competenciesnode);
-}
