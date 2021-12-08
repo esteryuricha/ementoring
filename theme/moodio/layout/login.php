@@ -15,14 +15,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details
+ * A login page layout for the boost theme.
  *
- * @package    block_sidebarprofile
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   theme_moodio
+ * @copyright 2021 Turbin - http://turbin.id
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2021120601;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2021051100;        // Requires this Moodle version.
-$plugin->component = 'block_sidebarprofile';     // Full name of the plugin (used for diagnostics)
+$extraclasses[] = 'moodio-login';
+$bodyattributes = $OUTPUT->body_attributes($extraclasses);
+
+$templatecontext = [
+    'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
+    'output' => $OUTPUT,
+    'bodyattributes' => $bodyattributes
+];
+
+if ($this->page->pagetype == 'login-signup') {
+    $templatecontext['logourl'] = $OUTPUT->get_logo();
+}
+
+echo $OUTPUT->render_from_template('theme_moodio/login', $templatecontext);
