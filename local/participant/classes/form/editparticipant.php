@@ -29,6 +29,11 @@ class editparticipant extends moodleform {
         $mform->setType('email', PARAM_NOTAGS);
         $mform->addRule('email', null, 'required');
 
+        //handphone
+        $mform->addElement('text', 'phone1', 'Handphone');
+        $mform->setType('phone1', PARAM_NOTAGS);
+        $mform->addRule('phone1', null, 'required');
+
         //password
         $mform->addElement('passwordunmask', 'password', get_string('newpassword'), 'size="20"' . $purpose);
         $mform->addHelpButton('password', 'password');
