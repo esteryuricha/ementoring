@@ -312,6 +312,17 @@ nav {
     }
 }
 
+// class management cards
+// the class sub menu with 5 buttons
+#inst29 {
+    .card-text.content.mt-3 {
+        margin: 0 -.25rem;
+        button {
+            margin: 0 .25rem .375rem;
+        }
+    }
+}
+
 footer#page-footer {
     display: none;
 }
