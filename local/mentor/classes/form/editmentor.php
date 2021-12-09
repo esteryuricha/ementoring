@@ -15,9 +15,9 @@ class editmentor extends moodleform {
         //active
         $mform->addElement('checkbox',  'visible',  'Active');
         $mform->setDefault('visible', 1);
-
+        
         //first name
-        $mform->addElement('text', 'firstname', 'First Name');
+        $mform->addElement('text', 'firstname', 'First Name', array('class'=>'test'));
         $mform->setType('firstname', PARAM_NOTAGS);
         $mform->addRule('firstname', null, 'required');
         
