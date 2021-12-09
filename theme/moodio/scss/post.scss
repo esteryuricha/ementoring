@@ -96,28 +96,20 @@ nav {
         &.fixed-top {
             @extend .header-base;
             border-bottom: 1px solid $gray-2;
-            // temporary move the left
-            // left: $main-navigation-width;
             z-index: 1098;
             @media screen and (min-width: $breakpoint-48) {
-                background-color: $white-1 !important;
+                // background-color: $white-1 !important;
+                background-color: transparent !important;
             }
             .primary-navigation {
                 display: none;
             }
             .navbar-brand {
-                // position: fixed;
-                // left: 0;
-                // height: 5.5rem;
-                // padding: 0 1.75rem !important;
-                // margin: 1.5rem 0 0 !important;
-                // width: $main-navigation-width;
                 display: none;
             }
             > div {
+                // drawer menu toggler button
                 button.btn.nav-link {
-                    // temporary hide the toggler button
-                    // display: none !important;
                     @extend .button-light;
                     background-color: $white-1 !important;
                 }
@@ -195,7 +187,6 @@ nav {
         }
     }
     #page {
-        padding: $page-padding;
         #page-content {
             section#region-main {
                 margin-top: 8rem;
@@ -204,7 +195,6 @@ nav {
                     margin: 0 auto;
                     // another Moodle ugly shit codes
                     .col-xl-6.col-sm-8 {
-                        // width: 100%;
                         max-width: 100%;
                         flex: none;
                     }
@@ -227,6 +217,7 @@ nav {
     }
 }
 #page {
+    padding: $page-padding;
     padding-left: $main-navigation-width + 2.25rem;
     margin-top: 0;
     #page-header {
@@ -238,9 +229,14 @@ nav {
             @extend .header-base;
             padding: 0 1rem;
             background-color: transparent;
-            h1 {
-                @extend .title-base;
-                font-size: 1.5rem;
+            .page-context-header {
+                padding: 0;
+                h1 {
+                    @extend .title-base;
+                    font-size: 1.5rem;
+                    line-height: 3rem;
+                    margin: 0;
+                }
             }
             .card-body {
                 padding: 0 !important;
@@ -275,6 +271,9 @@ nav {
                             @extend .white-box;
                         }
                     }
+                }
+                .content-container {
+                    @extend .white-box;
                 }
             }
             aside#block-region-side-pre {
