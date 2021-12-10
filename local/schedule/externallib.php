@@ -31,7 +31,7 @@ class local_schedule_external extends external_api  {
      * @return external_description
      */
     public static function getdates_returns() {
-        new external_value('timestart', PARAM_INT, 'timestart');
+        return new external_value(PARAM_RAW, 'test');
     }
 }
 ?>

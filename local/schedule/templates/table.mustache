@@ -1,0 +1,33 @@
+<div class="content-container">
+    <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}'">Add New Schedule</button>
+    <br><br>
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Event Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Enrolled Team</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#schedules}}
+            <tr>
+                <th scope="row">{{num}}</th>
+                <td>
+                    {{eventname}}
+                </td>
+                <td>{{#userdate}} {{selecteddate}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}</td>
+                <td>{{selectedtime}}</td>
+                <td>{{enrolledteam}}</td>
+                <td class="action">
+                    <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}?id={{id}}'"><i class="fa fa-pencil"></i></button>
+                </td>
+            </tr>
+            {{/schedules}}
+        </tbody>
+    </table>
+
+</div>

@@ -1,6 +1,6 @@
 <?php
 use local_schedule\form\editschedule;
-use local_class\manager;
+use local_schedule\manager;
 
 require_once(__DIR__.'/../../config.php');
 
@@ -14,14 +14,11 @@ $id = optional_param('id', null, PARAM_INT);
 //form here
 $mform = new editschedule();
 
-// $title = "Add New Class";
+$title = "Add New Schedule";
 $PAGE->set_url(new moodle_url('/local/class/editclass.php'));
 $PAGE->set_context(\context_system::instance());
+$PAGE->set_title($title);
 $PAGE->requires->js('/local/schedule/assets/main.js');
-
-// $PAGE->set_title($title);
-// $PAGE->set_heading($title);
-
 
 
 if ($mform->is_cancelled()) {
@@ -29,8 +26,9 @@ if ($mform->is_cancelled()) {
     // redirect($CFG->wwwroot.'/local/class/index.php');
 
 } else if ($fromform = $mform->get_data()) {
+    $manager = new manager();
 
-    // $manager = new manager();
+    $manager->insert_schedule($fromform->eventid, $fromform->selecteddate, $fromform->selectedtime, $SESSION->current_id ?? null);
 
     // if($SESSION->current_id) { 
     //     $manager->update_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname, $fromform->user);
@@ -41,6 +39,9 @@ if ($mform->is_cancelled()) {
     // redirect($CFG->wwwroot.'/local/class/index.php', 'success');
 
 }
+
+if($id)
+    $SESSION->current_id = $id;
 
 echo $OUTPUT->header();
 
