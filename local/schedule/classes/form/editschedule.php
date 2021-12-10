@@ -12,18 +12,22 @@ class editschedule extends moodleform {
 
         //eventid
         $selectArray = array();
-        $events = $DB->get_records('event'); //must get the current event
+        $events = $DB->get_records_sql("SELECT id, name FROM {event} where eventtype='category'"); //must get the current event
 
+        $selectArray[0] = "choose event type";
         foreach( $events as $event ) {
             $key = $event->id;
             $value = $event->name;
             $selectArray[$key] = $value;
         }
 
-        $mform->addElement('select', 'eventid', 'Event Type', $selectArray);
+        $mform->addElement('select', 'eventid', 'Event Type', $selectArray, ['id' => 'eventid']);
 
         //selecteddate
-        
+        $mform->addElement('text', 'selecteddate', 'Date', ['id' => 'selecteddate']);
+
+        //selectedtime
+        $mform->addElement('date_time_selector', 'selectedtime', 'Time', ['startyear' => 2021]);
         
         //button
         $this->add_action_buttons();
