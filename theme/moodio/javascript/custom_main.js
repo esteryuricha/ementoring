@@ -7,3 +7,10 @@ regionMain.prepend(courseInfo)
 courseInfo.classList.add('content-container')
 regionMain.prepend(classMenu)
 classMenu.classList.add('content-container')
+
+const enrollUserButton = document.getElementById('enrolusersbutton-1')
+const participantForm = document.getElementById('participantsform')
+participantForm.prepend(enrollUserButton)
+enrollUserButton.classList.add('float-right')
+
+

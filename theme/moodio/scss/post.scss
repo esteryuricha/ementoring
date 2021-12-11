@@ -17,11 +17,15 @@ $modal-padding: 1.5rem 1.5rem;
 $course-title-font-size: 1rem;
 $course-title-font-weight: 600;
 
+.float-right {
+    float: right;
+}
+
 .white-box {
     padding: $content-box-padding;
     box-shadow: 0 0 .5rem 0 $shadow-1;
-    border: 0;
-    background-color: $content-box-bgcolor;
+    border: 0 !important;
+    background-color: $content-box-bgcolor !important;
     @include borderRadius(1rem);
     .card-body {
         padding: 0 !important;
@@ -269,6 +273,10 @@ nav {
                 div[role="main"] {
                     > div {
                         @extend .white-box;
+                        // moodle super ugly way of coding
+                        &.d-flex.justify-content-end {
+                            display: none !important;
+                        }
                     }
                     aside {
                         section {
