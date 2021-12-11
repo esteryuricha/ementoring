@@ -29,6 +29,7 @@ class manager {
         global $DB;
 
         $sql = "SELECT ROW_NUMBER() OVER(order by selecteddate ASC, selectedtime ASC) AS num,
+                    ls.id,
                     e.name 'eventname',
                     ls.selecteddate,
                     ls.selectedtime 
@@ -38,5 +39,17 @@ class manager {
                 WHERE ls.courseid='$courseid'
                 ORDER BY selecteddate ASC, selectedtime ASC";
         return $DB->get_records_sql($sql);
+    }
+
+    function delete_schedule($id) {
+        global $DB;
+        $transaction = $DB->start_delegated_transaction();
+        $deleteSchedule = $DB->delete_records('local_schedule', ['id' => $id]);
+
+        if($deleteSchedule) {
+            $DB->commit_delegated_transaction($transaction);
+        }
+
+        return true;
     }
 }

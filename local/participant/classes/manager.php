@@ -85,7 +85,7 @@ class manager {
         return true;
     }
 
-    function delete_participant($id) {
+    function delete_participant($id): bool {
         global $DB;
         $transaction = $DB->start_delegated_transaction();
         $deletedRoleAssigment = $DB->delete_records('role_assignments', ['userid' => $id]);

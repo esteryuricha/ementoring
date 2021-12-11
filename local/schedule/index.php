@@ -12,6 +12,7 @@ $title = "Schedule Management";
 $PAGE->set_url(new moodle_url('/local/schedule/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
+$PAGE->requires->js('/local/schedule/assets/main.js');
 
 echo $OUTPUT->header();
 
@@ -20,7 +21,7 @@ $schedules = $manager->get_schedules($id);
 
 $templatecontext = (object)[
     'schedules' => array_values($schedules),
-    'addUrl' => new moodle_url($CFG->wwwroot.'/local/schedule/editschedule.php'),
+    'addUrl' => new moodle_url($CFG->wwwroot.'/local/schedule/editschedule.php?id='.$id),
 ];
 
 echo $OUTPUT->render_from_template('local_schedule/table', $templatecontext);

@@ -23,7 +23,7 @@ $PAGE->requires->js('/local/schedule/assets/main.js');
 
 if ($mform->is_cancelled()) {
     
-    // redirect($CFG->wwwroot.'/local/class/index.php');
+    redirect($CFG->wwwroot.'/local/schedule/index.php');
 
 } else if ($fromform = $mform->get_data()) {
     $manager = new manager();
