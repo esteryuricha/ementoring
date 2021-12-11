@@ -43,7 +43,7 @@ class block_courseheader extends block_base {
         $participantUrl = new moodle_url($CFG->wwwroot.'/user/index.php?id='.$id);
         $gradeUrl = new moodle_url($CFG->wwwroot.'/grade/report/grader/index.php?id='.$id);
         $groupUrl = new moodle_url($CFG->wwwroot.'/group/index.php?id='.$id);
-        $scheduleUrl = new moodle_url($CFG->wwwroot.'/local/schedule/editschedule.php?id='.$id);
+        $scheduleUrl = new moodle_url($CFG->wwwroot.'/local/schedule/index.php?id='.$id);
 
         $content = "";
         $content .= "<button type='button' class='btn btn-primary' onclick='location.href=\"$courseUrl\"'>Course</button>";
