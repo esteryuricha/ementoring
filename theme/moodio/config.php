@@ -46,3 +46,8 @@ $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 $THEME->scss = function($theme) {
     return theme_moodio_get_main_scss_content($theme);
 };
+
+#To load the js files in your header:
+// $THEME->javascripts = array(‘yourfirstjsfile’,’yoursecondjsfile’); 
+#To load the js files in your footer:
+$THEME->javascripts_footer = array('custom_main');

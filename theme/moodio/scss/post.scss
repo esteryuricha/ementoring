@@ -6,13 +6,16 @@ $nav-link-height: 4rem;
 $nav-link-padding: 0 1rem;
 $nav-link-spacing-after: .75rem;
 
-$page-header-spacing-after: 2.5rem;
+$page-header-spacing-after: 2.75rem;
 $page-padding: 0 2.25rem;
 $page-padding-48d: 0 1rem;
 $content-box-padding: 1.5rem;
 $content-box-bgcolor: $white;
 
 $modal-padding: 1.5rem 1.5rem;
+
+$course-title-font-size: 1rem;
+$course-title-font-weight: 600;
 
 .white-box {
     padding: $content-box-padding;
@@ -309,6 +312,19 @@ nav {
     .btn.btn-info {
         @extend .button-light;
         background-color: lighten($color: $green-1, $amount: 30%);
+    }
+}
+
+.course-content {
+    ul.topics {
+        li.section {
+            margin: 0;
+            padding: 0;
+            h3.sectionname {
+                font-size: $course-title-font-size;
+                font-weight: $course-title-font-weight;
+            }
+        }
     }
 }
 
