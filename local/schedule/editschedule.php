@@ -36,7 +36,9 @@ if ($mform->is_cancelled()) {
     //     $manager->insert_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname, $fromform->user);    
     // }
 
-    // redirect($CFG->wwwroot.'/local/class/index.php', 'success');
+    redirect($CFG->wwwroot.'/local/schedule/index.php?id='.$SESSION->current_id, 'success');
+
+    $SESSION->current_id = "";
 
 }
 

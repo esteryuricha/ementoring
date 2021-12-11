@@ -12,11 +12,12 @@ require(['core/first', 'jquery', 'core/ajax'], function(core, $, Ajax) {
                 //var startdate = new Date(1000*startdate);
                 //var enddate = new Date(1000*(parseInt(obj.timestart) + parseInt(obj.timeduration)));
                 var endint = startint + parseInt(obj.timeduration);
+                $("#selecteddate").val(startint);
 
                 $("#availabledates").empty();
 
                 for(var d = new Date(1000*startint); d <= new Date(1000*endint); d.setDate(d.getDate() + 1 ) ) {
-                    $("#availabledates").append("<option value='"+new Date(d)+"'>"+new Date(d).toLocaleDateString()+"</option>");
+                    $("#availabledates").append("<option value='"+d+"'>"+new Date(d).toLocaleDateString()+"</option>");
                 }
             }).fail();
         });

@@ -28,12 +28,15 @@ class manager {
     function get_schedules($courseid) {
         global $DB;
 
-        $sql = "SELECT ROW_NUMBER() OVER(order by ls.id) AS num,
-                    e.name 'eventname' 
+        $sql = "SELECT ROW_NUMBER() OVER(order by selecteddate ASC, selectedtime ASC) AS num,
+                    e.name 'eventname',
+                    ls.selecteddate,
+                    ls.selectedtime 
                 FROM {local_schedule} ls
                 JOIN {event} e 
                 ON ls.eventid = e.id
-                WHERE ls.courseid='$courseid'";
+                WHERE ls.courseid='$courseid'
+                ORDER BY selecteddate ASC, selectedtime ASC";
         return $DB->get_records_sql($sql);
     }
 }
