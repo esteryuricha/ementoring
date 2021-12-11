@@ -317,9 +317,15 @@ nav {
 
 .course-content {
     ul.topics {
+        .left.side, .right.side {
+            margin: 0;
+        }
         li.section {
             margin: 0;
-            padding: 0;
+            padding: .5rem 0;
+            &:first-child {
+                padding-top: 0;
+            }
             h3.sectionname {
                 font-size: $course-title-font-size;
                 font-weight: $course-title-font-weight;
@@ -336,6 +342,9 @@ nav {
         button {
             margin: 0 .25rem .375rem;
         }
+    }
+    .action-menu-item {
+        display: none;
     }
 }
 
