@@ -106,8 +106,8 @@ nav {
             border-bottom: 1px solid $gray-2;
             z-index: 1098;
             @media screen and (min-width: $breakpoint-48) {
-                // background-color: $white-1 !important;
-                background-color: transparent !important;
+                background-color: $white-1 !important;
+                // background-color: transparent !important;
             }
             .primary-navigation {
                 display: none;
@@ -195,6 +195,7 @@ nav {
         }
     }
     #page {
+        padding: $page-padding;
         #page-content {
             section#region-main {
                 margin-top: 8rem;
@@ -244,6 +245,9 @@ nav {
                     font-size: 1.25rem;
                     line-height: 3rem;
                     margin: 0;
+                    position: fixed;
+                    top: 0;
+                    z-index: 1109;
                 }
             }
             .card-body {
