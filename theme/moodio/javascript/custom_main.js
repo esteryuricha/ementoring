@@ -66,6 +66,20 @@ if (groupMenuTabs) {
 }
 
 
+const gradeNav = document.querySelector('div[role="main"] .grade-navigation')
+if (gradeNav) {
+    gradeNav.style.padding = 0
+    gradeNav.style.boxShadow = 'none'
+    const gradeWrapper = gradeNav.parentElement
+    if (gradeWrapper) {
+        gradeWrapper.classList.add('content-container')
+    }
+    const gradeTitle = gradeWrapper.children[1]
+    if (gradeTitle) {
+        gradeTitle.classList.add('title-base')
+    }
+}
+
 
 // move settings button beside Turn editing on on administrator
 const courseHeader = document.getElementById('course-header')
