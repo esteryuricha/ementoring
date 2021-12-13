@@ -3,13 +3,20 @@ use local_mentor\manager;
 
 require_once(__DIR__.'/../../config.php');
 
+require_login();
+
 global $DB;
 
 $title = "Mentor Management";
-$PAGE->set_url(new moodle_url('/local/mentor/index.php'));
 $PAGE->set_context(\context_system::instance());
+$PAGE->set_url(new moodle_url('/local/mentor/index.php'));
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
+
+$PAGE->set_pagelayout('mydashboard');
+$PAGE->set_pagetype('my-index');
+$PAGE->blocks->add_region('content');
+
 
 $PAGE->requires->js_call_amd('local_mentor/confirm');
 
@@ -24,6 +31,7 @@ $templatecontext = (object)[
 ];
 
 echo $OUTPUT->render_from_template('local_mentor/table', $templatecontext);
+echo $OUTPUT->custom_block_region('content');
 
 
 echo $OUTPUT->footer();

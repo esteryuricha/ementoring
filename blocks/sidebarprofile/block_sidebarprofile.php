@@ -27,10 +27,6 @@ class block_sidebarprofile extends block_base {
         $this->title = get_string('pluginname', 'block_sidebarprofile');
     }
 
-    public function applicable_formats() {
-        return array('site-index' => true);
-    }
-
     function has_config() {
         return true;
     }
@@ -44,11 +40,12 @@ class block_sidebarprofile extends block_base {
 
         $showprofiles = get_config('block_sidebarprofile', 'showprofiles');
 
-        if($showprofiles && $USER->id!=null) {
+        if($USER->id!=null) {
             $role_assignment = $DB->get_record_sql("select r.name from {role} r inner join {role_assignments} ra on r.id = ra.roleid where ra.userid=$USER->id");
 
+            $content = $USER->firstname." ".$USER->lastname."<br>(".$USER->email.")";
             $this->content = new stdClass;
-            $this->content->text = $USER->firstname." ".$USER->lastname."<br>(".$USER->email.")";
+            $this->content->text = $content;
             $this->content->footer = $role_assignment->name ?? 'Superadmin';
             return $this->content;
         }

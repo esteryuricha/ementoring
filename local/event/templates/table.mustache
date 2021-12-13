@@ -1,36 +1,38 @@
-<button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}'">Add New Program</button>
-<br><br>
-<table class="table table-bordered border-primary">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Status</th>
-            <th scope="col">Program ID</th>
-            <th scope="col">Program Name</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#categories}}
-        <tr>
-            <th scope="row">{{num}}</th>
-            <td>
-                {{#visible}}Aktif{{/visible}}
-                {{^visible}}Non-Aktif{{/visible}}
-            </td>
-            <td>{{idnumber}}</td>
-            <td>{{name}}</td>
-            <td>{{#userdate}} {{startdate}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}</td>
-            <td>{{#userdate}} {{enddate}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}</td>
-            <td>
-                <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}?id={{id}}'"><i class="fa fa-pencil"></i></button>
-                {{^course_count}}
-                <button type="button" value="{{id}}" class="btn btn-danger local_event_delete_button"><i class="fa fa-trash"></i></button>
-                {{/course_count}}
-            </td>
-        </tr>
-        {{/categories}}
-    </tbody>
-</table>
+<div class="content-container">
+    <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}'">Add New Program</button>
+    <br><br>
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Status</th>
+                <th scope="col">Program ID</th>
+                <th scope="col">Program Name</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#categories}}
+            <tr>
+                <th scope="row">{{num}}</th>
+                <td>
+                    {{#visible}}Aktif{{/visible}}
+                    {{^visible}}Non-Aktif{{/visible}}
+                </td>
+                <td>{{idnumber}}</td>
+                <td>{{name}}</td>
+                <td>{{#userdate}} {{startdate}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}</td>
+                <td>{{#userdate}} {{enddate}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}?id={{id}}'"><i class="fa fa-pencil"></i></button>
+                    {{^course_count}}
+                    <button type="button" value="{{id}}" class="btn btn-danger local_event_delete_button"><i class="fa fa-trash"></i></button>
+                    {{/course_count}}
+                </td>
+            </tr>
+            {{/categories}}
+        </tbody>
+    </table>
+</div>

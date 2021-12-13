@@ -10,6 +10,9 @@ $PAGE->set_url(new moodle_url('/local/class/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
+$PAGE->set_pagelayout('mydashboard');
+$PAGE->set_pagetype('my-index');
+$PAGE->blocks->add_region('content');
 
 $PAGE->requires->js_call_amd('local_class/confirm');
 
@@ -25,6 +28,7 @@ $templatecontext = (object)[
 ];
 
 echo $OUTPUT->render_from_template('local_class/table', $templatecontext);
+echo $OUTPUT->custom_block_region('content');
 
 echo $OUTPUT->footer();
 ?>

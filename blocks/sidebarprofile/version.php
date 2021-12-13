@@ -23,6 +23,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2021120601;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2021120600;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2021051100;        // Requires this Moodle version.
 $plugin->component = 'block_sidebarprofile';     // Full name of the plugin (used for diagnostics)
