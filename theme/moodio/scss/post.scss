@@ -63,6 +63,10 @@ $course-title-font-weight: 600;
     text-transform: uppercase;
     font-weight: 400;
 }
+.scroll-custom {
+    scrollbar-color: lighten($purple-2, 50%) $gray-1;
+    scrollbar-width: thin;
+}
 
 // ugly moodle button group fix be like
 .show > .btn-outline-secondary.dropdown-toggle {
@@ -144,8 +148,7 @@ nav {
     box-shadow: .125rem 0 .5rem 0 $shadow-1;
     z-index: 1099;
     padding: $main-navigation-padding;
-    scrollbar-color: lighten($purple-2, 50%) $gray-1;
-    scrollbar-width: thin;
+    @extend .scroll-custom;
     &.closed {
 	    left: 0;
     }
@@ -247,12 +250,11 @@ nav {
                     margin: 0;
                     position: fixed;
                     top: 0;
-                    z-index: 1109;
+                    z-index: 1100;
                 }
             }
             .card-body {
-                padding: 0 !important;
-                // should be important cause p-2
+                padding: 0 !important; // should be important cause p-2
             }
         }
         #page-navbar {
@@ -263,7 +265,6 @@ nav {
     }
     // "customize this page" button
     #page-header .card .card-body .singlebutton form button {
-        // display: none;
         font-weight: 600;
     }
     #page-content {
@@ -281,6 +282,11 @@ nav {
                         &.d-flex.justify-content-end {
                             display: none !important;
                         }
+                    }
+                    // PARTICIPANTS filter
+                    div.filter-group {
+                        box-shadow: none;
+                        padding: 0 !important; // override .p-2
                     }
                     aside {
                         section {
@@ -348,7 +354,8 @@ nav {
 
 // class management cards
 // the class sub menu with 5 buttons
-#inst29 {
+#inst29,
+#inst31 {
     .card-text.content.mt-3 {
         margin: 0 -.25rem;
         button {
@@ -359,11 +366,42 @@ nav {
         display: none;
     }
 }
-#inst30 {
+#inst30,
+#inst32 {
     .action-menu-item {
         display: none;
     }
 }
+// GROUPS
+#region-main > div[role="main"] {
+    div.groupdisplay {
+        margin-top: 1.5rem;
+        ul {
+            border-bottom-color: $purple-2;
+        }
+        li.nav-item {
+            a.nav-link {
+                &.active {
+                    background-image: $purple-gradient;
+                    color: $white;
+                }
+            }
+        }
+    }
+    // groupings list
+    #groupeditform {
+        .groupmanagementtable {
+            padding: 0;
+            #groups,
+            #members {
+                height: 10rem;
+                overflow-y: auto;
+                @extend .scroll-custom;
+            }
+        }
+    }
+}
+
 
 footer#page-footer {
     display: none;
@@ -385,6 +423,9 @@ footer#page-footer {
     &:focus {
         box-shadow: none;
     }
+}
+.region_main_settings_menu_proxy {
+    display: none;
 }
 
 @media screen and (min-width: $breakpoint-48) {
