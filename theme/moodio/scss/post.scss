@@ -255,6 +255,10 @@ nav {
             }
             .card-body {
                 padding: 0 !important; // should be important cause p-2
+                // dashboard customize this page button
+                .singlebutton {
+                    margin-top: 2.75rem;
+                }
             }
         }
         #page-navbar {
