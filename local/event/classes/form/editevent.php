@@ -10,6 +10,8 @@ class editevent extends moodleform {
 
         $mform = $this->_form;
 
+        $mform->addElement('html', '<div class="content-container">');
+
         //active
         $mform->addElement('checkbox',  'visible',  'Active');
         $mform->setDefault('visible', 1);

@@ -14,6 +14,11 @@ $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 
+$PAGE->set_pagelayout('course');
+$PAGE->set_pagetype('my-index');
+$PAGE->blocks->add_region('content');
+
+
 //breadcrumb
 $previewnode = $PAGE->navigation->add('Mentor Management', new moodle_url('/local/mentor/index.php'), navigation_node::TYPE_CONTAINER);
 $thingnode = $previewnode->add($title, new moodle_url('/local/mentor/editmentor.php'));
@@ -72,6 +77,8 @@ if($id) {
 echo $OUTPUT->header();
 
 $mform->display();
+echo $OUTPUT->custom_block_region('content');
+
 
 echo $OUTPUT->footer();
 

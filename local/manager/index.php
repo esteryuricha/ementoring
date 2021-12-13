@@ -11,7 +11,7 @@ $PAGE->set_url(new moodle_url('/local/manager/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
-$PAGE->set_pagelayout('mydashboard');
+$PAGE->set_pagelayout('course');
 $PAGE->set_pagetype('my-index');
 $PAGE->blocks->add_region('content');
 

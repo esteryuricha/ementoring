@@ -29,8 +29,8 @@ $templatecontext = (object)[
     'addUrl' => new moodle_url($CFG->wwwroot.'/local/schedule/editschedule.php?id='.$id),
 ];
 
-echo $OUTPUT->render_from_template('local_schedule/table', $templatecontext);
 echo $OUTPUT->custom_block_region('content');
+echo $OUTPUT->render_from_template('local_schedule/table', $templatecontext);
 
 echo $OUTPUT->footer();
 ?>
