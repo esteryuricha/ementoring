@@ -1,28 +1,25 @@
 // change class management meniu position
 const regionMain = document.getElementById('region-main')
 if (regionMain) {
-    // different courseInfo(31) and classMenu(32) id on GROUPS page
+    // different courseInfo(29,31,33) and classMenu(30,32,34) id on PARTICIPANTS, GROUPS, GRADE page
     // courseInfo
-    if (document.getElementById('inst30')) {
-        const courseInfo = document.getElementById('inst30')
-        regionMain.prepend(courseInfo)
-        courseInfo.classList.add('content-container')
-    } else if (document.getElementById('inst32')) {
-        const courseInfo = document.getElementById('inst32')
-        regionMain.prepend(courseInfo)
-        courseInfo.classList.add('content-container')
+    const courseInfo = ['inst30', 'inst32', 'inst34']
+    for (const element of courseInfo) {
+        if (document.getElementById(element)) {
+            const courseInfo = document.getElementById(element)
+            regionMain.prepend(courseInfo)
+            courseInfo.classList.add('content-container')
+        }    
     }
     // classMenu
-    if (document.getElementById('inst29')) {
-        const classMenu = document.getElementById('inst29')
-        regionMain.prepend(classMenu)
-        classMenu.classList.add('content-container')
-    }
-    if (document.getElementById('inst31')) {
-        const classMenu = document.getElementById('inst31')
-        regionMain.prepend(classMenu)
-        classMenu.classList.add('content-container')
-    }
+    const classMenu = ['inst29', 'inst31', 'inst33']
+    for (const element of classMenu) {
+        if (document.getElementById(element)) {
+            const classMenu = document.getElementById(element)
+            regionMain.prepend(classMenu)
+            classMenu.classList.add('content-container')
+        }
+    } 
 }
 
 // class management -> PARTICIPANTS DOM manipulation
