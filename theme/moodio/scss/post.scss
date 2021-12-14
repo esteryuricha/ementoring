@@ -371,6 +371,7 @@ nav {
     }
 }
 .block_courseinformation {
+    @extend .white-box;
     .action-menu-item {
         display: none;
     }
@@ -439,6 +440,7 @@ footer#page-footer {
         z-index: 20;
     }
 }
+
 .form-check-input {
 	position: relative;
 	+ label {

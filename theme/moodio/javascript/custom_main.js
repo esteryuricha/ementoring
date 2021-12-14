@@ -82,7 +82,13 @@ if (courseHeader) {
 }
 
 // remove selected course from nav drawer
-const courseHomeSelected = document.querySelector("[data-key='coursehome']")
+const courseHomeSelected = document.querySelector('[data-key="coursehome"]')
 if (courseHomeSelected) {
     courseHomeSelected.parentElement.remove()
+}
+const courseTopicsOnDrawer = document.querySelectorAll('.media-left .icon.fa.fa-folder-o.fa-fw')
+if (courseTopicsOnDrawer) {
+    for (const element of courseTopicsOnDrawer) {
+        element.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+    }
 }
