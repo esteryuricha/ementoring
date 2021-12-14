@@ -358,9 +358,8 @@ nav {
 
 // class management cards
 // the class sub menu with 5 buttons
-#inst29,
-#inst31,
-#inst33 {
+.block_courseheader {
+    @extend .white-box;
     .card-text.content.mt-3 {
         margin: 0 -.25rem;
         button {
@@ -371,9 +370,7 @@ nav {
         display: none;
     }
 }
-#inst30,
-#inst32,
-#inst34 {
+.block_courseinformation {
     .action-menu-item {
         display: none;
     }

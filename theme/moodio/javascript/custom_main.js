@@ -1,25 +1,16 @@
 // change class management meniu position
 const regionMain = document.getElementById('region-main')
 if (regionMain) {
-    // different courseInfo(29,31,33) and classMenu(30,32,34) id on PARTICIPANTS, GROUPS, GRADE page
-    // courseInfo
-    const courseInfo = ['inst30', 'inst32', 'inst34']
-    for (const element of courseInfo) {
-        if (document.getElementById(element)) {
-            const courseInfo = document.getElementById(element)
-            regionMain.prepend(courseInfo)
-            courseInfo.classList.add('content-container')
-        }    
+    if (document.querySelector('.block_courseinformation')) {
+        const courseInfo = document.querySelector('.block_courseinformation')
+        regionMain.prepend(courseInfo)
+        // courseInfo.classList.add('content-container')
     }
-    // classMenu
-    const classMenu = ['inst29', 'inst31', 'inst33']
-    for (const element of classMenu) {
-        if (document.getElementById(element)) {
-            const classMenu = document.getElementById(element)
-            regionMain.prepend(classMenu)
-            classMenu.classList.add('content-container')
-        }
-    } 
+    if (document.querySelector('.block_courseheader')) {
+        const classMenu = document.querySelector('.block_courseheader')
+        regionMain.prepend(classMenu)
+        // classMenu.classList.add('content-container')
+    }
 }
 
 // class management -> PARTICIPANTS DOM manipulation
