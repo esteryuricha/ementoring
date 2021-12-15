@@ -60,21 +60,22 @@ class block_courseinformation extends block_base {
                 $content .= $groupmember->firstname." (".$groupmember->email.")<br>";
             }
         }else{
-            //get all groups
-            $groups = $DB->get_records_sql("SELECT g.id, g.name FROM {groups} g JOIN {groups_members} gm ON g.id = gm.groupid WHERE g.courseid = $id");
+            if($id) {
+                //get all groups
+                $groups = $DB->get_records_sql("SELECT g.id, g.name FROM {groups} g JOIN {groups_members} gm ON g.id = gm.groupid WHERE g.courseid = $id");
 
-            $content = "<b>Teams Count : ".count($groups)."</b><br>";
+                $content = "<b>Teams Count : ".count($groups)."</b><br>";
 
-            foreach( $groups as $index => $group ) {
-                $content .= "<b>".$group->name."</b><br>";
+                foreach( $groups as $index => $group ) {
+                    $content .= "<b>".$group->name."</b><br>";
+                    
+                    $groupmembers = $DB->get_records_sql("SELECT u.firstname, u.lastname, u.email FROM {groups_members} gm JOIN {user} u ON gm.userid = u.id WHERE gm.groupid = $group->id");
                 
-                $groupmembers = $DB->get_records_sql("SELECT u.firstname, u.lastname, u.email FROM {groups_members} gm JOIN {user} u ON gm.userid = u.id WHERE gm.groupid = $group->id");
-            
-                foreach( $groupmembers as $groupmember ) {
-                    $content .= "* ".$groupmember->firstname." (".$groupmember->email.")<br>";
+                    foreach( $groupmembers as $groupmember ) {
+                        $content .= "* ".$groupmember->firstname." (".$groupmember->email.")<br>";
+                    }
                 }
             }
-
         }
 
         $this->content = new stdClass;

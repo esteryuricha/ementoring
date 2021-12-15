@@ -176,7 +176,10 @@ echo $OUTPUT->heading($instancename);
 $addenabled = $canenrol ? '' : 'disabled="disabled"';
 $removeenabled = $canunenrol ? '' : 'disabled="disabled"';
 
+$backUrl = new moodle_url('/user/index.php', array('id'=>$course->id));
 ?>
+<button class="btn btn-primary" onclick="location.href='<?php echo $backUrl; ?>'">back to participant list</button>
+<br><br>
 <form id="assignform" method="post" action="<?php echo $PAGE->url ?>"><div>
   <input type="hidden" name="sesskey" value="<?php echo sesskey() ?>" />
 

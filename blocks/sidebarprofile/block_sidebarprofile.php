@@ -43,10 +43,13 @@ class block_sidebarprofile extends block_base {
         if($USER->id!=null) {
             $role_assignment = $DB->get_record_sql("select r.name from {role} r inner join {role_assignments} ra on r.id = ra.roleid where ra.userid=$USER->id");
 
-            $content = $USER->firstname." ".$USER->lastname."<br>(".$USER->email.")";
+            $content = "<div class='sidebar_display_name'>".$USER->firstname." ".$USER->lastname."</div>";
+            $content .= "<div class='sidebar_display_email'>(".$USER->email.")</div>";
+            $footer_content = "<div class='sidebar_display_role'>".($role_assignment->name ?? 'Superadmin')."</div>";
+
             $this->content = new stdClass;
             $this->content->text = $content;
-            $this->content->footer = $role_assignment->name ?? 'Superadmin';
+            $this->content->footer = $footer_content;
             return $this->content;
         }
     }

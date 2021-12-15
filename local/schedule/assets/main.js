@@ -17,7 +17,7 @@ require(['core/first', 'jquery', 'core/ajax', 'core/modal_factory', 'core/modal_
                 $("#availabledates").empty();
 
                 for(var d = new Date(1000*startint); d <= new Date(1000*endint); d.setDate(d.getDate() + 1 ) ) {
-                    $("#availabledates").append("<option value='"+d+"'>"+new Date(d).toLocaleDateString()+"</option>");
+                    $("#availabledates").append("<option value='"+new Date(d).getTime()/1000+"'>"+new Date(d).toLocaleDateString()+"</option>");
                 }
             }).fail();
         });
