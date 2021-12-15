@@ -96,9 +96,15 @@ $course-title-font-weight: 600;
 
 body {
     background-color: $body-bgcolor;
-}
-body:not(.uses-drawers).drawer-open-left {
-    margin-left: $main-navigation-width;
+    &:not(.uses-drawers).drawer-open-left {
+        // margin-left: $main-navigation-width;
+        margin-left: 0;
+    }
+    &.drawer-open-left {
+        @media screen and (min-width: $breakpoint-48) {
+            margin-left: 0;
+        }
+    }
 }
 
 // top nav
@@ -256,9 +262,9 @@ nav {
             .card-body {
                 padding: 0 !important; // should be important cause p-2
                 // dashboard customize this page button
-                .singlebutton {
-                    margin-top: 2.75rem;
-                }
+                // .singlebutton {
+                //     margin-top: 2.75rem;
+                // }
             }
         }
         #page-navbar {
@@ -268,8 +274,16 @@ nav {
         }
     }
     // "customize this page" button
-    #page-header .card .card-body .singlebutton form button {
-        font-weight: 600;
+    #page-header .card .card-body {
+        .d-sm-flex.align-items-center {
+            height: 2.75rem;
+        }
+        .singlebutton {
+            margin-right: .5rem;
+            form button {
+                font-weight: 600;
+            }
+        }
     }
     #page-content {
         #region-main-box {
