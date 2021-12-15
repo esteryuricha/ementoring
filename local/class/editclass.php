@@ -16,7 +16,7 @@ $PAGE->set_heading($title);
 $PAGE->set_pagelayout('course');
 $PAGE->set_pagetype('my-index');
 $PAGE->blocks->add_region('content');
-
+    
 
 //breadcrumb
 $previewnode = $PAGE->navigation->add('Program Management', new moodle_url('/local/class/index.php'), navigation_node::TYPE_CONTAINER);

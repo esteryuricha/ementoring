@@ -15,7 +15,7 @@ $id = optional_param('id', null, PARAM_INT);
 $mform = new editschedule();
 
 $title = "Add New Schedule";
-$PAGE->set_url(new moodle_url('/local/class/editclass.php'));
+$PAGE->set_url(new moodle_url('/local/class/editschedule.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
 $PAGE->requires->js('/local/schedule/assets/main.js');
@@ -28,7 +28,7 @@ if ($mform->is_cancelled()) {
 } else if ($fromform = $mform->get_data()) {
     $manager = new manager();
 
-    $manager->insert_schedule($fromform->eventid, $fromform->selecteddate, $fromform->selectedtime, $SESSION->current_id ?? null);
+    $manager->insert_schedule((int)$fromform->eventid, (int)$fromform->selecteddate, $fromform->selectedtime, $SESSION->current_id ?? null);
 
     // if($SESSION->current_id) { 
     //     $manager->update_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname, $fromform->user);

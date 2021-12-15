@@ -38,7 +38,22 @@ class manager {
             $inserttouserenrol->enrolid = $enrolid;
             $inserttouserenrol->userid = $user;
 
-            return $DB->insert_record('user_enrolments', $inserttouserenrol, false);
+            $DB->insert_record('user_enrolments', $inserttouserenrol, false);
+
+            //create introduction section
+            $inserttosection->course = $courseid;
+            $inserttosection->section = 0;
+            $inserttosection->name = "Introduction";
+            $inserttosection->summary = '<p dir="ltr" style="text-align: left;">Welcome to class '.$shortname.'</p>';
+
+            $DB->insert_record('course_sections', $inserttosection, false);
+
+            //topic section 
+            $inserttotopicsection->course = $courseid;
+            $inserttotopicsection->section = 1;
+            $inserttotopicsection->name = "Topic 1";
+
+            return $DB->insert_record('course_sections', $inserttotopicsection, false);
 
         } catch(dml_exception $e) {
             return false;

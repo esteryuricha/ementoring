@@ -20,6 +20,7 @@ class theme_moodio_core_course_renderer extends core_course_renderer {
      * @param array $displayoptions
      * @return string
      */
+    /*
     public function course_section_cm($course, &$completioninfo, cm_info $mod, $sectionreturn, $displayoptions = []) {
 
         debugging(
@@ -32,18 +33,20 @@ class theme_moodio_core_course_renderer extends core_course_renderer {
         }
 
         $format = course_get_format($course);
-        $modinfo = $format->get_modinfo();
-        // Output renderers works only with real section_info objects.
-        if ($sectionreturn) {
-            $format->set_section_number($sectionreturn);
-        }
-        $section = $modinfo->get_section_info($format->get_section_number());
+        print_r($format);
+        // $modinfo = $format->get_fast_modinfo();
+        // // Output renderers works only with real section_info objects.
+        // if ($sectionreturn) {
+        //     $format->set_section_number($sectionreturn);
+        // }
+        // $section = $modinfo->get_section_info($format->get_section_number());
 
-        $cmclass = $format->get_output_classname('content\\cm');
-        $cm = new $cmclass($format, $section, $mod, $displayoptions);
-        // The course outputs works with format renderers, not with course renderers.
-        $renderer = $format->get_renderer($this->page);
-        $data = $cm->export_for_template($renderer);
-        return $this->output->render_from_template('core_courseformat/local/content/cm', $data);
+        // $cmclass = $format->get_output_classname('content\\cm');
+        // $cm = new $cmclass($format, $section, $mod, $displayoptions);
+        // // The course outputs works with format renderers, not with course renderers.
+        // $renderer = $format->get_renderer($this->page);
+        // $data = $cm->export_for_template($renderer);
+        // return $this->output->render_from_template('core_courseformat/local/content/cm', $data);
     }
+    */
 }

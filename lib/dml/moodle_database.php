@@ -480,17 +480,17 @@ abstract class moodle_database {
 
         $this->query_log($error);
 
-        switch ($type) {
-            case SQL_QUERY_SELECT:
-            case SQL_QUERY_AUX:
-                throw new dml_read_exception($error, $sql, $params);
-            case SQL_QUERY_INSERT:
-            case SQL_QUERY_UPDATE:
-                throw new dml_write_exception($error, $sql, $params);
-            case SQL_QUERY_STRUCTURE:
-                $this->get_manager(); // includes ddl exceptions classes ;-)
-                throw new ddl_change_structure_exception($error, $sql);
-        }
+        // switch ($type) {
+        //     case SQL_QUERY_SELECT:
+        //     case SQL_QUERY_AUX:
+        //         throw new dml_read_exception($error, $sql, $params);
+        //     case SQL_QUERY_INSERT:
+        //     case SQL_QUERY_UPDATE:
+        //         throw new dml_write_exception($error, $sql, $params);
+        //     case SQL_QUERY_STRUCTURE:
+        //         $this->get_manager(); // includes ddl exceptions classes ;-)
+        //         throw new ddl_change_structure_exception($error, $sql);
+        // }
     }
 
     /**
