@@ -67,6 +67,12 @@ $course-title-font-weight: 600;
     scrollbar-color: lighten($purple-2, 50%) $gray-1;
     scrollbar-width: thin;
 }
+@mixin gradientText($gradient) {
+    background: $gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 // ugly moodle button group fix be like
 .show > .btn-outline-secondary.dropdown-toggle {
@@ -170,10 +176,7 @@ nav {
                     padding: $nav-link-padding;
                     border: 0;
                     &.active {
-                        background: $purple-gradient;
-                        background-clip: text;
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
+                        @include gradientText($purple-gradient);
                     }
                     &:focus, &:focus-visible {
                         outline: none;
@@ -367,6 +370,22 @@ nav {
                 font-weight: $course-title-font-weight;
             }
         }
+    }
+}
+
+// profile / logged in
+.block_sidebarprofile {
+    .sidebar_display_name {
+        font-weight: 600;        
+    }
+    .sidebar_display_role {
+        @include gradientText($purple-gradient);
+        font-size: .75rem;
+        padding: .5rem 0;
+        // &:before {
+        //     font-family: "Material Icons";
+        //     content: "\e87c";
+        // }
     }
 }
 
