@@ -1,0 +1,23 @@
+<button type="button" class="btn btn-primary" onclick="location.href='{{backUrl}}'">Back To Course</button>
+<br><br>
+<div class="content-container">
+    <b>{{scheduleName}}</b>
+    <br><br>
+    {{^checklocalschedule}}
+    Your team has not chosen the schedule yet!<br>
+    <button class="btn btn-primary" onclick="location.href='{{chooseUrl}}'">Choose Your Team Schedule</button>
+    {{/checklocalschedule}}
+    {{#checklocalschedule}}
+    <table class="generaltable">
+        <tr>
+            <td>Date</td>
+            <td>{{#userdate}} {{selecteddate}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}</td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td>{{selectedtime}}</td>
+        </tr>
+    </table>
+    <button class="btn btn-secondary" onclick="location.href='{{checkInUrl}}'">check-in now</button>
+    {{/checklocalschedule}}
+</div>

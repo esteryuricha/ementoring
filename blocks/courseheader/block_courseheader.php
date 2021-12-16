@@ -47,10 +47,16 @@ class block_courseheader extends block_base {
 
         $content .= "<button type='button' class='btn btn-primary' onclick='location.href=\"$courseUrl\"'>Course</button>";
         $content .= "<button type='button' class='btn btn-primary' onclick='location.href=\"$participantUrl\"'>Participants</button>";
-        $content .= "<button type='button' class='btn btn-primary' onclick='location.href=\"$gradeUrl\"'>Grades</button>";
-        $content .= "<button type='button' class='btn btn-primary' onclick='location.href=\"$scheduleUrl\"'>Schedule</button>";
-        $content .= "<button type='button' class='btn btn-primary' onclick='location.href=\"$groupUrl\"'>Groups</button>";
-
+        
+        //get role
+        $role_assignment = $DB->get_record_sql("select r.id from {role} r inner join {role_assignments} ra on r.id = ra.roleid where ra.userid=$USER->id");
+        
+        if($role_assignment->id != 5) {
+            $content .= "<button type='button' class='btn btn-primary' onclick='location.href=\"$gradeUrl\"'>Grades</button>";
+            $content .= "<button type='button' class='btn btn-primary' onclick='location.href=\"$scheduleUrl\"'>Schedule</button>";
+            $content .= "<button type='button' class='btn btn-primary' onclick='location.href=\"$groupUrl\"'>Groups</button>";
+        }
+        
             $this->content = new stdClass;
             $this->content->text = $content;
             $this->content->footer = "";

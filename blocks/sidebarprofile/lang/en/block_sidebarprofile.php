@@ -24,6 +24,6 @@
 $string['sidebarprofile:addinstance'] = 'Add a new profile block';
 $string['sidebarprofile:myaddinstance'] = 'Add a new profile block to Dashboard';
 $string['sidebarprofile'] = '(new profile block)';
-$string['pluginname'] = "You are login as";
+$string['pluginname'] = "You are logged in as";
 $string['showprofile'] = 'Show Profile';
 $string['showprofiledescription'] = 'Show profile on the right side';
