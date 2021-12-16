@@ -245,6 +245,7 @@ class mod_assign_renderer extends plugin_renderer_base {
         $this->page->set_heading($this->page->course->fullname);
 
         $o .= $this->output->header();
+        $o .= $this->output->single_button(new moodle_url('/course/view.php', ['id' => $header->assign->course]),'back to course', 'get');
         $o .= $this->output->heading($heading);
 
         // Show the activity information output component.
