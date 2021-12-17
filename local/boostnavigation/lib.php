@@ -79,6 +79,6 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
     $node3 = $navigation->add('Classes', new moodle_url($CFG->wwwroot.'/local/class/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/folder', null));
     $node3->showinflatnavigation = true;
 
-    $node4 = $navigation->add('Statistics', null, navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/outcomes', null));
+    $node4 = $navigation->add('Statistics', new moodle_url($CFG->wwwroot.'/local/statistic/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/outcomes', null));
     $node4->showinflatnavigation = true;
 } 
