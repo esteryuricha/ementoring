@@ -92,3 +92,25 @@ if (courseTopicsOnDrawer) {
         element.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
     }
 }
+
+// move mentors, managers, and participants inside an <ul>
+const userOnNavDrawer = document.querySelector('[data-parent-key="myhome"]').parentElement
+if (userOnNavDrawer) {
+    const userSub = document.createElement("ul")
+    userSub.setAttribute("class", "user-subnav")
+    userOnNavDrawer.appendChild(userSub)
+
+    const userMenuCheck = document.querySelectorAll('nav.list-group ul li a div div span.media-body')
+    if (userMenuCheck) {
+        for (const element of userMenuCheck) {
+            // console.log(element.innerHTML)
+            if (element.innerHTML == "Managers" || element.innerHTML == "Mentors" || element.innerHTML == "Participants") {
+                // console.log(element.innerHTML + " selected")
+                const targetedMenu = element.parentElement.parentElement.parentElement.parentElement
+                if (targetedMenu) {
+                    userSub.prepend(targetedMenu)
+                }
+            }
+        }
+    }
+}
