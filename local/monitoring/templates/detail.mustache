@@ -1,0 +1,27 @@
+<div class="content-container">
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Class</th>
+                <th scope="col">Mentor</th>
+                <th scope="col">Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#classes}}
+            <tr>
+                <td>{{num}}</td>
+                <td>{{fullname}}</td>
+                <td>{{firstname}} {{lastname}}</td>
+                <td>{{cm_count}} module(s)</td>
+                <td>
+                    <button type="button" class="btn btn-secondary local_monitoring_group_button" value="{{id}}">group</button>
+                    <button type="button" class="btn btn-primary local_monitoring_schedule_button" value="{{id}}">schedule</button>
+                </td>
+            </tr>
+            {{/classes}}
+        </tbody>
+    </table>
+</div>

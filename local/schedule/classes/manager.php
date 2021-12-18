@@ -32,10 +32,13 @@ class manager {
                     ls.id,
                     e.name 'eventname',
                     ls.selecteddate,
-                    ls.selectedtime 
+                    ls.selectedtime,
+                    g.name as enrolledteam
                 FROM {local_schedule} ls
                 JOIN {event} e 
-                ON ls.eventid = e.id
+                    ON ls.eventid = e.id
+                LEFT JOIN {groups} g 
+                    ON g.id = ls.groupid
                 WHERE ls.courseid='$courseid'
                 ORDER BY selecteddate ASC, selectedtime ASC";
         return $DB->get_records_sql($sql);

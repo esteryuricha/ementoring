@@ -18,12 +18,16 @@ $title = "Add New Schedule";
 $PAGE->set_url(new moodle_url('/local/class/editschedule.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
+$PAGE->set_heading($title);
+$PAGE->set_pagelayout('course');
+$PAGE->set_pagetype('course-view-schedule');
+$PAGE->blocks->add_region('content');
 $PAGE->requires->js('/local/schedule/assets/main.js');
 
 
 if ($mform->is_cancelled()) {
     
-    redirect($CFG->wwwroot.'/local/schedule/index.php');
+    redirect($CFG->wwwroot.'/local/schedule/index.php?id='.$SESSION->current_id);
 
 } else if ($fromform = $mform->get_data()) {
     $manager = new manager();
@@ -46,8 +50,11 @@ if($id)
     $SESSION->current_id = $id;
 
 echo $OUTPUT->header();
+echo $OUTPUT->custom_block_region('content');
 
+echo "<div class='content-container'>";
 $mform->display();
+echo "</div>";
 
 echo $OUTPUT->footer();
 

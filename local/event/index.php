@@ -25,6 +25,7 @@ $categories = $manager->get_events();
 $templatecontext = (object)[
     'categories' => array_values($categories),
     'addUrl' => new moodle_url($CFG->wwwroot.'/local/event/editevent.php'),
+    'monitoringUrl' => new moodle_url($CFG->wwwroot.'/local/monitoring/index.php')
 ];
 
 echo $OUTPUT->render_from_template('local_event/table', $templatecontext);

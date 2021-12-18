@@ -27,8 +27,13 @@
                 <td>{{#userdate}} {{enddate}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}</td>
                 <td>
                     <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}?id={{id}}'"><i class="fa fa-pencil"></i></button>
+                    
                     {{^course_count}}
                     <button type="button" value="{{id}}" class="btn btn-danger local_event_delete_button"><i class="fa fa-trash"></i></button>
+                    {{/course_count}}
+
+                    {{#course_count}}
+                    <button type="button" value="{{id}}" class="btn btn-info" onclick="location.href='{{monitoringUrl}}?id={{id}}'"><i class="fa fa-eye"></i></button>
                     {{/course_count}}
                 </td>
             </tr>
