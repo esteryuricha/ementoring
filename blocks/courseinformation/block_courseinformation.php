@@ -48,8 +48,9 @@ class block_courseinformation extends block_base {
         if( $role_assignment->id == 5 )
         {
             //show group
-            
             $group = $DB->get_record_sql("SELECT g.id, g.name FROM {groups} g JOIN {groups_members} gm ON g.id = gm.groupid WHERE gm.userid = $USER->id and g.courseid = $id");
+            
+            if($group){
             $groupid = $group->id;
             
             $content = "<b>My Team : $group->name</b><br>";
@@ -58,6 +59,7 @@ class block_courseinformation extends block_base {
 
             foreach( $groupmembers as $groupmember ) {
                 $content .= $groupmember->firstname." (".$groupmember->email.")<br>";
+            }
             }
         }else{
             if($id) {

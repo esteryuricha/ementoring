@@ -108,7 +108,9 @@ if (!empty($user)) {
     } else {
         $usertoken->privatetoken = null;
     }
+
     echo json_encode($usertoken);
+
 } else {
     throw new moodle_exception('invalidlogin');
 }

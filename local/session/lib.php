@@ -1,6 +1,6 @@
 <?php
 function local_session_before_footer() {
-    global $DB, $USER;
+    global $DB, $USER, $SESSION;
 
     //get role
     $role_assignment = $DB->get_record_sql("select r.id from {role} r inner join {role_assignments} ra on r.id = ra.roleid where ra.userid=$USER->id");
@@ -16,7 +16,8 @@ function local_session_before_footer() {
                 INNER JOIN {user_enrolments} ue 
                     ON ue.enrolid = e.id 
                 WHERE ue.userid = $USER->id 
-                GROUP BY cc.idnumber";
+                GROUP BY cc.idnumber
+                ORDER BY cc.id DESC";
 
         $categories = $DB->get_records_sql($sql);
 

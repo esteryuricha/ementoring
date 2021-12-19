@@ -332,7 +332,7 @@ function core_login_generate_password_reset ($user) {
  * @return string url the user should be redirected to.
  */
 function core_login_get_return_url() {
-    global $CFG, $SESSION, $USER;
+    global $CFG, $SESSION, $USER, $DB;
     // Prepare redirection.
     if (user_not_fully_set_up($USER, true)) {
         $urltogo = $CFG->wwwroot.'/user/edit.php';
@@ -355,6 +355,36 @@ function core_login_get_return_url() {
         if ($homepage == HOMEPAGE_MY && !is_siteadmin() && !isguestuser()) {
             if ($urltogo == $CFG->wwwroot or $urltogo == $CFG->wwwroot.'/' or $urltogo == $CFG->wwwroot.'/index.php') {
                 $urltogo = $CFG->wwwroot.'/my/';
+        
+                //additional code for store current selected category 19.12.2021
+                //get role
+                $role_assignment = $DB->get_record_sql("SELECT r.id 
+                                                        FROM {role} r 
+                                                        INNER JOIN {role_assignments} ra 
+                                                            ON r.id = ra.roleid 
+                                                        WHERE ra.userid='$USER->id' LIMIT 1");
+
+                //add menu class for mentor and participant
+                if($role_assignment->id == 3 || $role_assignment->id == 5) {
+                    $sql = "SELECT cc.id 
+                            FROM {course_categories} cc 
+                            INNER JOIN {course} c 
+                                ON cc.id = c.category 
+                            INNER JOIN {enrol} e 
+                                ON e.courseid = c.id 
+                            INNER JOIN {user_enrolments} ue 
+                                ON ue.enrolid = e.id 
+                            WHERE ue.userid = $USER->id 
+                            GROUP BY cc.idnumber
+                            ORDER BY cc.id DESC
+                            LIMIT 1";
+
+
+                    $category = $DB->get_record_sql($sql);
+    
+                    $SESSION->selectedcategory = $category->id;
+                }
+
             }
         }
     }

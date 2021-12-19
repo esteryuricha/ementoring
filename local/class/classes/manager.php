@@ -62,26 +62,56 @@ class manager {
 
     function get_classes(): array
     {
-        global $DB;
-        $sql = "SELECT ROW_NUMBER() OVER(order by c.id desc) AS num,
-                c.id,
-                c.visible,
-                cc.name AS program_name, 
-                c.fullname, 
-                c.idnumber, 
-                CONCAT(u.firstname,' ',u.lastname) AS mentor
-                FROM {course} c 
-                JOIN {course_categories} cc 
-                    ON c.category = cc.id 
-                JOIN {enrol} e 
-                    ON c.id = e.courseid 
-                JOIN {user_enrolments} ue 
-                    ON e.id = ue.enrolid 
-                JOIN {user} u 
-                    ON u.id = ue.userid 
-                JOIN {role_assignments} ra 
-                    ON ra.userid = u.id
-                WHERE ra.roleid = 3 and contextid=1";
+        global $DB, $SESSION, $USER;
+
+        //get role
+        $role_assignment = $DB->get_record_sql("SELECT r.id 
+                                                FROM {role} r 
+                                                INNER JOIN {role_assignments} ra 
+                                                    ON r.id = ra.roleid 
+                                                WHERE ra.userid='$USER->id' LIMIT 1");
+
+        //add menu class for mentor and participant
+        if($role_assignment->id == 3 || $role_assignment->id == 5) {
+            $sql = "SELECT ROW_NUMBER() OVER(order by c.id DESC) AS num,
+                    c.id,
+                    c.visible,
+                    cc.name AS program_name, 
+                    c.fullname, 
+                    c.idnumber
+                    FROM {course_categories} cc 
+                    INNER JOIN {course} c 
+                        ON cc.id = c.category 
+                    INNER JOIN {enrol} e 
+                        ON e.courseid = c.id 
+                    INNER JOIN {user_enrolments} ue 
+                        ON ue.enrolid = e.id 
+                    WHERE ue.userid = '$USER->id' 
+                        AND cc.id = '$SESSION->selectedcategory'
+                    GROUP BY cc.idnumber
+                    ORDER BY cc.id DESC";
+        }else{
+            $sql = "SELECT ROW_NUMBER() OVER(order by c.id desc) AS num,
+                    c.id,
+                    c.visible,
+                    cc.name AS program_name, 
+                    c.fullname, 
+                    c.idnumber, 
+                    CONCAT(u.firstname,' ',u.lastname) AS mentor
+                    FROM {course} c 
+                    JOIN {course_categories} cc 
+                        ON c.category = cc.id 
+                    JOIN {enrol} e 
+                        ON c.id = e.courseid 
+                    JOIN {user_enrolments} ue 
+                        ON e.id = ue.enrolid 
+                    JOIN {user} u 
+                        ON u.id = ue.userid 
+                    JOIN {role_assignments} ra 
+                        ON ra.userid = u.id
+                    WHERE ra.roleid = 3 and contextid=1";
+        }
+
         return $DB->get_records_sql($sql);
     }
 

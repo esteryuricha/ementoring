@@ -24,6 +24,8 @@
 
 require_once('../../config.php');
 
+global $SESSION;
+
 $issuerid = required_param('id', PARAM_INT);
 $wantsurl = new moodle_url(optional_param('wantsurl', '', PARAM_URL));
 
