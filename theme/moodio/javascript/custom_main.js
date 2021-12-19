@@ -96,6 +96,7 @@ if (courseTopicsOnDrawer) {
 // move mentors, managers, and participants inside an <ul>
 const userOnNavDrawer = document.querySelector('[data-parent-key="myhome"]').parentElement
 if (userOnNavDrawer) {
+    userOnNavDrawer.setAttribute("class", "user-subnav-parent")
     const userSub = document.createElement("ul")
     userSub.setAttribute("class", "user-subnav")
     userOnNavDrawer.appendChild(userSub)

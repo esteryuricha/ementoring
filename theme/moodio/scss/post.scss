@@ -160,6 +160,7 @@ nav {
     box-shadow: .125rem 0 .5rem 0 $shadow-1;
     z-index: 1099;
     padding: $main-navigation-padding;
+    overflow: visible;
     @extend .scroll-custom;
     &.closed {
 	    left: 0;
@@ -167,6 +168,7 @@ nav {
     nav {
         ul {
             li {
+                position: relative;
                 margin-bottom: $nav-link-spacing-after;
                 .list-group-item {
                     // ensure closed is useless in desktop
@@ -191,6 +193,31 @@ nav {
         top: 3rem;
         &.closed {
             left: -100%;
+        }
+    }
+}
+
+.user-subnav-parent {
+    .user-subnav {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        @include transition(.3s);
+        opacity: 0;
+        padding: 0 1.5rem;
+        @include borderRadius(.5rem);
+        overflow: hidden;
+        .list-group-item .media .media-left {
+            display: none;
+        }
+    }
+    &:hover {
+        .user-subnav {
+            box-shadow: 0 0 .5rem 0 $shadow-1;
+            left: $main-navigation-width - 1rem;
+            z-index: 1010;
+            opacity: 1;
         }
     }
 }
