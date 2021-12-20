@@ -354,8 +354,8 @@ function core_login_get_return_url() {
         // Go to my-moodle page instead of site homepage if defaulthomepage set to homepage_my.
         if ($homepage == HOMEPAGE_MY && !is_siteadmin() && !isguestuser()) {
             if ($urltogo == $CFG->wwwroot or $urltogo == $CFG->wwwroot.'/' or $urltogo == $CFG->wwwroot.'/index.php') {
-                $urltogo = $CFG->wwwroot.'/my/';
-        
+                // $urltogo = $CFG->wwwroot.'/my/';
+                $urltogo = $CFG->wwwroot.'/local/class/index.php';
                 //additional code for store current selected category 19.12.2021
                 //get role
                 $role_assignment = $DB->get_record_sql("SELECT r.id 

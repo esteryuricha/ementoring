@@ -1,4 +1,5 @@
 <?php
+/*
 function local_session_before_footer() {
     global $DB, $USER, $SESSION;
 
@@ -7,7 +8,7 @@ function local_session_before_footer() {
 
     //add menu class for mentor and participant
     if($role_assignment->id == 3 || $role_assignment->id == 5) {
-        $sql = "SELECT cc.name 
+        $sql = "SELECT cc.id, cc.name 
                 FROM {course_categories} cc 
                 INNER JOIN {course} c 
                     ON cc.id = c.category 
@@ -20,7 +21,8 @@ function local_session_before_footer() {
                 ORDER BY cc.id DESC";
 
         $categories = $DB->get_records_sql($sql);
-
+        
+        
         echo "<div id='choosing_area'>";
         echo "Choose Program : ";
         echo "<select id='choose_category' class='choose_category'>";
@@ -33,3 +35,4 @@ function local_session_before_footer() {
         echo "</div>";
     }
 }
+*/

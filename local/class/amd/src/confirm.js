@@ -43,4 +43,8 @@ define(['jquery', 'core/modal_factory', 'core/modal_events', 'core/ajax', 'core/
          }).fail(Notification.exception);
       });
    });
+
+   $("#choose_category").on('change', function() {
+      alert(this.value);
+   });
 });

@@ -1,6 +1,18 @@
+{{^viewMentor}}
 <div class="content-container">
+Choose Program : 
+<select id="choose_category" class="choose_category">
+    {{#categories}}
+    <option value="{{id}}">{{name}}</option>
+    {{/categories}}
+</select>
+</div>
+{{/viewMentor}}
+<div class="content-container" id="data">
+    {{#viewMentor}}
     <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}'">Add New Class</button>
     <br><br>
+    {{/viewMentor}}
     <table class="table table-bordered border-primary">
         <thead>
             <tr>
@@ -26,13 +38,17 @@
                 <td>{{program_name}}</td>
                 <td>{{idnumber}}</td>
                 <td>{{fullname}}</td>
-                {{#mentor}}
+                {{#viewMentor}}
                 <td>{{mentor}}</td>
-                {{/mentor}}
+                {{/viewMentor}}
                 <td class="action">
+                    {{#viewMentor}}
                     <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}?id={{id}}'"><i class="fa fa-pencil"></i></button>
+                    {{/viewMentor}}
                     <button type="button" value="{{id}}" class="btn btn-info" onclick="location.href='{{viewUrl}}?id={{id}}'"><i class="fa fa-cog"></i></button>
+                    {{#viewMentor}}
                     <button type="button" value="{{id}}" class="btn btn-danger local_class_delete_button"><i class="fa fa-trash"></i></button>
+                    {{/viewMentor}}
                 </td>
             </tr>
             {{/classes}}

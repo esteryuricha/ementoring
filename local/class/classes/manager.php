@@ -158,4 +158,13 @@ class manager {
 
         return true;
     }
+
+    function setcategory($id)
+    {
+        global $SESSION;
+
+        $SESSION->selectedcategory = $id;
+
+        return true;
+    }
 }

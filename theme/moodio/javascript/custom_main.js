@@ -135,3 +135,10 @@ if (mediaQuery.matches) {
         }
     }
 }
+
+if (document.getElementById('choose_category')) {
+    let input = document.getElementById('choose_category');
+
+    input.addEventListener('change', function() {
+    });
+}

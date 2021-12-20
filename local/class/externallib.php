@@ -33,5 +33,32 @@ class local_class_external extends external_api  {
     public static function delete_class_returns() {
         return new external_value(PARAM_BOOL, 'True if the class was successfully deleted.');
     }
+
+    //setcategory
+    public static function setcategory_parameters() {
+        return new external_function_parameters(
+            ['id' => new external_value(PARAM_INT, 'id of category')],
+        );
+    }
+
+    /**
+     * The function itself
+     * @return string welcome monitoring
+     */
+    public static function setcategory($id): string {
+        $params = self::validate_parameters(self::setcategory_parameters(), array('id'=>$id));
+
+        $manager = new manager();
+        return $manager->setcategory($id);
+    }
+
+    /**
+     * Returns description of method result value
+     * @return external_description
+     */
+    public static function setcategory_returns() {
+        return new external_value(PARAM_RAW, 'schedules');
+    }
+
 }
 ?>
