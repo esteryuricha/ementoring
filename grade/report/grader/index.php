@@ -133,7 +133,7 @@ $reportname = get_string('pluginname', 'gradereport_grader');
 grade_regrade_final_grades_if_required($course);
 
 // Print header
-print_grade_page_head($COURSE->id, 'report', 'grader', $reportname, false, $buttons);
+print_grade_page_head($COURSE->id, 'course', 'grader', $reportname, false, $buttons);
 
 //Initialise the grader report object that produces the table
 //the class grade_report_grader_ajax was removed as part of MDL-21562

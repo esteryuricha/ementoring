@@ -166,7 +166,9 @@ $strparticipants = get_string('participants');
 /// Print header
 $PAGE->set_title($strgroups);
 $PAGE->set_heading($course->fullname);
-$PAGE->set_pagelayout('standard');
+$PAGE->set_pagelayout('course');
+$PAGE->set_pagetype('my-index');
+$PAGE->blocks->add_region('content');
 echo $OUTPUT->header();
 
 // Add tabs
