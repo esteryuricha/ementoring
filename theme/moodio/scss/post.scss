@@ -333,6 +333,11 @@ nav {
                         &.d-flex.justify-content-end {
                             display: none !important;
                         }
+                        // specific on grade page, removing whitebox on this class
+                        &.gradeparent {
+                            padding: 0;
+                            box-shadow: none;
+                        }
                     }
                     // PARTICIPANTS filter
                     div.filter-group {
@@ -347,6 +352,9 @@ nav {
                 }
                 .content-container {
                     @extend .white-box;
+                    h3 {
+                        font-size: 1rem;
+                    }
                 }
             }
             aside#block-region-side-pre {
@@ -439,16 +447,15 @@ nav {
         display: none;
     }
 }
-// PARTICIPANTS
-#participantsform {
-    .initialbar {
-        &.firstinitial, &.lastinitial {
-            // remove search by alphabet on surname and first name
-            // important to override .d-flex
-            display: none !important; 
-        }
+// PARTICIPANTS & GRADES
+// remove search by alphabet on surname and first name
+.initialbar {
+    &.firstinitial, &.lastinitial {
+        // important to override .d-flex
+        display: none !important; 
     }
 }
+
 // GROUPS
 #region-main > div[role="main"] {
     div.groupdisplay {
