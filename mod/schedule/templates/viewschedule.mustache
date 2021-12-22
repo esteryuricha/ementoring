@@ -18,6 +18,8 @@
             <td>{{selectedtime}}</td>
         </tr>
     </table>
+    {{#allowedtocheckin}}
     <button class="btn btn-secondary" onclick="location.href='{{checkInUrl}}'">check-in now</button>
+    {{/allowedtocheckin}}
     {{/checklocalschedule}}
 </div>

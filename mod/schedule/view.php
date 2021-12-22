@@ -56,6 +56,15 @@ if( $role_assignment->id != 5 ){
     //check first
     $checklocalschedule = $DB->get_record('local_schedule', ['eventid' => $schedule->eventid, 'groupid' => $groupid, 'courseid' => $cm->course]);
 
+    $allowedtocheckin = false;
+
+    if($checklocalschedule) {
+        $scheduledate = date('Y-m-d', $checklocalschedule->selecteddate);
+        if($scheduledate == date('Y-m-d')){
+            $allowedtocheckin = true;
+        }
+    }
+
     $templatecontext = (object)[
         'backUrl' => new moodle_url($CFG->wwwroot.'/course/view.php?id='.$cm->course),
         'addUrl' => new moodle_url($CFG->wwwroot.'/local/event/editevent.php'),
