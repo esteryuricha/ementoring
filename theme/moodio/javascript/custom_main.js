@@ -80,7 +80,6 @@ if (document.querySelector('div[role="main"] .grade-navigation')) {
     }
 }
 
-
 // move settings button beside Turn editing on on administrator
 if (document.getElementById('course-header')) {
     const courseHeader = document.getElementById('course-header')
@@ -134,11 +133,4 @@ if (mediaQuery.matches) {
             }
         }
     }
-}
-
-if (document.getElementById('choose_category')) {
-    let input = document.getElementById('choose_category');
-
-    input.addEventListener('change', function() {
-    });
 }

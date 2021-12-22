@@ -200,7 +200,7 @@ nav {
 .user-subnav-parent {
     .user-subnav {
         position: absolute;
-        left: 0;
+        left: $main-navigation-width - 1rem;
         top: 0;
         z-index: -1;
         @include transition(.3s);
@@ -208,6 +208,8 @@ nav {
         padding: 0 1.5rem;
         @include borderRadius(.5rem);
         overflow: hidden;
+        max-width: 0;
+        width: 0;
         .list-group-item .media .media-left {
             display: none;
         }
@@ -215,9 +217,10 @@ nav {
     &:hover {
         .user-subnav {
             box-shadow: 0 0 .5rem 0 $shadow-1;
-            left: $main-navigation-width - 1rem;
             z-index: 1010;
             opacity: 1;
+            max-width: 20rem;
+            width: auto;
         }
     }
 }
