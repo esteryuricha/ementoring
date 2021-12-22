@@ -469,7 +469,7 @@ nav {
             border-bottom-color: $purple-2;
         }
         .nav-item {
-            &:focus, &:focus-visible {
+            &:focus-visible {
                 box-shadow: none;
             }
             a.nav-link {
