@@ -9,6 +9,10 @@ list ($course, $cm) = get_course_and_cm_from_cmid($id, 'schedule');
 $schedule = $DB->get_record('schedule', array('id'=> $cm->instance), '*', MUST_EXIST);
 $course = $DB->get_record('course', array('id'=>$cm->course), '*', MUST_EXIST);
 
+global $SESSION;
+
+$SESSION->currentcourseid = $cm->course;
+
 require_login($course, true, $cm);
 $context = context_module::instance($cm->id);
 
@@ -17,6 +21,7 @@ $title = "Schedule for ".$schedule->name;
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 $PAGE->set_url('/mod/schedule/view.php', array('id' => $cm->id));
+$PAGE->requires->js('/mod/schedule/assets/modal.js');
 
 
 echo $OUTPUT->header();
@@ -37,6 +42,7 @@ if( $role_assignment->id != 5 ){
     $templatecontext = (object)[
         'backUrl' => new moodle_url($CFG->wwwroot.'/course/view.php?id='.$cm->course),
         'scheduleName' => $schedule->name,
+        'eventid' => $schedule->eventid,
         'groups' => array_values($groups)
     ];
 
@@ -54,7 +60,8 @@ if( $role_assignment->id != 5 ){
         'backUrl' => new moodle_url($CFG->wwwroot.'/course/view.php?id='.$cm->course),
         'addUrl' => new moodle_url($CFG->wwwroot.'/local/event/editevent.php'),
         'scheduleName' => $schedule->name,
-        'checklocalschedule' => $checklocalschedule
+        'checklocalschedule' => $checklocalschedule,
+        'eventid' => $schedule->eventid,
     ];
 
     echo $OUTPUT->render_from_template('mod_schedule/viewschedule', $templatecontext);

@@ -5,7 +5,7 @@
     <br><br>
     {{^checklocalschedule}}
     Your team has not chosen the schedule yet!<br>
-    <button class="btn btn-primary" onclick="location.href='{{chooseUrl}}'">Choose Your Team Schedule</button>
+    <button class="btn btn-primary" type="button" id="call_modal" value="{{eventid}}">Choose Your Team Schedule</button>
     {{/checklocalschedule}}
     {{#checklocalschedule}}
     <table class="generaltable">

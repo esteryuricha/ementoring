@@ -1,0 +1,46 @@
+<?php
+defined('MOODLE_INTERNAL') || die();
+
+use mod_schedule\manager;
+require_once($CFG->libdir . "/externallib.php");
+
+class mod_schedule_external extends external_api  {
+
+    //get_schedules functions
+
+    public static function get_schedules_parameters() {
+        return new external_function_parameters(
+            ['id' => new external_value(PARAM_INT, 'id of event')],
+        );
+    }
+
+    public static function get_schedules($id): string {
+        $params = self::validate_parameters(self::get_schedules_parameters(), array('id'=>$id));
+
+        $manager = new manager();
+        return $manager->get_schedules($id);
+    }
+
+    public static function get_schedules_returns() {
+        return new external_value(PARAM_RAW, 'test');
+    }
+
+    //save schedule
+    public static function save_schedule_parameters() {
+        return new external_function_parameters(
+            ['id' => new external_value(PARAM_INT, 'id of event')],
+        );
+    }
+
+    public static function save_schedule($id): string {
+        $params = self::validate_parameters(self::save_schedule_parameters(), array('id'=>$id));
+
+        $manager = new manager();
+        return $manager->save_schedule($id);
+    }
+
+    public static function save_schedule_returns() {
+        return new external_value(PARAM_RAW, 'test');
+    }
+}
+?>
