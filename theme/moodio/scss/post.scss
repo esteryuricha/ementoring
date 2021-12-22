@@ -436,6 +436,16 @@ nav {
         display: none;
     }
 }
+// PARTICIPANTS
+#participantsform {
+    .initialbar {
+        &.firstinitial, &.lastinitial {
+            // remove search by alphabet on surname and first name
+            // important to override .d-flex
+            display: none !important; 
+        }
+    }
+}
 // GROUPS
 #region-main > div[role="main"] {
     div.groupdisplay {
