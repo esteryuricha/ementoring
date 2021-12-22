@@ -200,7 +200,7 @@ nav {
 .user-subnav-parent {
     .user-subnav {
         position: absolute;
-        left: $main-navigation-width - 1rem;
+        left: $main-navigation-width - 2rem;
         top: 0;
         z-index: -1;
         @include transition(.3s);
@@ -338,6 +338,11 @@ nav {
                             padding: 0;
                             box-shadow: none;
                         }
+                        // singleselect on group page
+                        &.singleselect {
+                            padding: 0 .75rem;
+                            box-shadow: none;
+                        }
                     }
                     // PARTICIPANTS filter
                     div.filter-group {
@@ -463,7 +468,10 @@ nav {
         ul {
             border-bottom-color: $purple-2;
         }
-        li.nav-item {
+        .nav-item {
+            &:focus, &:focus-visible {
+                box-shadow: none;
+            }
             a.nav-link {
                 &.active {
                     background-image: $purple-gradient;

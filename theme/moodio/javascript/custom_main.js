@@ -59,6 +59,7 @@ if (document.querySelector('#region-main > div[role="main"] div.groupdisplay')) 
             groupMenuTabs.style.boxShadow = "none"
             groupMenuTabs.style.padding = 0
             // move to below class management menu
+            const regionMain = document.getElementById('region-main')
             regionMain.append(groupContainer)
         }
     }
