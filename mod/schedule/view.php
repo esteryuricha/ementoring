@@ -71,6 +71,7 @@ if( $role_assignment->id != 5 ){
         'scheduleName' => $schedule->name,
         'checklocalschedule' => $checklocalschedule,
         'eventid' => $schedule->eventid,
+        'allowedtocheckin' => $allowedtocheckin
     ];
 
     echo $OUTPUT->render_from_template('mod_schedule/viewschedule', $templatecontext);

@@ -42,5 +42,24 @@ class mod_schedule_external extends external_api  {
     public static function save_schedule_returns() {
         return new external_value(PARAM_RAW, 'test');
     }
+
+    //checkin
+    public static function checkin_parameters() {
+        return new external_function_parameters(
+            ['eventid' => new external_value(PARAM_INT, 'id of event')],
+        );
+    }
+
+    public static function checkin($id): string {
+        $params = self::validate_parameters(self::checkin_parameters(), array('eventid'=>$id));
+
+        $manager = new manager();
+        return $manager->checkin($id);
+    }
+
+    public static function checkin_returns() {
+        return new external_value(PARAM_RAW, 'test');
+    }
+
 }
 ?>

@@ -28,6 +28,7 @@ class editschedule extends moodleform {
         //selecteddate
         $mform->addElement('select', 'availabledates', 'Selected Date', [], ['id' => 'availabledates']);
         $mform->addElement('hidden', 'selecteddate', '', ['id' => 'selecteddate']);
+        $mform->setType('selecteddate', PARAM_NOTAGS);
 
         //selectedtime
         $selectTime = [

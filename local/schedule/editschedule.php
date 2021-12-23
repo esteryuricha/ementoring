@@ -11,8 +11,6 @@ global $DB, $SESSION;
 //get param
 $id = optional_param('id', null, PARAM_INT);
 
-//form here
-$mform = new editschedule();
 
 $title = "Add New Schedule";
 $PAGE->set_url(new moodle_url('/local/class/editschedule.php'));
@@ -24,6 +22,8 @@ $PAGE->set_pagetype('course-view-schedule');
 $PAGE->blocks->add_region('content');
 $PAGE->requires->js('/local/schedule/assets/main.js');
 
+//form here
+$mform = new editschedule();
 
 if ($mform->is_cancelled()) {
     

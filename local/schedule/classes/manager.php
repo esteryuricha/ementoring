@@ -17,10 +17,10 @@ class manager {
         global $DB;
 
         $recordtoinsert = new stdClass();
+        $recordtoinsert->courseid = $courseid;
         $recordtoinsert->eventid = $eventid;
         $recordtoinsert->selecteddate = $selecteddate;
         $recordtoinsert->selectedtime = $selectedtime;
-        $recordtoinsert->courseid = $courseid;
 
         return $DB->insert_record('local_schedule', $recordtoinsert);
     }
