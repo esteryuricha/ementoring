@@ -244,7 +244,9 @@ class mod_assign_renderer extends plugin_renderer_base {
         $this->page->set_title($title);
         $this->page->set_heading($this->page->course->fullname);
 
+        
         $o .= $this->output->header();
+        $o .= html_writer::start_tag('div', array('class'=>'course-assignment-view content-container'));
         $o .= $this->output->single_button(new moodle_url('/course/view.php', ['id' => $header->assign->course]),'back to course', 'get');
         $o .= $this->output->heading($heading);
 
@@ -264,6 +266,7 @@ class mod_assign_renderer extends plugin_renderer_base {
             $o .= format_module_intro('assign', $header->assign, $header->coursemoduleid);
             $o .= $header->postfix;
             $o .= $this->output->box_end();
+            $o .= html_writer::end_tag('div');
         }
 
         return $o;

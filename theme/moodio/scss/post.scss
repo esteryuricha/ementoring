@@ -375,6 +375,16 @@ nav {
         td.action {
             white-space: nowrap;
         }
+        &.table {
+            thead {
+                tr {
+                    th {
+                        padding: .375rem;
+                        font-size: .875rem;
+                    }
+                }
+            }
+        }
     }
     @media screen and (max-width: $breakpoint-48) {
         padding: $page-padding-48d;
@@ -467,6 +477,20 @@ nav {
     @extend .white-box;
     .action-menu-item {
         display: none;
+    }
+}
+.course-assignment-view {
+    .singlebutton {
+        margin-bottom: 1.25rem;
+    }
+    h2, h3 {
+        @extend .title-base;
+        text-transform: inherit;
+    }
+}
+.gradingsummary {
+    h2, h3 {
+        @extend .title-base;
     }
 }
 // PARTICIPANTS & GRADES
