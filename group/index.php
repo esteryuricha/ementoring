@@ -167,14 +167,15 @@ $strparticipants = get_string('participants');
 $PAGE->set_title($strgroups);
 $PAGE->set_heading($course->fullname);
 $PAGE->set_pagelayout('course');
-$PAGE->set_pagetype('my-index');
+$PAGE->set_pagetype('course-view-group');
 $PAGE->blocks->add_region('content');
 echo $OUTPUT->header();
+echo $OUTPUT->custom_block_region('content');
 
 // Add tabs
 $currenttab = 'groups';
-require('tabs.php');
 
+echo "<div class='content-container'>";
 echo $OUTPUT->heading(format_string($course->shortname, true, array('context' => $context)) .' '.$strgroups, 3);
 
 $groups = groups_get_all_groups($courseid);
@@ -254,7 +255,7 @@ $output = $PAGE->get_renderer('core_group');
 echo $output->render($renderable);
 
 echo $OUTPUT->footer();
-
+echo "</div>";
 /**
  * Returns the first button action with the given prefix, taken from
  * POST or GET, otherwise returns false.
