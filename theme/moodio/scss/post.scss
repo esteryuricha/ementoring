@@ -345,6 +345,12 @@ nav {
                             box-shadow: none;
                         }
                     }
+                    .gradingsummary {
+                        margin-bottom: 1rem;
+                        h2, h3 {
+                            @extend .title-base;
+                        }
+                    }                    
                     // PARTICIPANTS filter
                     div.filter-group {
                         box-shadow: none;
@@ -488,10 +494,9 @@ nav {
         text-transform: inherit;
     }
 }
-.gradingsummary {
-    h2, h3 {
-        @extend .title-base;
-    }
+.activity-navigation {
+    @extend .white-box;
+    margin-top: 0 !important; // override .mt
 }
 // PARTICIPANTS & GRADES
 // remove search by alphabet on surname and first name
@@ -590,10 +595,10 @@ footer#page-footer {
 
 @media screen and (min-width: $breakpoint-48) {
     .form-check.d-flex {
-        position: absolute;
-        left: 16rem;
-        top: 1rem;
-        z-index: 20;
+        // position: absolute;
+        // left: 16rem;
+        // top: 1rem;
+        // z-index: 20;
     }
 }
 
