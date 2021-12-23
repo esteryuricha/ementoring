@@ -95,7 +95,20 @@ if (document.getElementById('id_modstandardelshdr')) {
         }
     }
 }
-
+// add .content-container to upload users
+if (document.getElementById('id_settingsheader')) {
+    const uploadUsersHeader = document.getElementById('id_settingsheader')
+    if (uploadUsersHeader) {
+        const uploadUsersForm = uploadUsersHeader.parentElement.parentElement
+        if (uploadUsersForm) {
+            uploadUsersForm.classList.add('content-container')
+        }
+        const uploadUsersTitle = uploadUsersForm.children[1]
+        if (uploadUsersTitle) {
+            uploadUsersTitle.classList.add('title-base')
+        }
+    }
+}
 
 // move settings button beside Turn editing on on administrator
 if (document.getElementById('course-header')) {
