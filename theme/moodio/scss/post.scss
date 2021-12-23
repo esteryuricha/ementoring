@@ -201,6 +201,7 @@ nav {
     .user-subnav {
         position: absolute;
         left: $main-navigation-width - 2rem;
+        background-color: $main-navigation-bgcolor;
         top: 0;
         z-index: -1;
         @include transition(.3s);
@@ -474,6 +475,33 @@ nav {
     &.firstinitial, &.lastinitial {
         // important to override .d-flex
         display: none !important; 
+    }
+}
+
+#participantsform {
+    #participants {
+        // thead {
+        //     tr th {
+        //         vertical-align: top;
+        //     }
+        // }
+        tbody {
+            tr {
+                th, td {
+                    vertical-align: top;
+                }
+            }
+        }
+        .aabtn {
+            position: relative;
+            padding-left: 2rem;
+            .userpicture.defaultuserpic {
+                position: absolute;
+                left: .125rem;
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
     }
 }
 
