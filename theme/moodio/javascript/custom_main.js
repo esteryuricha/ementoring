@@ -81,6 +81,22 @@ if (document.querySelector('div[role="main"] .grade-navigation')) {
     }
 }
 
+// add .content-container to ADD a new Schedule
+if (document.getElementById('id_modstandardelshdr')) {
+    const addScheduleModule = document.getElementById('id_modstandardelshdr')
+    if (addScheduleModule) {
+        const addScheduleForm = addScheduleModule.parentElement.parentElement
+        if (addScheduleForm) {
+            addScheduleForm.classList.add('content-container')
+        }
+        const addScheduleTitle = addScheduleForm.children[1]
+        if (addScheduleTitle) {
+            addScheduleTitle.classList.add('title-base')
+        }
+    }
+}
+
+
 // move settings button beside Turn editing on on administrator
 if (document.getElementById('course-header')) {
     const courseHeader = document.getElementById('course-header')

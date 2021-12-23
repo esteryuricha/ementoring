@@ -415,6 +415,21 @@ nav {
         }
     }
 }
+.content-container {
+    form.mform {
+        fieldset {
+            legend.ftoggler {
+                a {
+                    font-size: $course-title-font-size;
+                    font-weight: $course-title-font-weight;
+                    &:focus-visible, &:focus {
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+}
 
 // profile / logged in
 .block_sidebarprofile {
