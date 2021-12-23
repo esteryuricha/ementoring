@@ -7,7 +7,6 @@ require_once($CFG->libdir . "/externallib.php");
 class mod_schedule_external extends external_api  {
 
     //get_schedules functions
-
     public static function get_schedules_parameters() {
         return new external_function_parameters(
             ['id' => new external_value(PARAM_INT, 'id of event')],
@@ -60,6 +59,25 @@ class mod_schedule_external extends external_api  {
     public static function checkin_returns() {
         return new external_value(PARAM_RAW, 'test');
     }
+
+    //view detail on mentor page functions
+    public static function view_detail_parameters() {
+        return new external_function_parameters(
+            ['id' => new external_value(PARAM_INT, 'id of schedule')],
+        );
+    }
+
+    public static function view_detail($id): string {
+        $params = self::validate_parameters(self::view_detail_parameters(), array('id'=>$id));
+
+        $manager = new manager();
+        return $manager->view_detail($id);
+    }
+
+    public static function view_detail_returns() {
+        return new external_value(PARAM_RAW, 'test');
+    }
+
 
 }
 ?>

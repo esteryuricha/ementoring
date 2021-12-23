@@ -35,7 +35,8 @@ if( $role_assignment->id != 5 ){
     $groups = $DB->get_records_sql("SELECT 
                                         id, 
                                         name,
-                                        (SELECT CONCAT(FROM_UNIXTIME(selecteddate,'%d %M %Y'),' ', selectedtime) FROM {local_schedule} ls WHERE groupid = g.id AND eventid = $schedule->eventid) as chosendata
+                                        (SELECT CONCAT(FROM_UNIXTIME(selecteddate,'%d %M %Y'),' ', selectedtime) FROM {local_schedule} ls WHERE groupid = g.id AND eventid = $schedule->eventid) as chosendata,
+                                        (SELECT ls.id FROM {local_schedule} ls WHERE groupid = g.id AND eventid = $schedule->eventid) as scheduleid
                                     FROM {groups} g 
                                     WHERE courseid = $cm->course");
 
