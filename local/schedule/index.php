@@ -14,6 +14,7 @@ $title = "Schedule Management";
 $PAGE->set_url(new moodle_url('/local/schedule/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
+$PAGE->set_heading($title);
 $PAGE->set_pagelayout('course');
 $PAGE->set_pagetype('course-view-schedule');
 $PAGE->blocks->add_region('content');

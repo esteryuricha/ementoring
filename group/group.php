@@ -77,7 +77,10 @@ require_capability('moodle/course:managegroups', $context);
 $strgroups = get_string('groups');
 $PAGE->set_title($strgroups);
 $PAGE->set_heading($course->fullname . ': '.$strgroups);
-$PAGE->set_pagelayout('admin');
+$PAGE->set_pagelayout('course');
+$PAGE->set_pagetype('course-view-group');
+$PAGE->blocks->add_region('content');
+
 navigation_node::override_active_url(new moodle_url('/group/index.php', array('id' => $course->id)));
 
 $returnurl = $CFG->wwwroot.'/group/index.php?id='.$course->id.'&group='.$id;
@@ -115,25 +118,10 @@ if ($editform->is_cancelled()) {
     redirect($returnurl);
 }
 
-$strgroups = get_string('groups');
-$strparticipants = get_string('participants');
-
-if ($id) {
-    $strheading = get_string('editgroupsettings', 'group');
-} else {
-    $strheading = get_string('creategroup', 'group');
-}
-
-$PAGE->navbar->add($strparticipants, new moodle_url('/user/index.php', array('id'=>$courseid)));
-$PAGE->navbar->add($strgroups, new moodle_url('/group/index.php', array('id'=>$courseid)));
-$PAGE->navbar->add($strheading);
-
 /// Print header
 echo $OUTPUT->header();
-echo '<div id="grouppicture">';
-if ($id) {
-    print_group_picture($group, $course->id);
-}
-echo '</div>';
+echo $OUTPUT->custom_block_region('content');
+echo "<div class='content-container'>";
 $editform->display();
+echo "</div>";
 echo $OUTPUT->footer();
