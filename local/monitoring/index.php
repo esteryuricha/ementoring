@@ -41,7 +41,5 @@ $templatecontext = (object)[
 ];
 echo $OUTPUT->render_from_template('local_monitoring/detail', $templatecontext);
 
-echo "<div id='data'></div>";
-
 echo $OUTPUT->footer();
 

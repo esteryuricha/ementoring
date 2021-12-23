@@ -99,6 +99,20 @@ if (document.querySelector('[data-key="coursehome"]')) {
         courseHomeSelected.parentElement.remove()
     }
 }
+// remove badges from nav drawer
+if (document.querySelector('[data-key="badgesview"]')) {
+    const badgesViewMenu = document.querySelector('[data-key="badgesview"]')
+    if (badgesViewMenu) {
+        badgesViewMenu.parentElement.remove()
+    }
+}
+// remove competencies from nav drawer
+if (document.querySelector('[data-key="competencies"]')) {
+    const competenciesMenu = document.querySelector('[data-key="competencies"]')
+    if (competenciesMenu) {
+        competenciesMenu.parentElement.remove()
+    }
+}
 if (document.querySelectorAll('.media-left .icon.fa.fa-folder-o.fa-fw')) {
     const courseTopicsOnDrawer = document.querySelectorAll('.media-left .icon.fa.fa-folder-o.fa-fw')
     if (courseTopicsOnDrawer) {
