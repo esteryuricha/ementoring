@@ -36,20 +36,16 @@ class manager {
 
     }
 
-    function checkin($eventid) {
+    function checkin($scheduleid) {
         global $DB, $USER, $SESSION;
-
-        $courseid = $SESSION->currentcourseid;
-        
-        $schedule = $DB->get_record('local_schedule', ['courseid' => $courseid, 'eventid' => $eventid]);
-        
+                
         $recordtoinsert = new stdClass();
-        $recordtoinsert->scheduleid = $schedule->id;
+        $recordtoinsert->scheduleid = $scheduleid;
         $recordtoinsert->participantid = $USER->id;
         $recordtoinsert->participantcheck = 1;
         $recordtoinsert->participantcheckedtime = strtotime(date('Y-m-d H:i:s'));
         
-        return $DB->insert_record('local_schedule_detail', $recordtoinsert, true);
+        return $DB->insert_record('local_schedule_detail', $recordtoinsert, true);        
     }
 }
 ?>
