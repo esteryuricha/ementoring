@@ -35,7 +35,8 @@ if( $role_assignment->id != 5 ){
     $groups = $DB->get_records_sql("SELECT 
                                         id, 
                                         name,
-                                        (SELECT CONCAT(FROM_UNIXTIME(selecteddate,'%d %M %Y'),' ', selectedtime) FROM {local_schedule} ls WHERE groupid = g.id AND eventid = $schedule->eventid) as chosendata
+                                        (SELECT CONCAT(FROM_UNIXTIME(selecteddate,'%d %M %Y'),' ', selectedtime) FROM {local_schedule} ls WHERE groupid = g.id AND eventid = $schedule->eventid) as chosendata,
+                                        (SELECT ls.id FROM {local_schedule} ls WHERE groupid = g.id AND eventid = $schedule->eventid) as scheduleid
                                     FROM {groups} g 
                                     WHERE courseid = $cm->course");
 
@@ -55,13 +56,23 @@ if( $role_assignment->id != 5 ){
 
     //check first
     $checklocalschedule = $DB->get_record('local_schedule', ['eventid' => $schedule->eventid, 'groupid' => $groupid, 'courseid' => $cm->course]);
-
     $allowedtocheckin = false;
 
     if($checklocalschedule) {
         $scheduledate = date('Y-m-d', $checklocalschedule->selecteddate);
+        
         if($scheduledate == date('Y-m-d')){
             $allowedtocheckin = true;
+        }
+
+        $checkinstatus = $DB->get_record('local_schedule_detail', ['scheduleid' => $checklocalschedule->id, 'participantid' => $USER->id]);
+        
+        if($checkinstatus->participantcheck) {
+            $checkintime = date('d M Y H:i:s', $checkinstatus->participantcheckedtime);
+        }
+        
+        if($checkinstatus->mentorcheck) {
+            $checkintime = date('d M Y H:i:s', $checkinstatus->mentorcheckedtime);
         }
     }
 
@@ -71,6 +82,8 @@ if( $role_assignment->id != 5 ){
         'scheduleName' => $schedule->name,
         'checklocalschedule' => $checklocalschedule,
         'eventid' => $schedule->eventid,
+        'allowedtocheckin' => $allowedtocheckin,
+        'checkintime' => $checkintime
     ];
 
     echo $OUTPUT->render_from_template('mod_schedule/viewschedule', $templatecontext);

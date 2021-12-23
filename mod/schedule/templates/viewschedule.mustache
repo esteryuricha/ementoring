@@ -19,7 +19,15 @@
         </tr>
     </table>
     {{#allowedtocheckin}}
-    <button class="btn btn-secondary" onclick="location.href='{{checkInUrl}}'">check-in now</button>
+    
+        {{^checkintime}}
+        <button type="button" class="btn btn-secondary" id="check_in_button" value="{{id}}">check-in now</button>
+        {{/checkintime}}
+
+        {{#checkintime}}
+        <i>you've checked in on {{checkintime}}</i> 
+        {{/checkintime}}
+
     {{/allowedtocheckin}}
     {{/checklocalschedule}}
 </div>

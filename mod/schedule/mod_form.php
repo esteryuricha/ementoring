@@ -13,9 +13,12 @@ class mod_schedule_mod_form extends moodleform_mod {
 
         $mform =& $this->_form;
 
+        $courseid = required_param('course', PARAM_INT);
+        $course = $DB->get_record('course', ['id' => $courseid]);
+        
         //eventid
         $selectArray = array();
-        $events = $DB->get_records_sql("SELECT id, name FROM {event} where eventtype='category'"); //must get the current event
+        $events = $DB->get_records_sql("SELECT id, name FROM {event} where eventtype='category' and categoryid='$course->category'"); //must get the current event
 
         $selectArray[0] = "choose event type";
         foreach( $events as $event ) {

@@ -88,7 +88,6 @@ class manager {
                         ON ue.enrolid = e.id 
                     WHERE ue.userid = '$USER->id' 
                         AND cc.id = '$SESSION->selectedcategory'
-                    GROUP BY cc.idnumber
                     ORDER BY cc.id DESC";
         }else{
             $sql = "SELECT ROW_NUMBER() OVER(order by c.id desc) AS num,

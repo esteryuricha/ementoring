@@ -6,7 +6,9 @@ require_once(__DIR__.'/../../config.php');
 //get param
 $id = optional_param('id', null, PARAM_INT);
 
-global $DB;
+global $DB, $SESSION;
+
+$SESSION->currentcourseid = $id;
 
 $title = "Schedule Management";
 $PAGE->set_url(new moodle_url('/local/schedule/index.php'));

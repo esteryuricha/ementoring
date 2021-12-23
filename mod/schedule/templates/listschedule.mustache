@@ -8,6 +8,7 @@
             <tr>
                 <th>Team</th>
                 <th>Selected Schedule</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +18,9 @@
                 <td>
                     {{#chosendata}}{{chosendata}}{{/chosendata}}
                     {{^chosendata}} -not chosen yet- {{/chosendata}}
+                </td>
+                <td>
+                    <button class="mod_schedule_view_detail_button btn btn-primary" value="{{scheduleid}}">check-in status</button>
                 </td>
             </tr>
             {{/groups}}

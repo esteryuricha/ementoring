@@ -6,13 +6,15 @@ require_once("$CFG->libdir/formslib.php");
 
 class editschedule extends moodleform {
     public function definition() {
-        global $CFG, $DB;
+        global $CFG, $DB, $SESSION;
 
         $mform = $this->_form;
 
+        $course = $DB->get_record('course', ['id' => $SESSION->currentcourseid]);
+
         //eventid
         $selectArray = array();
-        $events = $DB->get_records_sql("SELECT id, name FROM {event} where eventtype='category'"); //must get the current event
+        $events = $DB->get_records_sql("SELECT id, name FROM {event} where eventtype='category' and categoryid='$course->category'"); //must get the current event
 
         $selectArray[0] = "choose event type";
         foreach( $events as $event ) {
@@ -26,6 +28,7 @@ class editschedule extends moodleform {
         //selecteddate
         $mform->addElement('select', 'availabledates', 'Selected Date', [], ['id' => 'availabledates']);
         $mform->addElement('hidden', 'selecteddate', '', ['id' => 'selecteddate']);
+        $mform->setType('selecteddate', PARAM_NOTAGS);
 
         //selectedtime
         $selectTime = [
