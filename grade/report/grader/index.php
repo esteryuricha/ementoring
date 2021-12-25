@@ -135,6 +135,11 @@ grade_regrade_final_grades_if_required($course);
 // Print header
 print_grade_page_head($COURSE->id, 'course', 'grader', $reportname, false, $buttons);
 
+
+$PAGE->set_pagelayout('course');
+$PAGE->set_pagetype('course-view-grade');
+// $PAGE->blocks->add_region('content');
+
 //Initialise the grader report object that produces the table
 //the class grade_report_grader_ajax was removed as part of MDL-21562
 $report = new grade_report_grader($courseid, $gpr, $context, $page, $sortitemid);

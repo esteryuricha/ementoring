@@ -1,4 +1,3 @@
-{{^viewMentor}}
 <div class="content-container">
 Choose Program : 
 <select id="choose_category" class="choose_category">
@@ -7,7 +6,6 @@ Choose Program :
     {{/categories}}
 </select>
 </div>
-{{/viewMentor}}
 <div class="content-container" id="data">
     {{#viewMentor}}
     <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}'">Add New Class</button>
@@ -21,9 +19,6 @@ Choose Program :
                 <th scope="col">Program Name</th>
                 <th scope="col">Class ID</th>
                 <th scope="col">Class Name</th>
-                {{#viewMentor}}
-                <th scope="col">Class Mentor</th>
-                {{/viewMentor}}
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -38,9 +33,6 @@ Choose Program :
                 <td>{{program_name}}</td>
                 <td>{{idnumber}}</td>
                 <td>{{fullname}}</td>
-                {{#viewMentor}}
-                <td>{{mentor}}</td>
-                {{/viewMentor}}
                 <td class="action">
                     {{#viewMentor}}
                     <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}?id={{id}}'"><i class="fa fa-pencil"></i></button>

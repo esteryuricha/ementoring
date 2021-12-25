@@ -5,7 +5,7 @@ use dml_exception;
 use stdClass;
 
 class manager {
-    public function insert_class(int $visible, int $category, string $idnumber, string $fullname, int $user): bool {
+    public function insert_class(int $visible, int $category, string $idnumber, string $fullname): bool {
         global $DB;
 
         //get program start date and end date
@@ -33,12 +33,6 @@ class manager {
             $inserttoenrol->roleid = 5;
 
             $enrolid = $DB->insert_record('enrol', $inserttoenrol);
-
-            //add to mdl_user_enrolments
-            $inserttouserenrol->enrolid = $enrolid;
-            $inserttouserenrol->userid = $user;
-
-            $DB->insert_record('user_enrolments', $inserttouserenrol, false);
 
             //create introduction section
             $inserttosection->course = $courseid;
@@ -95,20 +89,12 @@ class manager {
                     c.visible,
                     cc.name AS program_name, 
                     c.fullname, 
-                    c.idnumber, 
-                    CONCAT(u.firstname,' ',u.lastname) AS mentor
+                    c.idnumber 
                     FROM {course} c 
                     JOIN {course_categories} cc 
-                        ON c.category = cc.id 
-                    JOIN {enrol} e 
-                        ON c.id = e.courseid 
-                    JOIN {user_enrolments} ue 
-                        ON e.id = ue.enrolid 
-                    JOIN {user} u 
-                        ON u.id = ue.userid 
-                    JOIN {role_assignments} ra 
-                        ON ra.userid = u.id
-                    WHERE ra.roleid = 3 and contextid=1";
+                        ON c.category = cc.id
+                    WHERE cc.id = '$SESSION->selectedcategory'
+                    ORDER BY cc.id DESC"; 
         }
 
         return $DB->get_records_sql($sql);

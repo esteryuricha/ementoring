@@ -35,18 +35,6 @@ class editclass extends moodleform {
         //category name
         $mform->addElement('text', 'fullname', 'Class Name');
         $mform->setType('fullname', PARAM_NOTAGS);
-
-        //mentor 
-        $selectMentors = array();
-        $mentors = $DB->get_records_sql("select u.id, u.firstname, u.lastname from {user} u inner join {role_assignments} ra on u.id = ra.userid where ra.roleid = 3 order by firstname, lastname asc");
-
-        foreach($mentors as $mentor) {
-            $key = $mentor->id;
-            $value = $mentor->firstname." ".$mentor->lastname;
-            $selectMentors[$key] = $value;
-        }
-
-        $mform->addElement('select', 'user', 'Mentor', $selectMentors);
         
         //button
         $this->add_action_buttons();

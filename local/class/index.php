@@ -41,6 +41,12 @@ if($role_assignment->id == 3 || $role_assignment->id == 5) {
                 ORDER BY cc.id DESC";
     
     $categories = $DB->get_records_sql($sql);
+}else{
+    $sql = "SELECT cc.id, cc.name 
+                FROM {course_categories} cc 
+                ORDER BY cc.id DESC";
+    
+    $categories = $DB->get_records_sql($sql);
 }
 
 
@@ -54,6 +60,5 @@ $templatecontext = (object)[
 
 echo $OUTPUT->render_from_template('local_class/table', $templatecontext);
 echo $OUTPUT->custom_block_region('content');
-
 echo $OUTPUT->footer();
 ?>

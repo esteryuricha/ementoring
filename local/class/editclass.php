@@ -38,9 +38,9 @@ if ($mform->is_cancelled()) {
     $manager = new manager();
 
     if($SESSION->current_id) { 
-        $manager->update_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname, $fromform->user);
+        $manager->update_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname);
     }else{
-        $manager->insert_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname, $fromform->user);    
+        $manager->insert_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname);    
     }
 
     redirect($CFG->wwwroot.'/local/class/index.php', 'success');
