@@ -27,6 +27,7 @@
                 <td>{{#userdate}} {{enddate}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}</td>
                 <td>
                     <button type="button" class="btn btn-primary" onclick="location.href='{{addUrl}}?id={{id}}'"><i class="fa fa-pencil"></i></button>
+                    <button type="button" value="{{id}}" class="btn btn-secondary" onclick="location.href='{{cohortUrl}}?page=0&contextid={{contextid}}'"><i class="fa fa-user-plus"></i></button>
                     
                     {{^course_count}}
                     <button type="button" value="{{id}}" class="btn btn-danger local_event_delete_button"><i class="fa fa-trash"></i></button>

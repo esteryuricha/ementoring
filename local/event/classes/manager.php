@@ -28,8 +28,25 @@ class manager {
             $addtolocalevent->category = $categoryid;
             $addtolocalevent->startdate = $datafordate['startdate'];
             $addtolocalevent->enddate = $datafordate['enddate'];
-        
-            return $DB->insert_record('local_event', $addtolocalevent, false);
+            $DB->insert_record('local_event', $addtolocalevent, false);
+
+            //create cohort
+
+            //get contextid
+            $context = $DB->get_record('context', ['contextlevel' => 40, 'instanceid' => $categoryid]);
+
+            //insert data to mdl cohort
+            $addtocohort = new stdClass();
+            $addtocohort->contextid = $context->id;
+            $addtocohort->name = $data['name'];
+            $addtocohort->idnumber = $data['idnumber'];
+            $addtocohort->descriptionformat = 1;
+            $addtocohort->visible = 1;
+            $addtocohort->component = "";
+            $addtocohort->timecreated = strtotime(date('Y-m-d H:i:s'));
+            $addtocohort->timemodified = strtotime(date('Y-m-d H:i:s'));
+            
+            return $DB->insert_record('cohort', $addtocohort, true);
         } catch(dml_exception $e) {
             return false;
         }
@@ -45,7 +62,8 @@ class manager {
                     cc.name, 
                     le.startdate, 
                     le.enddate, 
-                    (select count(c.id) from {course} c where c.category = cc.id) as course_count 
+                    (SELECT count(c.id) FROM {course} c WHERE c.category = cc.id) AS course_count,
+                    (SELECT id FROM {context} WHERE contextlevel = 40 AND instanceid = cc.id) as contextid
                 FROM {course_categories} cc 
                 LEFT JOIN {local_event} le 
                 ON cc.id = le.category";
