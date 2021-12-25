@@ -46,7 +46,7 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
 
     //add menu class for mentor and participant
     if($role_assignment->id == 3 || $role_assignment->id == 5) {
-        $nodeclass = $navigation->add('Classes', new moodle_url($CFG->wwwroot.'/local/class/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/folder', null));
+        $nodeclass = $navigation->add('Courses', new moodle_url($CFG->wwwroot.'/local/class/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/folder', null));
         $nodeclass->showinflatnavigation = true;
     }
 
@@ -76,7 +76,7 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
     $node2 = $navigation->add('Programs', new moodle_url($CFG->wwwroot.'/local/event/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/flagged', null));
     $node2->showinflatnavigation = true;
 
-    $node3 = $navigation->add('Classes', new moodle_url($CFG->wwwroot.'/local/class/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/folder', null));
+    $node3 = $navigation->add('Courses', new moodle_url($CFG->wwwroot.'/local/class/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/folder', null));
     $node3->showinflatnavigation = true;
 
     $node4 = $navigation->add('Statistics', new moodle_url($CFG->wwwroot.'/local/statistic/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/outcomes', null));

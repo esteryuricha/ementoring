@@ -5,7 +5,7 @@ require_once(__DIR__.'/../../config.php');
 
 global $DB, $USER;
 
-$title = "Class Management";
+$title = "Course Management";
 $PAGE->set_url(new moodle_url('/local/class/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);

@@ -9,10 +9,11 @@ class manager {
         global $DB;
 
         //get program start date and end date
-        $course_category = $DB->get_record_sql("SELECT startdate, enddate from {local_event} where id = '$category'");
+        $course_category = $DB->get_record('local_event',['category' => $category]);
 
         $recordtoinsert = new stdClass();
         $recordtoinsert->visible = $visible;
+        $recordtoinsert->visibleold = $visible;
         $recordtoinsert->fullname = $fullname;
         $recordtoinsert->idnumber = $idnumber;
         $recordtoinsert->category = $category;
@@ -22,9 +23,28 @@ class manager {
         $recordtoinsert->showactivitydates = 1;
         $recordtoinsert->showcompletionconditions = 1;
         $recordtoinsert->enablecompletion = 1;
+        $recordtoinsert->summaryformat = 1;
+        $recordtoinsert->showgrades = 1;
+        $recordtoinsert->newsitems = 0;
+        $recordtoinsert->relativedatesmode = 0;
+        $recordtoinsert->marker = 0;
+        $recordtoinsert->maxbytes = 0;
+        $recordtoinsert->legacyfiles = 0;
+        $recordtoinsert->showreports = 1;
+        $recordtoinsert->groupmode = 1;
+        $recordtoinsert->groupmodeforce = 1;
+        $recordtoinsert->defaultgroupingid = 0;
+        $recordtoinsert->lang = "";
+        $recordtoinsert->calendartype = "";
+        $recordtoinsert->theme = "";
+        $recordtoinsert->timecreated = strtotime(date('Y-m-d H:i:s'));
+        $recordtoinsert->timemodified = strtotime(date('Y-m-d H:i:s'));
+        $recordtoinsert->requested = 0;
+        $recordtoinsert->completionnotify = 0;
+        $recordtoinsert->cacherev = 0;
     
         try {
-            $courseid = $DB->insert_record('course', $recordtoinsert);
+            $courseid = $DB->insert_record('course', $recordtoinsert, true);
 
             //add to mdl_enrol
             $inserttoenrol->enrol = "manual";
@@ -48,6 +68,9 @@ class manager {
             $inserttotopicsection->name = "Topic 1";
 
             return $DB->insert_record('course_sections', $inserttotopicsection, false);
+
+
+            //add participants from cohort
 
         } catch(dml_exception $e) {
             return false;

@@ -8,7 +8,7 @@ require_login();
 
 global $DB, $SESSION;
 
-$title = "Add New Class";
+$title = "Add New Course";
 $PAGE->set_url(new moodle_url('/local/class/editclass.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
