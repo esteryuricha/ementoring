@@ -55,6 +55,9 @@ class manager {
         $recordtoinsert->autosubscribe = 1;
         $recordtoinsert->trackforums = 0;
         $recordtoinsert->trustbitmask = 0;
+
+        print_r($recordtoinsert);
+        exit;
         
         try {
             $userid = $DB->insert_record('user', $recordtoinsert);
@@ -65,7 +68,7 @@ class manager {
             $recordtoroleassignments->roleid = 3;
             
             return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
-            
+
         } catch(dml_exception $e) {
             return false;
         }
