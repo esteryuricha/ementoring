@@ -186,6 +186,10 @@ if ($canconfig and $action and confirm_sesskey()) {
 
 
 echo $OUTPUT->header();
+echo $OUTPUT->box_start('content-container');
+
+echo $OUTPUT->single_button(new moodle_url('/user/index.php?id='.$id),'back to course', 'get');
+echo "<br><br>";
 echo $OUTPUT->heading(get_string('enrolmentinstances', 'enrol'));
 
 echo $OUTPUT->box_start('generalbox boxaligncenter boxwidthnormal');
@@ -295,6 +299,7 @@ if ($candidates) {
     $select->set_label(get_string('addinstance', 'enrol'));
     echo $OUTPUT->render($select);
 }
+echo $OUTPUT->box_end();
 
 echo $OUTPUT->box_end();
 

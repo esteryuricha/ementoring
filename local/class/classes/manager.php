@@ -67,10 +67,20 @@ class manager {
             $inserttotopicsection->section = 1;
             $inserttotopicsection->name = "Topic 1";
 
-            return $DB->insert_record('course_sections', $inserttotopicsection, false);
-
+            $DB->insert_record('course_sections', $inserttotopicsection, false);
 
             //add participants from cohort
+            $addtoenrol = new stdClass();
+            $addtoenrol->enrol = "cohort";
+            $addtoenrol->status = 0;
+            $addtoenrol->courseid = $courseid;
+            $addtoenrol->sortorder = 1;
+            $addtoenrol->roleid = 5;
+            $addtoenrol->customint1 = 2;
+            $addtoenrol->timecreated = strtotime(date('Y-m-d H:i:s'));
+            $addtoenrol->timemodified = strtotime(date('Y-m-d H:i:s'));
+    
+            return $DB->insert_record('enrol', $addtoenrol, false);
 
         } catch(dml_exception $e) {
             return false;

@@ -103,6 +103,11 @@ $PAGE->set_heading($course->fullname);
 $PAGE->set_title(get_string('pluginname', 'enrol_' . $type));
 
 echo $OUTPUT->header();
+
+echo $OUTPUT->box_start('generalbox boxaligncenter boxwidthnormal');
+echo $OUTPUT->single_button(new moodle_url('/user/index.php?id='.$courseid),'back to course', 'get');
+echo "<br><br>";
 echo $OUTPUT->heading(get_string('pluginname', 'enrol_' . $type));
 $mform->display();
+echo $OUTPUT->box_end();
 echo $OUTPUT->footer();
