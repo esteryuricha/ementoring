@@ -45,9 +45,11 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
     $role_assignment = $DB->get_record_sql("select r.id from {role} r inner join {role_assignments} ra on r.id = ra.roleid where ra.userid=$USER->id");
 
     //add menu class for mentor and participant
-    if($role_assignment->id == 3 || $role_assignment->id == 5) {
-        $nodeclass = $navigation->add('Courses', new moodle_url($CFG->wwwroot.'/local/class/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/folder', null));
-        // $nodeclass->showinflatnavigation = true;
+    if($role_assignment){
+        if($role_assignment->id == 3 || $role_assignment->id == 5) {
+            $nodeclass = $navigation->add('Courses', new moodle_url($CFG->wwwroot.'/local/class/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/folder', null));
+            // $nodeclass->showinflatnavigation = true;
+        }
     }
 
 
