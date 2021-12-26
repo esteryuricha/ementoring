@@ -171,6 +171,9 @@ if ($canunenrol && optional_param('remove', false, PARAM_BOOL) && confirm_sesske
 
 
 echo $OUTPUT->header();
+echo $OUTPUT->box_start('content-container');
+echo $OUTPUT->single_button(new moodle_url('/user/index.php?id='.$instance->courseid),'back to course', 'get');
+echo "<br><br>";
 echo $OUTPUT->heading($instancename);
 
 $addenabled = $canenrol ? '' : 'disabled="disabled"';
@@ -178,8 +181,6 @@ $removeenabled = $canunenrol ? '' : 'disabled="disabled"';
 
 $backUrl = new moodle_url('/user/index.php', array('id'=>$course->id));
 ?>
-<button class="btn btn-primary" onclick="location.href='<?php echo $backUrl; ?>'">back to participant list</button>
-<br><br>
 <form id="assignform" method="post" action="<?php echo $PAGE->url ?>"><div>
   <input type="hidden" name="sesskey" value="<?php echo sesskey() ?>" />
 
@@ -197,9 +198,10 @@ $backUrl = new moodle_url('/user/index.php', array('id'=>$course->id));
 
               <div class="enroloptions">
 
+            <div style='display:none'>
               <p><label for="menuroleid"><?php print_string('assignrole', 'enrol_manual') ?></label><br />
               <?php echo html_writer::select($roles, 'roleid', $roleid, false); ?></p>
-
+            </div>
               <p><label for="menuextendperiod"><?php print_string('enrolperiod', 'enrol') ?></label><br />
               <?php echo html_writer::select($periodmenu, 'extendperiod', $defaultperiod, $unlimitedperiod); ?></p>
 
@@ -224,5 +226,5 @@ $backUrl = new moodle_url('/user/index.php', array('id'=>$course->id));
 </div></form>
 <?php
 
-
+echo $OUTPUT->box_end();
 echo $OUTPUT->footer();

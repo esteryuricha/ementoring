@@ -104,7 +104,7 @@ $PAGE->set_title(get_string('pluginname', 'enrol_' . $type));
 
 echo $OUTPUT->header();
 
-echo $OUTPUT->box_start('generalbox boxaligncenter boxwidthnormal');
+echo $OUTPUT->box_start('content-container');
 echo $OUTPUT->single_button(new moodle_url('/user/index.php?id='.$courseid),'back to course', 'get');
 echo "<br><br>";
 echo $OUTPUT->heading(get_string('pluginname', 'enrol_' . $type));
