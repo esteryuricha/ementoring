@@ -133,13 +133,13 @@ class manager {
         return $DB->get_records_sql($sql);
     }
 
-    function update_class(int $visible, int $category, string $idnumber, string $fullname, int $user): bool {
+    function update_class(int $visible, int $category, string $idnumber, string $fullname): bool {
         global $DB, $SESSION;
 
         $id = $SESSION->current_id;
 
         //get program start date and end date
-        $course_category = $DB->get_record_sql("SELECT startdate, enddate from {course_categories} where id = '$category'");
+        $course_category = $DB->get_record('local_event',['category' => $category]);
 
         $recordtoupdate = new stdClass();
         $recordtoupdate->visible = $visible;
@@ -153,10 +153,6 @@ class manager {
 
         $DB->update_record('course', $recordtoupdate);
 
-        $enrolid = $DB->get_record_sql("select id from {enrol} where courseid=$id")->id;
-
-        $DB->execute('update {user_enrolments} set userid='.$user.' where enrolid='.$enrolid, null);
-        
         $SESSION->current_id = "";
 
         return true;

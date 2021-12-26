@@ -6,7 +6,7 @@ require_once("$CFG->libdir/formslib.php");
 
 class editclass extends moodleform {
     public function definition() {
-        global $CFG, $DB;
+        global $CFG, $DB, $SESSION;
 
         $mform = $this->_form;
 
@@ -27,7 +27,7 @@ class editclass extends moodleform {
         }
 
         $mform->addElement('select', 'category', 'Program', $selectArray);
-
+        $mform->setDefault('category', $SESSION->selectedcategory);
         //category ID
         $mform->addElement('text', 'idnumber', 'Class ID');
         $mform->setType('idnumber', PARAM_NOTAGS);
