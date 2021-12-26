@@ -29,11 +29,11 @@ class editclass extends moodleform {
         $mform->addElement('select', 'category', 'Program', $selectArray);
         $mform->setDefault('category', $SESSION->selectedcategory);
         //category ID
-        $mform->addElement('text', 'idnumber', 'Class ID');
+        $mform->addElement('text', 'idnumber', 'Course ID');
         $mform->setType('idnumber', PARAM_NOTAGS);
 
         //category name
-        $mform->addElement('text', 'fullname', 'Class Name');
+        $mform->addElement('text', 'fullname', 'Course Name');
         $mform->setType('fullname', PARAM_NOTAGS);
         
         //button

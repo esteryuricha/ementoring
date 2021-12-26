@@ -40,14 +40,14 @@ if ($mform->is_cancelled()) {
 
     $id = $SESSION->current_id;
 
-    $context = \context_user::instance($id);
+    // $context = \context_user::instance($id);
 
-    $usernew = $DB->get_record('user', ['id' => $id]);
+    // $usernew = $DB->get_record('user', ['id' => $id]);
 
     if($id) { 
-        $manager->update_mentor($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password, $fromform->picture ?? null);        
+        $manager->update_mentor($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password);        
     }else{
-        $manager->insert_mentor($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password, $fromform->picture ?? null);    
+        $manager->insert_mentor($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password);    
     }
 
     redirect($CFG->wwwroot.'/local/mentor/index.php', 'success');
