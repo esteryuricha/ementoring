@@ -65,6 +65,7 @@ class manager {
             $recordtoroleassignments->roleid = 3;
             
             return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
+            
         } catch(dml_exception $e) {
             return false;
         }
