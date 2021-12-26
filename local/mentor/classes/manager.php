@@ -59,8 +59,6 @@ class manager {
         try {
             $userid = $DB->insert_record('user', $recordtoinsert, true);
         
-            print_r($userid);
-            exit;
             //add to role assignments
             $recordtoroleassignments->userid = $userid;
             $recordtoroleassignments->contextid = 1;
