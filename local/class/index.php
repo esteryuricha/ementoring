@@ -1,9 +1,11 @@
 <?php
 use local_class\manager;
 
-require_once(__DIR__.'/../../config.php');
 
-global $DB, $USER;
+require_once(__DIR__.'/../../config.php');
+require_login();
+
+global $DB, $USER, $SESSION;
 
 $title = "Course Management";
 $PAGE->set_url(new moodle_url('/local/class/index.php'));
@@ -40,15 +42,28 @@ if($role_assignment->id == 3 || $role_assignment->id == 5) {
                 GROUP BY cc.idnumber
                 ORDER BY cc.id DESC";
     
-    $categories = $DB->get_records_sql($sql);
+    $course_categories = $DB->get_records_sql($sql);
 }else{
     $sql = "SELECT cc.id, cc.name 
                 FROM {course_categories} cc 
                 ORDER BY cc.id DESC";
     
-    $categories = $DB->get_records_sql($sql);
+    $course_categories = $DB->get_records_sql($sql);
 }
 
+$categories = array();
+foreach($course_categories as $category){
+    $selected = "";
+    if($category->id == $SESSION->selectedcategory) {
+        $selected = "selected";
+    }
+
+    $categories[] = array(
+        'id' => $category->id,
+        'name' => $category->name,
+        'selected' => $selected
+    );
+}
 
 $templatecontext = (object)[
     'classes' => array_values($classes),
