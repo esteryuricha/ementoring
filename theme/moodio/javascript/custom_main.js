@@ -180,19 +180,19 @@ if (mediaQuery.matches) {
 }
 
 // move search on participant enrollment to top
-if (document.querySelector('#assignform .roleassigntable.generaltable.generalbox.boxaligncenter')) {
-    const searchExistingWrapper = document.querySelector('#assignform .roleassigntable.generaltable.generalbox.boxaligncenter #existingcell #removeselect_wrapper')
+if (document.querySelector('#assignform .generaltable.generalbox.boxaligncenter')) {
+    const searchExistingWrapper = document.querySelector('#assignform .generaltable.generalbox.boxaligncenter #existingcell #removeselect_wrapper')
     if (searchExistingWrapper) {
-        const searchExistingForm = document.querySelector('#assignform .roleassigntable.generaltable.generalbox.boxaligncenter #existingcell #removeselect_wrapper .form-inline')
+        const searchExistingForm = document.querySelector('#assignform .generaltable.generalbox.boxaligncenter #existingcell #removeselect_wrapper .form-inline')
         searchExistingForm.style.minHeight = '4rem'
         searchExistingForm.childNodes[1].placeholder = 'Search'
         searchExistingWrapper.prepend(searchExistingForm)
     }
 }
-if (document.querySelector('#assignform .roleassigntable.generaltable.generalbox.boxaligncenter')) {
-    const searchEnrollableWrapper = document.querySelector('#assignform .roleassigntable.generaltable.generalbox.boxaligncenter #potentialcell #addselect_wrapper')
+if (document.querySelector('#assignform .generaltable.generalbox.boxaligncenter')) {
+    const searchEnrollableWrapper = document.querySelector('#assignform .generaltable.generalbox.boxaligncenter #potentialcell #addselect_wrapper')
     if (searchEnrollableWrapper) {
-        const searchEnrollableForm = document.querySelector('#assignform .roleassigntable.generaltable.generalbox.boxaligncenter #potentialcell #addselect_wrapper .form-inline')
+        const searchEnrollableForm = document.querySelector('#assignform .generaltable.generalbox.boxaligncenter #potentialcell #addselect_wrapper .form-inline')
         searchEnrollableForm.style.minHeight = '4rem'
         searchEnrollableForm.childNodes[1].placeholder = 'Search'
         searchEnrollableWrapper.prepend(searchEnrollableForm)
