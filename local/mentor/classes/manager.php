@@ -59,10 +59,17 @@ class manager {
         try {
             $userid = $DB->insert_record('user', $recordtoinsert, true);
         
+            print_r($userid);
+            exit;
             //add to role assignments
             $recordtoroleassignments->userid = $userid;
             $recordtoroleassignments->contextid = 1;
             $recordtoroleassignments->roleid = 3;
+            $recordtoroleassignments->timemodified = strtotime(date('Y-m-d H:i:s'));
+            $recordtoroleassignments->modifierid = 0;
+            $recordtoroleassignments->component = "";
+            $recordtoroleassignments->itemid = 0;
+            $recordtoroleassignments->sortorder = 0;
             
             return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
 
