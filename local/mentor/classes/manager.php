@@ -55,9 +55,6 @@ class manager {
         $recordtoinsert->autosubscribe = 1;
         $recordtoinsert->trackforums = 0;
         $recordtoinsert->trustbitmask = 0;
-
-        print_r($recordtoinsert);
-        exit;
         
         try {
             $userid = $DB->insert_record('user', $recordtoinsert);
