@@ -57,8 +57,10 @@ class manager {
         $recordtoinsert->trustbitmask = 0;
         
         try {
-            $userid = $DB->insert_record('user', $recordtoinsert, true);
+            $DB->insert_record('user', $recordtoinsert, true);
         
+            $userid = $DB->get_record('user', ['email' => $email])->id;
+
             //add to role assignments
             $recordtoroleassignments->userid = $userid;
             $recordtoroleassignments->contextid = 1;
