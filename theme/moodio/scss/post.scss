@@ -533,6 +533,19 @@ nav {
         }
     }
 }
+// remove search label on enrollment
+table.roleassigntable.generaltable.generalbox.boxaligncenter {
+    .form-inline {
+        label {
+            display: none;
+        }
+    }
+    tr td {
+        max-width: 33.33%;
+        width: 33.33%;
+        vertical-align: top;
+    }
+}
 
 // GROUPS
 #region-main > div[role="main"] {
