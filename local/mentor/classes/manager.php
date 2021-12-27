@@ -62,9 +62,6 @@ class manager {
             //$DB->insert_record('user', $recordtoinsert, true);
             $userid = user_create_user($data, false, false);
 
-            print_r($userid);
-            exit;
-
             if($userid){
                 //add to role assignments
                 $recordtoroleassignments->userid = $userid;
