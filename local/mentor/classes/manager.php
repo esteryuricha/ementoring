@@ -69,19 +69,20 @@ class manager {
 
     function insert_role_assignment($userid) {
         global $DB;
-        if($userid){
-            //add to role assignments
-            $recordtoroleassignments->userid = $userid;
-            $recordtoroleassignments->contextid = 1;
-            $recordtoroleassignments->roleid = 3;
-            $recordtoroleassignments->timemodified = strtotime(date('Y-m-d H:i:s'));
-            $recordtoroleassignments->modifierid = 0;
-            $recordtoroleassignments->component = "";
-            $recordtoroleassignments->itemid = 0;
-            $recordtoroleassignments->sortorder = 0;
-            
-            return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
-        }
+        
+        //add to role assignments
+        $recordtoroleassignments = new stdClass();
+        $recordtoroleassignments->userid = $userid;
+        $recordtoroleassignments->contextid = 1;
+        $recordtoroleassignments->roleid = 3;
+        $recordtoroleassignments->timemodified = strtotime(date('Y-m-d H:i:s'));
+        $recordtoroleassignments->modifierid = 0;
+        $recordtoroleassignments->component = "";
+        $recordtoroleassignments->itemid = 0;
+        $recordtoroleassignments->sortorder = 0;
+        
+        return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
+        
     }
 
     function get_mentors(): array
