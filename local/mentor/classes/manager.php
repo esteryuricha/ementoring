@@ -61,22 +61,24 @@ class manager {
         try {
             //$DB->insert_record('user', $recordtoinsert, true);
             $userid = user_create_user($data, false, false);
-            $userid = $DB->get_record('user', ['email' => $email])->id;
 
-            //add to role assignments
-            $recordtoroleassignments->userid = $userid;
-            $recordtoroleassignments->contextid = 1;
-            $recordtoroleassignments->roleid = 3;
-            $recordtoroleassignments->timemodified = strtotime(date('Y-m-d H:i:s'));
-            $recordtoroleassignments->modifierid = 0;
-            $recordtoroleassignments->component = "";
-            $recordtoroleassignments->itemid = 0;
-            $recordtoroleassignments->sortorder = 0;
-            
-            return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
+            if($userid){
+                //add to role assignments
+                $recordtoroleassignments->userid = $userid;
+                $recordtoroleassignments->contextid = 1;
+                $recordtoroleassignments->roleid = 3;
+                $recordtoroleassignments->timemodified = strtotime(date('Y-m-d H:i:s'));
+                $recordtoroleassignments->modifierid = 0;
+                $recordtoroleassignments->component = "";
+                $recordtoroleassignments->itemid = 0;
+                $recordtoroleassignments->sortorder = 0;
+                
+                return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
+            }
+    
 
         } catch(dml_exception $e) {
-            return false;
+            return $e;
         }
     }
 
