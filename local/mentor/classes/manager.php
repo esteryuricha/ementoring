@@ -62,6 +62,9 @@ class manager {
             //$DB->insert_record('user', $recordtoinsert, true);
             $userid = user_create_user($data, false, false);
 
+            print_r($userid);
+            exit;
+
             if($userid){
                 //add to role assignments
                 $recordtoroleassignments->userid = $userid;
@@ -76,7 +79,6 @@ class manager {
                 return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
             }
     
-
         } catch(dml_exception $e) {
             return $e;
         }
