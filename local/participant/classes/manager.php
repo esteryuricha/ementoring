@@ -27,11 +27,10 @@ class manager {
         $recordtoinsert->phone1 = $phone1;
     
         try {
-            $DB->insert_record('user', $recordtoinsert);
+            $userid = $DB->insert_record('user', $recordtoinsert);
         
-            $userid = $DB->get_record('user', ['email' => $email])->id;
-
             //add to role assignments
+            $recordtoroleassignments = new stdClass();
             $recordtoroleassignments->userid = $userid;
             $recordtoroleassignments->contextid = 1;
             $recordtoroleassignments->roleid = 5;

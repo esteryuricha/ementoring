@@ -47,6 +47,7 @@ class manager {
             $courseid = $DB->insert_record('course', $recordtoinsert, true);
 
             //add to mdl_enrol
+            $inserttoenrol = new stdClass();
             $inserttoenrol->enrol = "manual";
             $inserttoenrol->courseid = $courseid;
             $inserttoenrol->sororder = 1;
@@ -55,6 +56,7 @@ class manager {
             $enrolid = $DB->insert_record('enrol', $inserttoenrol);
 
             //create introduction section
+            $inserttosection = new stdClass();
             $inserttosection->course = $courseid;
             $inserttosection->section = 0;
             $inserttosection->name = "Introduction";
@@ -63,6 +65,7 @@ class manager {
             $DB->insert_record('course_sections', $inserttosection, false);
 
             //topic section 
+            $inserttotopicsection = new stdClass();
             $inserttotopicsection->course = $courseid;
             $inserttotopicsection->section = 1;
             $inserttotopicsection->name = "Topic 1";

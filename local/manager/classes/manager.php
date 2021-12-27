@@ -26,11 +26,10 @@ class manager {
         $recordtoinsert->mnethostid = 1;
     
         try {
-            $DB->insert_record('user', $recordtoinsert);
-
-            $userid = $DB->get_record('user', ['email' => $email])->id;
+            $userid = $DB->insert_record('user', $recordtoinsert);
         
             //add to role assignments
+            $recordtoroleassignments = new stdClass();
             $recordtoroleassignments->userid = $userid;
             $recordtoroleassignments->contextid = 1;
             $recordtoroleassignments->roleid = 1;
