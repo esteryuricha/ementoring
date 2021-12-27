@@ -27,8 +27,6 @@ class manager {
             'password' => hash_internal_user_password($password),
             'confirmed' => 1,
             'mnethostid' => 1,
-            'timecreated' => strtotime(date('Y-m-d H:i:s')),
-            'timemodified' => strtotime(date('Y-m-d H:i:s')),
             'phone1' => 0,
             'phone2' => 0,
             'auth' => "manual",
@@ -58,13 +56,12 @@ class manager {
             'autosubscribe' => 1,
             'trackforums' => 0,
             'trustbitmask' => 0,
-    
         ];
         
         try {
             //$DB->insert_record('user', $recordtoinsert, true);
             $userid = user_create_user($data, false, false);
-            //$userid = $DB->get_record('user', ['email' => $email])->id;
+            $userid = $DB->get_record('user', ['email' => $email])->id;
 
             //add to role assignments
             $recordtoroleassignments->userid = $userid;
