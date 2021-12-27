@@ -13,7 +13,7 @@ class manager {
         global $DB;
 
         //condition must be reverse, because in user table there's only suspended column
-        $suspended = $suspended==0 ? 1 : 0;
+        $suspended = $suspended==0 ? 1 : 0;    
 
         $recordtoinsert = new stdClass();
         $recordtoinsert->suspended = $suspended;

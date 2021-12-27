@@ -4,6 +4,9 @@ namespace local_mentor;
 use dml_exception;
 use stdClass;
 
+require_once($CFG->dirroot.'/user/lib.php');
+
+
 class manager {
 
     /** Insert the data into our database table.
@@ -15,51 +18,53 @@ class manager {
         //condition must be reverse, because in user table there's only suspended column
         $suspended = $suspended==0 ? 1 : 0;
 
-        $recordtoinsert = new stdClass();
-        $recordtoinsert->suspended = $suspended;
-        $recordtoinsert->firstname = $firstname;
-        $recordtoinsert->lastname = $lastname;
-        $recordtoinsert->username = $email;
-        $recordtoinsert->email = $email;
-        $recordtoinsert->password = hash_internal_user_password($password);
-        $recordtoinsert->confirmed = 1;
-        $recordtoinsert->mnethostid = 1;
-        $recordtoinsert->timecreated = strtotime(date('Y-m-d H:i:s'));
-        $recordtoinsert->timemodified = strtotime(date('Y-m-d H:i:s'));
-        $recordtoinsert->phone1 = 0;
-        $recordtoinsert->phone2 = 0;
-        $recordtoinsert->auth = "manual";
-        $recordtoinsert->policyagreed = 0;
-        $recordtoinsert->deleted = 0;
-        $recordtoinsert->emailstop = 0;
-        $recordtoinsert->institution = 0;
-        $recordtoinsert->department = 0;
-        $recordtoinsert->address = 0;
-        $recordtoinsert->city = 0;
-        $recordtoinsert->country = 0;
-        $recordtoinsert->lang = "en";
-        $recordtoinsert->calendartype = "gregorian";
-        $recordtoinsert->theme = 0;
-        $recordtoinsert->timezone = 99;
-        $recordtoinsert->firstaccess = 0;
-        $recordtoinsert->lastaccess  = 0;
-        $recordtoinsert->lastlogin = 0;
-        $recordtoinsert->currentlogin = 0;
-        $recordtoinsert->lastip = 0;
-        $recordtoinsert->secret = 0;
-        $recordtoinsert->picture = 0;
-        $recordtoinsert->descriptionformat = 1;
-        $recordtoinsert->mailformat = 1;
-        $recordtoinsert->maildigest = 0;
-        $recordtoinsert->maildisplay = 2;
-        $recordtoinsert->autosubscribe = 1;
-        $recordtoinsert->trackforums = 0;
-        $recordtoinsert->trustbitmask = 0;
+        $data = [
+            'suspended' => $suspended,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'username' => $email,
+            'email' => $email,
+            'password' => hash_internal_user_password($password),
+            'confirmed' => 1,
+            'mnethostid' => 1,
+            'timecreated' => strtotime(date('Y-m-d H:i:s')),
+            'timemodified' => strtotime(date('Y-m-d H:i:s')),
+            'phone1' => 0,
+            'phone2' => 0,
+            'auth' => "manual",
+            'policyagreed' => 0,
+            'deleted' => 0,
+            'emailstop' => 0,
+            'institution' => 0,
+            'department' => 0,
+            'address' => 0,
+            'city' => 0,
+            'country' => 0,
+            'lang' => "en",
+            'calendartype' => "gregorian",
+            'theme' => 0,
+            'timezone' => 99,
+            'firstaccess' => 0,
+            'lastaccess'  >= 0,
+            'lastlogin' => 0,
+            'currentlogin' => 0,
+            'lastip' => 0,
+            'secret' => 0,
+            'picture' => 0,
+            'descriptionformat' => 1,
+            'mailformat' => 1,
+            'maildigest' => 0,
+            'maildisplay' => 2,
+            'autosubscribe' => 1,
+            'trackforums' => 0,
+            'trustbitmask' => 0,
+    
+        ];
         
         try {
-            $DB->insert_record('user', $recordtoinsert, true);
-        
-            $userid = $DB->get_record('user', ['email' => $email])->id;
+            //$DB->insert_record('user', $recordtoinsert, true);
+            $userid = user_create_user($data, false, false);
+            //$userid = $DB->get_record('user', ['email' => $email])->id;
 
             //add to role assignments
             $recordtoroleassignments->userid = $userid;
