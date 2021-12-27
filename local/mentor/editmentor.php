@@ -47,7 +47,8 @@ if ($mform->is_cancelled()) {
     if($id) { 
         $manager->update_mentor($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password);        
     }else{
-        $manager->insert_mentor($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password);    
+        $userid = $manager->insert_mentor($fromform->visible ?? 0, $fromform->firstname, $fromform->lastname, $fromform->email, $fromform->password);    
+        $manager->insert_role_assignment($userid);
     }
 
     redirect($CFG->wwwroot.'/local/mentor/index.php', 'success');

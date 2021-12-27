@@ -12,7 +12,7 @@ class manager {
     /** Insert the data into our database table.
      */
 
-    public function insert_mentor(int $suspended, string $firstname, string $lastname, string $email, string $password): bool {
+    public function insert_mentor(int $suspended, string $firstname, string $lastname, string $email, string $password): int {
         global $DB;
 
         //condition must be reverse, because in user table there's only suspended column
@@ -60,24 +60,27 @@ class manager {
         
         try {
             //$DB->insert_record('user', $recordtoinsert, true);
-            $userid = user_create_user($data, false, false);
-
-            if($userid){
-                //add to role assignments
-                $recordtoroleassignments->userid = $userid;
-                $recordtoroleassignments->contextid = 1;
-                $recordtoroleassignments->roleid = 3;
-                $recordtoroleassignments->timemodified = strtotime(date('Y-m-d H:i:s'));
-                $recordtoroleassignments->modifierid = 0;
-                $recordtoroleassignments->component = "";
-                $recordtoroleassignments->itemid = 0;
-                $recordtoroleassignments->sortorder = 0;
-                
-                return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
-            }
+            return $userid = user_create_user($data, false, false);
     
         } catch(dml_exception $e) {
             return $e;
+        }
+    }
+
+    function insert_role_assignment($userid) {
+        global $DB;
+        if($userid){
+            //add to role assignments
+            $recordtoroleassignments->userid = $userid;
+            $recordtoroleassignments->contextid = 1;
+            $recordtoroleassignments->roleid = 3;
+            $recordtoroleassignments->timemodified = strtotime(date('Y-m-d H:i:s'));
+            $recordtoroleassignments->modifierid = 0;
+            $recordtoroleassignments->component = "";
+            $recordtoroleassignments->itemid = 0;
+            $recordtoroleassignments->sortorder = 0;
+            
+            return $DB->insert_record('role_assignments', $recordtoroleassignments, false);
         }
     }
 
