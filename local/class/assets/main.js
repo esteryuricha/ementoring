@@ -4,15 +4,15 @@ require(['jquery', 'core/modal_factory', 'core/modal_events', 'core/ajax', 'core
     var trigger = $('.local_class_delete_button');
     ModalFactory.create({
        type: ModalFactory.types.SAVE_CANCEL,
-       title: 'Delete Class',
-       body: '<p>Are you sure to delete this class ?</p>',
+       title: 'Delete Course',
+       body: '<p>Are you sure to delete this course ?</p>',
        preShowCallback: function(triggerElement, modal) {
           triggerElement = $(triggerElement);
  
           let id = triggerElement[0].value;
  
           modal.params = {'id': id};
-          modal.setSaveButtonText('Delete Class');
+          modal.setSaveButtonText('Delete Course');
        },
        large: true
     }, trigger)
