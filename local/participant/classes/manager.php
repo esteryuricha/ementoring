@@ -45,23 +45,23 @@ class manager {
     {
         global $DB;
 
-                //store unstored data first
-                $sql1 = "SELECT u.id 
-                FROM {user} u
-                WHERE NOT EXISTS(SELECT userid FROM {role_assignments} ra WHERE userid = u.id) AND u.id!=1 AND u.id!=2";
+        // //store unstored data first
+        // $sql1 = "SELECT u.id 
+        // FROM {user} u
+        // WHERE NOT EXISTS(SELECT userid FROM {role_assignments} ra WHERE userid = u.id) AND u.id!=1 AND u.id!=2";
 
-        $unstoreddata = $DB->get_records_sql($sql1);
+        // $unstoreddata = $DB->get_records_sql($sql1);
 
-        foreach($unstoreddata as $data)
-        {
-            $recordtoinsert = new stdClass();
-            $recordtoinsert->userid = $data->id;
-            $recordtoinsert->roleid = 5;
-            $recordtoinsert->contextid = 1;
-            $recordtoinsert->timemodified = time();
+        // foreach($unstoreddata as $data)
+        // {
+        //     $recordtoinsert = new stdClass();
+        //     $recordtoinsert->userid = $data->id;
+        //     $recordtoinsert->roleid = 5;
+        //     $recordtoinsert->contextid = 1;
+        //     $recordtoinsert->timemodified = time();
 
-            $DB->insert_record('role_assignments', $recordtoinsert, false);
-        }
+        //     $DB->insert_record('role_assignments', $recordtoinsert, false);
+        // }
     
         $sql = "SELECT ROW_NUMBER() OVER(order by u.id) AS num,
                 u.id,
