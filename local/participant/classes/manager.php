@@ -44,6 +44,25 @@ class manager {
     function get_participants(): array
     {
         global $DB;
+
+                //store unstored data first
+                $sql1 = "SELECT u.id 
+                FROM {user} u
+                WHERE NOT EXISTS(SELECT userid FROM {role_assignments} ra WHERE userid = u.id)";
+
+        $unstoreddata = $DB->get_records_sql($sql1);
+
+        foreach($unstoreddata as $data)
+        {
+            $recordtoinsert = new stdClass();
+            $recordtoinsert->userid = $data->id;
+            $recordtoinsert->roleid = 5;
+            $recordtoinsert->contextid = 1;
+            $recordtoinsert->timemodified = time();
+
+            $DB->insert_record('role_assignments', $recordtoinsert, false);
+        }
+    
         $sql = "SELECT ROW_NUMBER() OVER(order by u.id) AS num,
                 u.id,
                 suspended,
