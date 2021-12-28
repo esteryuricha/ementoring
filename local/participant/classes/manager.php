@@ -48,7 +48,7 @@ class manager {
                 //store unstored data first
                 $sql1 = "SELECT u.id 
                 FROM {user} u
-                WHERE NOT EXISTS(SELECT userid FROM {role_assignments} ra WHERE userid = u.id)";
+                WHERE NOT EXISTS(SELECT userid FROM {role_assignments} ra WHERE userid = u.id) AND u.id!=1 AND u.id!=2";
 
         $unstoreddata = $DB->get_records_sql($sql1);
 
