@@ -15,8 +15,10 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
     $privatefiles->showinflatnavigation = false;
 
     //remove content bank 
-    $contentbank = $navigation->find('contentbank', global_navigation::TYPE_CUSTOM);
-    $contentbank->showinflatnavigation = false;
+    if($navigation->find('contentbank', global_navigation::TYPE_CUSTOM)) {
+        $contentbank = $navigation->find('contentbank', global_navigation::TYPE_CUSTOM);
+        $contentbank->showinflatnavigation = false;
+    }
 
     //remove my course menu
     $mycoursesnode = $navigation->find('mycourses', global_navigation::TYPE_ROOTNODE);
