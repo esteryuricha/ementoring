@@ -11,8 +11,10 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
     $homenode->showinflatnavigation = false;
 
     //remove private files
-    $privatefiles = $navigation->find('privatefiles', global_navigation::TYPE_SETTING);
-    $privatefiles->showinflatnavigation = false;
+    if($navigation->find('privatefiles', global_navigation::TYPE_SETTING)) {
+        $privatefiles = $navigation->find('privatefiles', global_navigation::TYPE_SETTING);
+        $privatefiles->showinflatnavigation = false;
+    }
 
     //remove content bank 
     if($navigation->find('contentbank', global_navigation::TYPE_CUSTOM)) {
