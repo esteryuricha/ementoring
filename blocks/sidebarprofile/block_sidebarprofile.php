@@ -45,7 +45,18 @@ class block_sidebarprofile extends block_base {
 
             $content = "<div class='sidebar_display_name'>".$USER->firstname." ".$USER->lastname."</div>";
             $content .= "<div class='sidebar_display_email'>(".$USER->email.")</div>";
-            $footer_content = "<div class='sidebar_display_role'>".($role_assignment->name ?? 'Superadmin')."</div>";
+
+            if($role_assignment) {
+                $role_name = $role_assignment->name;
+            }else{
+                if($USER->id == 2) {
+                    $role_name = "Superadmin";
+                }else{
+                    $role_name = "Participant";
+                }
+            }
+
+            $footer_content = "<div class='sidebar_display_role'>".($role_name)."</div>";
 
             $this->content = new stdClass;
             $this->content->text = $content;
