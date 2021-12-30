@@ -142,13 +142,13 @@ nav {
                     background-color: $white-1 !important;
                 }
             }
-            ul.usernav {
-                // li.nav-item {
-                //     i.icon {
-                //         font-size: 2.25rem;
-                //     }
-                // }
-            }
+            // ul.usernav {
+            //     li.nav-item {
+            //         i.icon {
+            //             font-size: 2.25rem;
+            //         }
+            //     }
+            // }
         }
     }
     @media screen and (max-width: $breakpoint-48) {
@@ -636,15 +636,6 @@ footer#page-footer {
 }
 .region_main_settings_menu_proxy {
     display: none;
-}
-
-@media screen and (min-width: $breakpoint-48) {
-    .form-check.d-flex {
-        // position: absolute;
-        // left: 16rem;
-        // top: 1rem;
-        // z-index: 20;
-    }
 }
 
 .form-check-input {
