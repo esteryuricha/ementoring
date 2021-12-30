@@ -31,8 +31,8 @@ class manager {
         $recordtoinsert->maxbytes = 0;
         $recordtoinsert->legacyfiles = 0;
         $recordtoinsert->showreports = 1;
-        $recordtoinsert->groupmode = 1;
-        $recordtoinsert->groupmodeforce = 1;
+        $recordtoinsert->groupmode = 0;
+        $recordtoinsert->groupmodeforce = 0;
         $recordtoinsert->defaultgroupingid = 0;
         $recordtoinsert->lang = "";
         $recordtoinsert->calendartype = "";
