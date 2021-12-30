@@ -116,7 +116,8 @@ echo $OUTPUT->heading(get_string('uploaduserspreview', 'tool_uploaduser'));
 // Preview table data.
 $table = new \tool_uploaduser\preview($cir, $filecolumns, $previewrows);
 
-echo html_writer::tag('div', html_writer::table($table), ['class' => 'flexible-wrap']);
+// echo html_writer::tag('div', html_writer::table($table), ['class' => 'flexible-wrap']);
+echo html_writer::table($table);
 
 // Print the form if valid values are available.
 if ($table->get_no_error()) {

@@ -41,6 +41,9 @@ $course-title-font-weight: 600;
     &:hover {
         box-shadow: 0 0 .75rem .125rem $shadow-1;
     }
+    &:focus, &:focus-visible {
+        box-shadow: none;
+    }
 }
 .button-light {
     @extend .button-base;
@@ -135,6 +138,7 @@ nav {
                 // drawer menu toggler button
                 button.btn.nav-link {
                     @extend .button-light;
+                    padding: .5rem .75rem;
                     background-color: $white-1 !important;
                 }
             }
@@ -378,6 +382,9 @@ nav {
         }
     }
     table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
         td.action {
             white-space: nowrap;
         }
@@ -394,6 +401,15 @@ nav {
     }
     @media screen and (max-width: $breakpoint-48) {
         padding: $page-padding-48d;
+        #page-header {
+            .page-context-header {
+                .page-header-headings {
+                    h1 {
+                        left: 4.25rem;
+                    }
+                }
+            }
+        }
     }
 }
 
