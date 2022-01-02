@@ -125,8 +125,9 @@ nav {
             border-bottom: 1px solid $gray-2;
             z-index: 1098;
             @media screen and (min-width: $breakpoint-48) {
-                background-color: $white-1 !important;
-                // background-color: transparent !important;
+                ul.nav.usernav {
+                    background-color: $white-1 !important;
+                }
             }
             .primary-navigation {
                 display: none;
@@ -416,7 +417,8 @@ nav {
                 .page-header-headings {
                     h1 {
                         left: 4.25rem;
-                        padding-right: 15rem;
+                        margin-left: -15rem;
+                        padding-left: 15rem;
                         white-space: nowrap;
                         overflow-x: hidden;
                         text-overflow: ellipsis;
