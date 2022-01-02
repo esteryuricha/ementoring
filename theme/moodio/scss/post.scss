@@ -6,6 +6,8 @@ $nav-link-height: 4rem;
 $nav-link-padding: 0 1rem;
 $nav-link-spacing-after: .75rem;
 
+$header-height: 3.25rem;
+
 $page-header-spacing-after: 2.75rem;
 $page-padding: 0 2.25rem;
 $page-padding-48d: 0 1rem;
@@ -56,8 +58,8 @@ $course-title-font-weight: 600;
     color: $white-1;
 }
 .header-base {
-    height: 3.25rem;
-    line-height: 3.25rem;
+    height: $header-height;
+    line-height: $header-height;
     border: 0;
 }
 .title-base {
@@ -124,9 +126,11 @@ nav {
             @extend .header-base;
             border-bottom: 1px solid $gray-2;
             z-index: 1098;
+            background-color: $white !important;
             @media screen and (min-width: $breakpoint-48) {
+                background-color: $white-1 !important;
                 ul.nav.usernav {
-                    background-color: $white-1 !important;
+                    background-color: transparent !important;
                 }
             }
             .primary-navigation {
@@ -301,7 +305,7 @@ nav {
                 h1 {
                     @extend .title-base;
                     font-size: 1.25rem;
-                    line-height: 3rem;
+                    line-height: 3rem !important;
                     margin: 0;
                     position: fixed;
                     top: 0;
@@ -310,6 +314,10 @@ nav {
             }
             .card-body {
                 padding: 0 !important; // should be important cause p-2
+                height: $header-height;
+                > div {
+                    height: $header-height;
+                }
                 // dashboard customize this page button
                 // .singlebutton {
                 //     margin-top: 2.75rem;
@@ -324,9 +332,9 @@ nav {
     }
     // "customize this page" button
     #page-header .card .card-body {
-        .d-sm-flex.align-items-center {
-            height: 2.75rem;
-        }
+        // .d-sm-flex.align-items-center {
+        //     height: 2.75rem;
+        // }
         .singlebutton {
             margin-right: .5rem;
             form button {
@@ -415,15 +423,17 @@ nav {
         #page-header {
             .page-context-header {
                 .page-header-headings {
+                    width: 100%;
+                    content: "";
+                    padding: 0 5rem 0 3rem;
+                    height: $header-height;
                     h1 {
-                        left: 4.25rem;
-                        margin-left: -15rem;
-                        padding-left: 15rem;
                         white-space: nowrap;
                         overflow-x: hidden;
                         text-overflow: ellipsis;
                         width: 100%;
                         font-size: 1rem;
+                        position: relative;
                     }
                 }
             }
