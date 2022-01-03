@@ -404,6 +404,9 @@ nav {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
+        &.calendartable {
+            display: table;
+        }
         td.action {
             white-space: nowrap;
         }
