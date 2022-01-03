@@ -156,7 +156,7 @@ if (empty($CFG->forcedefaultmymoodle) && $PAGE->user_allowed_editing()) {
 
     $url = new moodle_url("$CFG->wwwroot/my/index.php", $params);
 
-    if($USER->id == 2){
+    if($USER->id == 2){ //only display if it is admin
         $button = $OUTPUT->single_button($url, $editstring);
         $PAGE->set_button($resetbutton . $button);
     }

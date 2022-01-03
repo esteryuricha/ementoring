@@ -184,9 +184,11 @@ if ($PAGE->user_allowed_editing()) {
     }
 
     $url = new moodle_url("$CFG->wwwroot/user/profile.php", $params);
-    $button = $OUTPUT->single_button($url, $editstring);
-    $PAGE->set_button($resetbutton . $button);
 
+    if($USER->id == 2){ //only display if it is admin
+        $button = $OUTPUT->single_button($url, $editstring);
+        $PAGE->set_button($resetbutton . $button);
+    }
 } else {
     $USER->editing = $edit = 0;
 }
