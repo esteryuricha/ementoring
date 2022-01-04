@@ -25,8 +25,9 @@ class manager {
                   </tr></thead>";
         $data .= "<tbody>";
 
+        $content = "";
         foreach($groups as $group) {
-            $content = "<tr>";
+            $content .= "<tr>";
             $content .= "<td>".$group->name."</td>";  
             $content .= "<td>".$group->description."</td>";
 
@@ -38,22 +39,23 @@ class manager {
                                             ON u.id = gm.userid 
                                             WHERE gm.groupid = '$group->id'");
             
-            $content .= "<td>";
-
-            $filter_users = "";
-            $idx = 1;
-            foreach($members as $member) {
-                $content .= $member->firstname." ".$member->lastname." (".$member->email.")<br>";
-                $filter_users .= "userid = ".$member->id;
-                
-                if($idx != count($members)) {
-                    $filter_users .= " or ";
+            
+            if($members) {
+                $content .= "<td>";
+                $filter_users = "";
+                $idx = 1;
+                foreach($members as $member) {
+                    $content .= $member->firstname." ".$member->lastname." (".$member->email.")<br>";
+                    $filter_users .= "userid = ".$member->id;
+                    
+                    if($idx != count($members)) {
+                        $filter_users .= " or ";
+                    }
+                    $idx++;
                 }
-                $idx++;
-            }
-            $content .= "</td>";
-
-            if(!$members) {
+                $content .= "</td>";
+            }else{
+                $content .= "<td></td>";
                 $filter_users = "cm.id!= null";
             }
 
@@ -67,7 +69,7 @@ class manager {
                                                     ON cmc.coursemoduleid = cm.id
                                                 WHERE cm.course= $id AND ($filter_users) 
                                                 GROUP BY cmc.coursemoduleid");
-            if($module){
+            if($module && $members){
                 $progress = $completion->completioncount/$module->modulecount*100;
             }else{
                 $progress = 0;
