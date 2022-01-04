@@ -20,7 +20,7 @@
                     {{^chosendata}} -not chosen yet- {{/chosendata}}
                 </td>
                 <td>
-                    <button class="mod_schedule_view_detail_button btn btn-primary" value="{{scheduleid}}">check-in status</button>
+                    {{#chosendata}}<button class="mod_schedule_view_detail_button btn btn-primary" value="{{scheduleid}}">check-in status</button>{{/chosendata}}
                 </td>
             </tr>
             {{/groups}}

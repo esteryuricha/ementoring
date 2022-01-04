@@ -28,6 +28,7 @@ class mod_schedule_mod_form extends moodleform_mod {
         }
 
         $mform->addElement('select', 'eventid', 'Event Type', $selectArray, ['id' => 'eventid']);
+        $mform->addRule('eventid', null, 'required');
 
         $this->standard_coursemodule_elements();
 

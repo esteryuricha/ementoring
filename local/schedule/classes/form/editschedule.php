@@ -24,11 +24,13 @@ class editschedule extends moodleform {
         }
 
         $mform->addElement('select', 'eventid', 'Event Type', $selectArray, ['id' => 'eventid']);
+        $mform->addRule('eventid', null, 'required');
 
         //selecteddate
         $mform->addElement('select', 'availabledates', 'Selected Date', [], ['id' => 'availabledates']);
         $mform->addElement('hidden', 'selecteddate', '', ['id' => 'selecteddate']);
         $mform->setType('selecteddate', PARAM_NOTAGS);
+        $mform->addRule('availabledates', null, 'required');
 
         //selectedtime
         $selectTime = [
@@ -59,6 +61,7 @@ class editschedule extends moodleform {
 
         //selectedtime
         $mform->addElement('select', 'selectedtime', 'Selected Time', $selectTime);
+        $mform->addRule('selectedtime', null, 'required');
 
         //button
         $this->add_action_buttons();

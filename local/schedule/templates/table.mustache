@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Mentor</th>
                 <th scope="col">Event Name</th>
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
@@ -16,6 +17,7 @@
             {{#schedules}}
             <tr>
                 <th scope="row">{{num}}</th>
+                <td>{{firstname}} {{lastname}}</td>
                 <td>
                     {{eventname}}
                 </td>
@@ -23,7 +25,9 @@
                 <td>{{selectedtime}}</td>
                 <td>{{enrolledteam}}</td>
                 <td class="action">
+                    {{^enrolledteam}}
                     <button type="button" value="{{id}}" class="btn btn-danger local_schedule_delete_button"><i class="fa fa-trash"></i></button>
+                    {{/enrolledteam}}
                 </td>
             </tr>
             {{/schedules}}

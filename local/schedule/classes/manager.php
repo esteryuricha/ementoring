@@ -14,13 +14,14 @@ class manager {
     }
 
     function insert_schedule(int $eventid, int $selecteddate, string $selectedtime, int $courseid): bool {
-        global $DB;
+        global $DB, $USER;
 
         $recordtoinsert = new stdClass();
         $recordtoinsert->courseid = $courseid;
         $recordtoinsert->eventid = $eventid;
         $recordtoinsert->selecteddate = $selecteddate;
         $recordtoinsert->selectedtime = $selectedtime;
+        $recordtoinsert->userid = $USER->id;
 
         return $DB->insert_record('local_schedule', $recordtoinsert);
     }
@@ -33,10 +34,14 @@ class manager {
                     e.name 'eventname',
                     ls.selecteddate,
                     ls.selectedtime,
-                    g.name as enrolledteam
+                    g.name as enrolledteam,
+                    u.firstname,
+                    u.lastname
                 FROM {local_schedule} ls
                 JOIN {event} e 
                     ON ls.eventid = e.id
+                LEFT JOIN {user} u
+                    ON u.id = ls.userid
                 LEFT JOIN {groups} g 
                     ON g.id = ls.groupid
                 WHERE ls.courseid='$courseid'

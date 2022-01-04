@@ -22,18 +22,10 @@ echo $OUTPUT->header();
 
 //get classes
 $sql = "SELECT ROW_NUMBER() OVER(order by c.id desc) AS num,
-                c.id, c.fullname, u.firstname, u.lastname,
+                c.id, c.fullname,
                 (SELECT count(*) FROM {course_modules} cm WHERE course = c.id) as cm_count 
         FROM {course} c
-        INNER JOIN {enrol} e
-            ON c.id = e.courseid
-        INNER JOIN {user_enrolments} ue
-            ON e.id = ue.enrolid
-        INNER JOIN {role_assignments} ra
-            ON ra.userid = ue.userid 
-        INNER JOIN {user} u
-            ON u.id = ue.userid
-        WHERE c.category = '$id' AND ra.roleid = 3";
+        WHERE c.category = '$id'";
 $classes = $DB->get_records_sql($sql);
 
 $templatecontext = (object)[

@@ -86,22 +86,10 @@ require(['core/first', 'jquery', 'core/ajax', 'core/modal_factory', 'core/modal_
         Ajax.call([request])[0].done(function(data) {
             var clickedLink = $('.mod_schedule_view_detail_button');
             ModalFactory.create({
-                type: ModalFactory.types.SAVE_CANCEL,
                 title: 'View Detail',
                 body: data,
             })
             .then(function(modal) {
-                modal.setSaveButtonText('Save');
-                var root = modal.getRoot();
-                root.on(ModalEvents.save, function() {
-                    // var selected_id = "";
-                    // ids.forEach(element => {
-                    //     if( $("#choose"+element).is(":checked") ) {
-                    //         selected_id = $("#choose"+element).val();
-                    //     }
-                    // });
-                    // save_schedule(selected_id);
-                });
                 modal.show();
             })
         });
