@@ -28,6 +28,8 @@ class editclass extends moodleform {
 
         $mform->addElement('select', 'category', 'Program', $selectArray);
         $mform->setDefault('category', $SESSION->selectedcategory);
+        $mform->addRule('category', null, 'required');
+
         //category ID
         $mform->addElement('text', 'idnumber', 'Course ID');
         $mform->setType('idnumber', PARAM_NOTAGS);
@@ -35,7 +37,8 @@ class editclass extends moodleform {
         //category name
         $mform->addElement('text', 'fullname', 'Course Name');
         $mform->setType('fullname', PARAM_NOTAGS);
-        
+        $mform->addRule('fullname', null, 'required');
+
         //button
         $this->add_action_buttons();
     }

@@ -23,12 +23,15 @@ class editevent extends moodleform {
         //category name
         $mform->addElement('text', 'name', 'Program Name');
         $mform->setType('name', PARAM_NOTAGS);
+        $mform->addRule('name', null, 'required');
 
         //start date
         $mform->addElement('date_time_selector', 'startdate', 'Start Date');
+        $mform->addRule('startdate', null, 'required');
 
         //end date 
         $mform->addElement('date_time_selector', 'enddate', 'End Date');
+        $mform->addRule('enddate', null, 'required');
         
         //button
         $this->add_action_buttons();
