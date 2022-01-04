@@ -548,9 +548,13 @@ nav {
 // PARTICIPANTS & GRADES
 // remove search by alphabet on surname and first name
 .initialbar {
-    &.firstinitial, &.lastinitial {
+    // &.firstinitial {
+    //     // important to override .d-flex
+    //     display: none !important; 
+    // }
+    &.lastinitial {
         // important to override .d-flex
-        // display: none !important; 
+        display: none !important; 
     }
 }
 
