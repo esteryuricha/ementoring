@@ -198,16 +198,15 @@ $backUrl = new moodle_url('/user/index.php', array('id'=>$course->id));
 
               <div class="enroloptions">
 
-            <div style='display:none'>
               <p><label for="menuroleid"><?php print_string('assignrole', 'enrol_manual') ?></label><br />
               <?php echo html_writer::select($roles, 'roleid', $roleid, false); ?></p>
-            </div>
+            <div style="display:none">
               <p><label for="menuextendperiod"><?php print_string('enrolperiod', 'enrol') ?></label><br />
               <?php echo html_writer::select($periodmenu, 'extendperiod', $defaultperiod, $unlimitedperiod); ?></p>
 
               <p><label for="menuextendbase"><?php print_string('startingfrom') ?></label><br />
               <?php echo html_writer::select($basemenu, 'extendbase', $extendbase, false); ?></p>
-
+            </div>
               </div>
           </div>
 

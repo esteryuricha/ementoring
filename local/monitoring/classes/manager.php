@@ -70,7 +70,11 @@ class manager {
                                                 WHERE cm.course= $id AND ($filter_users) 
                                                 GROUP BY cmc.coursemoduleid");
             if($module && $members){
-                $progress = $completion->completioncount/$module->modulecount*100;
+                if($completion->completioncount) {
+                    $progress = $completion->completioncount/$module->modulecount*100;
+                }else{
+                    $progress = 0;
+                }
             }else{
                 $progress = 0;
             }
