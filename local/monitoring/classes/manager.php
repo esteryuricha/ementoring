@@ -53,6 +53,10 @@ class manager {
             }
             $content .= "</td>";
 
+            if(!$members) {
+                $filter_users = "cm.id!= null";
+            }
+
             //get completion
             $module = $DB->get_record_sql("SELECT count(*) as modulecount 
                                             FROM {course_modules} 
