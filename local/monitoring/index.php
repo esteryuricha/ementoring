@@ -22,7 +22,7 @@ echo $OUTPUT->header();
 
 //get classes
 $sql = "SELECT ROW_NUMBER() OVER(order by c.id desc) AS num,
-                c.id, c.fullname, u.firstname, u.lastname,
+                c.id, c.fullname,
                 (SELECT count(*) FROM {course_modules} cm WHERE course = c.id) as cm_count 
         FROM {course} c
         WHERE c.category = '$id'";
