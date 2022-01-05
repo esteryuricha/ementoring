@@ -631,6 +631,22 @@ table.generaltable.generalbox.boxaligncenter {
     }
 }
 
+// PROFILE
+.userprofile {
+    .profile_tree {
+        section {
+            border: 0;
+        }
+    }
+}
+.page-context-header {
+    .page-header-image {
+        margin: 0;
+        img.userpicture.defaultuserpic {
+            display: none;
+        }
+    }
+}
 
 footer#page-footer {
     display: none;
