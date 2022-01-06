@@ -442,6 +442,58 @@ nav {
             }
         }
     }
+    
+    div[data-region="grading-navigation-panel"] {
+        div[data-region="grading-navigation"] {
+            background-color: $white;
+            padding: .5rem;
+            div[data-region="user-info"] {
+                .img-rounded {
+                    @include borderRadius();
+                }
+                h4 {
+                    line-height: 1.125rem;
+                    font-weight: 500;
+                }
+                small {
+                    font-size: .75rem;
+                    line-height: normal;
+                    font-weight: 400
+                }
+            }
+            div[data-region="assignment-info"] {
+                font-size: .875rem;
+                font-weight: 500;
+            }
+            div[data-region="user-selector"] {
+                .alignment {
+                    margin-top: 0;
+                    span[data-region="input-field"] {
+                        ul {
+                            padding: 0;
+                            left: 3.25rem;
+                            top: 2.5rem;
+                            margin-left: 0;
+                        }
+                    }
+                    a[data-action="previous-user"] {
+                        visibility: hidden;
+                        &::after {
+                            visibility: visible;
+                            content: "<"
+                        }
+                    }
+                    a[data-action="next-user"] {
+                        visibility: hidden;
+                        &::before {
+                            visibility: visible;
+                            content: ">"
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // button styles
