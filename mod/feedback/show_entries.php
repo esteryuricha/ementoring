@@ -86,6 +86,10 @@ navigation_node::override_active_url($baseurl);
 $PAGE->set_heading($course->fullname);
 $PAGE->set_title($feedback->name);
 echo $OUTPUT->header();
+
+// moodio content-container before feedback title
+echo $OUTPUT->box_start('content-container feedback-mod feedback-view');
+
 echo $OUTPUT->heading(format_string($feedback->name));
 
 $current_tab = 'showentries';
@@ -157,6 +161,7 @@ if ($userid || $showcompleted) {
     }
 
 }
+echo $OUTPUT->box_end();
 
 // Finish the page.
 echo $OUTPUT->footer();

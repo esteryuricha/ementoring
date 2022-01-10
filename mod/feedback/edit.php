@@ -125,6 +125,10 @@ if (count($feedbackitems) > 1) {
 }
 
 echo $OUTPUT->header();
+
+// moodio content-container before feedback title
+echo $OUTPUT->box_start('content-container feedback-mod feedback-view');
+
 echo $OUTPUT->heading(format_string($feedback->name));
 
 /// print the tabs
@@ -173,5 +177,7 @@ if ($do_show == 'edit') {
     $form->display();
     echo '</div>';
 }
+
+echo $OUTPUT->box_end();
 
 echo $OUTPUT->footer();

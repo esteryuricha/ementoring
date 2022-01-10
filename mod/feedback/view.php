@@ -76,6 +76,9 @@ if ($courseid) {
 }
 $preview = html_writer::link($previewlnk, $previewimg);
 
+// moodio content-container before feedback title
+echo $OUTPUT->box_start('content-container feedback-mod feedback-view');
+
 echo $OUTPUT->heading(format_string($feedback->name) . $preview);
 
 // Render the activity information.
@@ -152,6 +155,7 @@ if ($feedbackcompletion->can_complete()) {
     }
     echo $OUTPUT->box_end();
 }
+echo $OUTPUT->box_end();
 
 echo $OUTPUT->footer();
 

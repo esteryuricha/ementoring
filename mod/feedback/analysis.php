@@ -49,6 +49,10 @@ if (!$feedbackstructure->can_view_analysis()) {
 $PAGE->set_heading($course->fullname);
 $PAGE->set_title($feedback->name);
 echo $OUTPUT->header();
+
+// moodio content-container before feedback title
+echo $OUTPUT->box_start('content-container feedback-mod feedback-view');
+
 echo $OUTPUT->heading(format_string($feedback->name));
 
 /// print the tabs
@@ -96,6 +100,8 @@ if ($check_anonymously) {
                                     'feedback', '', '', 3);
 }
 echo '</div>';
+
+echo $OUTPUT->box_end();
 
 echo $OUTPUT->footer();
 

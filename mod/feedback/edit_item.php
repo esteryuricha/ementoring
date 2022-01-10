@@ -101,6 +101,9 @@ $PAGE->set_heading($course->fullname);
 $PAGE->set_title($feedback->name);
 echo $OUTPUT->header();
 
+// moodio content-container before feedback title
+echo $OUTPUT->box_start('content-container feedback-mod feedback-view');
+
 // Print the main part of the page.
 echo $OUTPUT->heading(format_string($feedback->name));
 
@@ -119,5 +122,6 @@ $itemobj->show_editform();
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
+echo $OUTPUT->box_end();
 
 echo $OUTPUT->footer();
