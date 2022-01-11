@@ -30,8 +30,6 @@ class manager {
             $addtolocalevent->enddate = $datafordate['enddate'];
             $DB->insert_record('local_event', $addtolocalevent, false);
 
-            //create cohort
-
             //get contextid
             $context = $DB->get_record('context', ['contextlevel' => 40, 'instanceid' => $categoryid]);
 
@@ -84,6 +82,7 @@ class manager {
 
         $DB->update_record('course_categories', $recordtoupdate);
 
+        $updatelocalevent = new stdClass();
         $updatelocalevent->startdate = $startdate;
         $updatelocalevent->enddate = $enddate;
         $updatelocalevent->category = $id;
