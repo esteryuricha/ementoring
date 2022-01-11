@@ -80,10 +80,10 @@ class manager {
             $addtoenrol = new stdClass();
             $addtoenrol->enrol = "cohort";
             $addtoenrol->status = 0;
-            $addtoenrol->courseid = $cohort->id;
+            $addtoenrol->courseid = $courseid;
             $addtoenrol->sortorder = 1;
             $addtoenrol->roleid = 5;
-            $addtoenrol->customint1 = $cohortid;
+            $addtoenrol->customint1 = $cohort->id;
             $addtoenrol->timecreated = strtotime(date('Y-m-d H:i:s'));
             $addtoenrol->timemodified = strtotime(date('Y-m-d H:i:s'));
     
