@@ -72,14 +72,18 @@ class manager {
 
             $DB->insert_record('course_sections', $inserttotopicsection, false);
 
+            //get cohortid
+            $context = $DB->get_record('context', ['contextlevel' => 40, 'instanceid' => $category]);
+            $cohort = $DB->get_record('cohort', ['contextid', $context->id]);
+
             //add participants from cohort
             $addtoenrol = new stdClass();
             $addtoenrol->enrol = "cohort";
             $addtoenrol->status = 0;
-            $addtoenrol->courseid = $courseid;
+            $addtoenrol->courseid = $cohort->id;
             $addtoenrol->sortorder = 1;
             $addtoenrol->roleid = 5;
-            $addtoenrol->customint1 = 2;
+            $addtoenrol->customint1 = $cohortid;
             $addtoenrol->timecreated = strtotime(date('Y-m-d H:i:s'));
             $addtoenrol->timemodified = strtotime(date('Y-m-d H:i:s'));
     
