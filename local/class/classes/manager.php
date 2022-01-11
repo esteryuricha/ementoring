@@ -74,7 +74,7 @@ class manager {
 
             //get cohortid
             $context = $DB->get_record('context', ['contextlevel' => 40, 'instanceid' => $category]);
-            $cohort = $DB->get_record('cohort', ['contextid', $context->id]);
+            $cohort = $DB->get_record('cohort', ['contextid' => $context->id]);
 
             //add participants from cohort
             $addtoenrol = new stdClass();

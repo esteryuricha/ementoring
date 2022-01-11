@@ -40,7 +40,7 @@ if ($mform->is_cancelled()) {
     if($SESSION->current_id) { 
         $manager->update_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname);
     }else{
-        $manager->insert_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname);    
+       $manager->insert_class($fromform->visible ?? 0, $fromform->category, $fromform->idnumber, $fromform->fullname);    
     }
 
     redirect($CFG->wwwroot.'/local/class/index.php', 'success');
