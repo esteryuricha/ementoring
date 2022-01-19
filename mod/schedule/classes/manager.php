@@ -6,10 +6,14 @@ use stdClass;
 
 class manager {
     function get_schedules($eventid){
-        global $DB, $SESSION;
-
-        $schedules = $DB->get_records('local_schedule', ['eventid' => $eventid, 'courseid' => $SESSION->currentcourseid]);
+        global $DB, $SESSION, $USER;
         
+        $group = $DB->get_record_sql("SELECT g.id FROM {groups} g JOIN {groups_members} gm ON g.id = gm.groupid WHERE gm.userid = $USER->id and g.courseid = $SESSION->currentcourseid");
+        $groupid = $group->id;
+
+        // $schedules = $DB->get_records('local_schedule', ['eventid' => $eventid, 'courseid' => $SESSION->currentcourseid]);
+        $schedules = $DB->get_records_sql("select * from {local_schedule} where eventid='$eventid' and courseid = '$SESSION->currentcourseid' and (groupid is null or groupid='$groupid')");
+
         $list = "";
         $ids = array();
         foreach($schedules as $schedule){

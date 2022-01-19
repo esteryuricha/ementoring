@@ -32,6 +32,7 @@ require(['core/first', 'jquery', 'core/ajax', 'core/modal_factory', 'core/modal_
     });
 
     function save_schedule(id, eventid) {
+        console.log("success");
         let request = {
             methodname: 'mod_schedule_save_schedule',
             args: {
