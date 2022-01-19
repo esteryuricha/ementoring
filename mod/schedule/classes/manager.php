@@ -21,10 +21,12 @@ class manager {
         return json_encode($ids)."|".$list;
     }
 
-    function save_schedule($id){
+    function save_schedule($id, $eventid){
         global $DB, $SESSION, $USER;
 
         $group = $DB->get_record_sql("SELECT g.id FROM {groups} g JOIN {groups_members} gm ON g.id = gm.groupid WHERE gm.userid = $USER->id and g.courseid = $SESSION->currentcourseid");
+
+        $DB->execute("update {local_schedule} set groupid=null where groupid='$group->id' and eventid='$eventid'");
 
         $recordtoupdate = new stdClass();
         $recordtoupdate->groupid = $group->id;

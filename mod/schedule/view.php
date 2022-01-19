@@ -57,9 +57,15 @@ if( $role_assignment->id != 5 ){
     //check first
     $checklocalschedule = $DB->get_record('local_schedule', ['eventid' => $schedule->eventid, 'groupid' => $groupid, 'courseid' => $cm->course]);
     $allowedtocheckin = false;
+    $allowedtoedit = true;
 
+    
     if($checklocalschedule) {
         $scheduledate = date('Y-m-d', $checklocalschedule->selecteddate);
+        
+        if($scheduledate >= date('Y-m-d')) {
+            $allowedtoedit = false;
+        }
         
         if($scheduledate == date('Y-m-d')){
             $allowedtocheckin = true;
@@ -83,7 +89,8 @@ if( $role_assignment->id != 5 ){
         'checklocalschedule' => $checklocalschedule,
         'eventid' => $schedule->eventid,
         'allowedtocheckin' => $allowedtocheckin,
-        'checkintime' => $checkintime
+        'checkintime' => $checkintime,
+        'allowedtoedit' => $allowedtoedit
     ];
 
     echo $OUTPUT->render_from_template('mod_schedule/viewschedule', $templatecontext);

@@ -27,15 +27,18 @@ class mod_schedule_external extends external_api  {
     //save schedule
     public static function save_schedule_parameters() {
         return new external_function_parameters(
-            ['id' => new external_value(PARAM_INT, 'id of event')],
+            [
+                'id' => new external_value(PARAM_INT, 'id of schedule'),
+                'eventid' => new external_value(PARAM_INT, 'id of event')
+            ],
         );
     }
 
-    public static function save_schedule($id): string {
-        $params = self::validate_parameters(self::save_schedule_parameters(), array('id'=>$id));
+    public static function save_schedule($id, $eventid): string {
+        $params = self::validate_parameters(self::save_schedule_parameters(), ['id'=> $id, 'eventid' => $eventid]);
 
         $manager = new manager();
-        return $manager->save_schedule($id);
+        return $manager->save_schedule($id, $eventid);
     }
 
     public static function save_schedule_returns() {

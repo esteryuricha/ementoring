@@ -17,6 +17,14 @@
             <td>Time</td>
             <td>{{selectedtime}}</td>
         </tr>
+        {{#allowedtoedit}}
+        <tr>
+            <td colspan="2">
+                <button class="btn btn-primary" type="button" id="edit_button" value="{{eventid}}">edit selection</button>
+                <button class="btn btn-danger" type="button" id="cancel_button" value="{{eventid}}">cancel selection</button>
+            </td>
+        </tr>
+        {{/allowedtoedit}}
     </table>
     {{#allowedtocheckin}}
     
