@@ -7,12 +7,21 @@ $white-1: #F7F6F5;
 $gray-1: #DAD8D5;
 $gray-2: #CCC;
 $green-1: #76ff03;
+$green-pastel-1: #53ae3d;
+$green-pastel-2: #8ddf6b;
+$green-pastel-gradient: -webkit-linear-gradient($green-pastel-1, $green-pastel-2);
+$green-theme: darken($green-pastel-2, 8%);
 
 $shadow-1: rgba(59, 46, 46, 0.125);
 
 $body-bgcolor: $white-1;
 
 $primary: $purple-theme;
+
+$theme-1: $purple-1;
+$theme-2: $purple-2;
+$theme-gradient: $purple-gradient;
+$ok: $green-1;
 
 // supported browsers
 $browsers: '', '-moz-', '-webkit-', '-ms-';
