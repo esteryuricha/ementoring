@@ -2893,7 +2893,7 @@ class global_navigation extends navigation_node {
             $courseid = $COURSE->id;
             $params = array('view' => 'month');
             if ($courseid != $SITE->id) {
-                $params['course'] = $courseid;
+                //$params['course'] = $courseid; //disabled 21/01/2022 so calender can be viewed generally after clicked course
             }
 
             // Calendar
