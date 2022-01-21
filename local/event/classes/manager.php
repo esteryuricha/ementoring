@@ -30,8 +30,6 @@ class manager {
             $addtolocalevent->enddate = $datafordate['enddate'];
             $DB->insert_record('local_event', $addtolocalevent, false);
 
-            //create cohort
-
             //get contextid
             $context = $DB->get_record('context', ['contextlevel' => 40, 'instanceid' => $categoryid]);
 
@@ -84,6 +82,7 @@ class manager {
 
         $DB->update_record('course_categories', $recordtoupdate);
 
+        $updatelocalevent = new stdClass();
         $updatelocalevent->startdate = $startdate;
         $updatelocalevent->enddate = $enddate;
         $updatelocalevent->category = $id;
@@ -99,9 +98,12 @@ class manager {
         global $DB;
         $transaction = $DB->start_delegated_transaction();
         $deletedDetail = $DB->delete_records('local_event', ['category' => $id]);
-        $deletedEvent = $DB->delete_records('course_categories', ['id' => $id]);
+        
+        $category = \core_course_category::get($id, IGNORE_MISSING);
 
-        if($deletedEvent && $deletedDetail) {
+        $category->delete_full(true);
+
+        if($deletedDetail) {
             $DB->commit_delegated_transaction($transaction);
         }
 

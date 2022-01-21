@@ -2,6 +2,7 @@
 use local_schedule\manager;
 
 require_once(__DIR__.'/../../config.php');
+require_login();
 
 //get param
 $id = optional_param('id', null, PARAM_INT);

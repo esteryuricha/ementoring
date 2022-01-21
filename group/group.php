@@ -78,7 +78,6 @@ $strgroups = get_string('groups');
 $PAGE->set_title($strgroups);
 $PAGE->set_heading($course->fullname . ': '.$strgroups);
 $PAGE->set_pagelayout('course');
-$PAGE->set_pagetype('course-view-group');
 $PAGE->blocks->add_region('content');
 
 navigation_node::override_active_url(new moodle_url('/group/index.php', array('id' => $course->id)));
@@ -122,6 +121,7 @@ if ($editform->is_cancelled()) {
 echo $OUTPUT->header();
 echo $OUTPUT->custom_block_region('content');
 echo "<div class='content-container'>";
+
 $editform->display();
 echo "</div>";
 echo $OUTPUT->footer();
