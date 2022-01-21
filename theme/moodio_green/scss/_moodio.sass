@@ -1,0 +1,138 @@
+$z-indexes: (header, sidebar, footer, main)
+
+// global variables
+$dark: #333666
+$holy: #fefefe
+$black: #121212
+$white: #ffffff
+$guava: #de8888
+$blue-deep-1: #021b78
+$blue-deep-2: #0575e5
+$blue: #009ffd
+$blue-light: #87e0ff
+$grey-light: #dedede
+$grey-dark: #2e2e2e
+$grey: #888
+
+$green: #77fb77
+$pink: #ff80ab
+$orange: #f8a044
+
+$white-min: #fcfcff
+$cancel: #ffafd1
+$ok: $green
+$good: $green
+
+$theme: $blue
+
+$shadow: 0 2px 4px -1px rgba(0, 0, 0, .8), 0 4px 5px 0 rgba(0, 0, 0, .56), 0 1px 10px 0 rgba(0, 0, 0, .48)
+$shadow-lite: 0 2px 4px -1px rgba(0, 0, 0, .1), 0 4px 5px 0 rgba(0, 0, 0, .07), 0 1px 10px 0 rgba(0, 0, 0, .06)
+
+$font-family: "Montserrat", "Century Gothic", Verdana, Oxygen, sans-serif
+$input-font-size: 1rem
+
+$break-point-1: 52.5rem
+
+// supported browsers
+$browsers: '', '-moz-', '-webkit-', '-ms-'
+
+// style mixin
+=transition($sec, $type: all, $accel: ease)
+	@each $browser in $browsers
+		#{$browser}transition: $type $sec $accel
+=borderRadius($radius: 50%)
+	@each $browser in $browsers
+		#{$browser}border-radius: $radius
+=boxSizing($type: border-box)
+	@each $browser in $browsers
+		#{$browser}box-sizing: $type
+=shadow($color: $shadow-lite)
+	@each $browser in $browsers
+		#{$browser}box-shadow: $color
+=absoluteZero
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+=createBorder($width: 1px 1px 2px 1px, $color: $dark, $style: solid)
+	border-width: $width
+	border-style: $style
+	border-color: $color
+=itemCard
+	+createBorder($width: 1px 2px 3px 1px)
+	padding: $inner-padding
+	margin-bottom: $card-margin
+	img
+		max-width: 100%
+=actionButton($margin: 0 0 0 0)
+	+createBorder
+	padding: $inner-padding
+	background-color: $holy
+	cursor: pointer
+	margin: $margin
+=floatingActionButton($border-radius: 50% default, $top: null, $right: null, $bottom: null, $left: null)
+	position: fixed
+	top: $top
+	right: $right
+	bottom: $bottom
+	left: $left
+	+actionButton
+	+borderRadius
+		
+=createModal($text-align: center, $modal-padding: $modal-padding)
+	// vertical centering
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	position: fixed
+	+absoluteZero
+	text-align: $text-align
+	padding: $root-padding
+	min-height: 100vh
+	height: 100vh
+	z-index: 888
+	.modal
+		+createBorder($width: 1px 2px 3px 1px)
+		background-color: $white
+		padding: $modal-padding
+		z-index: 889
+=createBackdrop($background-color: rgba(0,0,0,0.28))
+	+absoluteZero
+	position: fixed
+	background-color: $background-color
+
+=createInlineMenu
+	li, ul li, nav ul li
+		display: inline-block
+	nav ul, ul
+		padding: 0
+		display: inline-block
+
+// form items
+=standardInput($height: 2.5rem, $padding: 0 .5rem, $display: block, $width: 100%, $font-size: $input-font-size)
+	height: $height
+	line-height: $height
+	padding: $padding
+	display: $display
+	width: $width
+	font-size: $font-size
+	font-family: $font-family
+=standardTextArea($padding: .5rem .5rem, $display: block, $width: 100%, $font-size: $input-font-size)
+	padding: $padding
+	display: $display
+	width: $width
+	font-size: $font-size
+	font-family: $font-family
+	overflow: auto
+	resize: none
+
+=boxDimension($width, $height: $width, $lineheight: $height, $align: center)
+	width: $width
+	height: $height
+	line-height: $lineheight
+	text-align: $align
+
+=backgroundPattern($bg-primary,$bg-secondary)
+	background: repeating-linear-gradient(-45deg, transparent, transparent 1em, rgba($bg-secondary,0.4) 0, rgba($bg-secondary,0.1) 2em, transparent 0, transparent 1em, rgba($bg-secondary,0.3) 0, rgba($bg-secondary,0.2) 4em, transparent 0, transparent 1em, rgba($bg-primary,0.6) 0, rgba($bg-primary,0.2) 2em ),repeating-linear-gradient(45deg, transparent, transparent 1em, rgba($bg-secondary,0.4) 0, rgba($bg-secondary,0.1) 2em, transparent 0, transparent 1em, rgba($bg-secondary,0.3) 0, rgba($bg-secondary,0.2) 4em, transparent 0, transparent 1em, rgba($bg-primary,0.4) 0, rgba($bg-primary,0.1) 2em), #FFF
+	background-blend-mode: multiply
