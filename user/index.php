@@ -90,7 +90,7 @@ $PAGE->set_heading($course->fullname);
 $PAGE->set_pagetype('course-view-' . $course->format);
 $PAGE->set_docs_path('enrol/users');
 $PAGE->add_body_class('path-user');                     // So we can style it independently.
-$PAGE->set_other_editing_capability('moodle/course:manageactivities');
+// $PAGE->set_other_editing_capability('moodle/course:manageactivities'); //disabled so when user access this menu, user cant control the blocks 29012022
 
 // Expand the users node in the settings navigation when it exists because those pages
 // are related to this one.
