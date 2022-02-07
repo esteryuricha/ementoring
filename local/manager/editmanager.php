@@ -19,7 +19,7 @@ $PAGE->blocks->add_region('content');
 
 
 //breadcrumb
-$previewnode = $PAGE->navigation->add('Participant Management', new moodle_url('/local/manager/index.php'), navigation_node::TYPE_CONTAINER);
+$previewnode = $PAGE->navigation->add('Manager Management', new moodle_url('/local/manager/index.php'), navigation_node::TYPE_CONTAINER);
 $thingnode = $previewnode->add($title, new moodle_url('/local/manager/editmanager.php'));
 $thingnode->make_active();
 

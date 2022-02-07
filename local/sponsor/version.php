@@ -1,7 +1,7 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'mod_schedule';
-$plugin->version = 2021121508;
+$plugin->component = 'local_sponsor';
+$plugin->version = 2021020700;
 $plugin->requires = 2016052308; 
 ?>

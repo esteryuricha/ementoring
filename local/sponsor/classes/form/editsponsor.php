@@ -1,10 +1,10 @@
 <?php
-namespace local_manager\form;
+namespace local_sponsor\form;
 use moodleform;
 
 require_once("$CFG->libdir/formslib.php");
 
-class editmanager extends moodleform {
+class editsponsor extends moodleform {
     public function definition() {
         global $CFG;
 
@@ -13,26 +13,26 @@ class editmanager extends moodleform {
         $mform->addElement('html', '<div class="content-container">');
 
         //active
-        $mform->addElement('checkbox',  'visible',  get_string('active','local_manager'));
+        $mform->addElement('checkbox',  'visible',  get_string('active','local_sponsor'));
         $mform->setDefault('visible', 1);
 
         //first name
-        $mform->addElement('text', 'firstname', get_string('first_name','local_manager'));
+        $mform->addElement('text', 'firstname', get_string('first_name','local_sponsor'));
         $mform->setType('firstname', PARAM_NOTAGS);
         $mform->addRule('firstname', null, 'required');
         
         //lastname
-        $mform->addElement('text', 'lastname', get_string('last_name','local_manager'));
+        $mform->addElement('text', 'lastname', get_string('last_name','local_sponsor'));
         $mform->setType('lastname', PARAM_NOTAGS);
         $mform->addRule('lastname', null, 'required');
 
         //email
-        $mform->addElement('text', 'email', get_string('email','local_manager'));
+        $mform->addElement('text', 'email', get_string('email','local_sponsor'));
         $mform->setType('email', PARAM_NOTAGS);
         $mform->addRule('email', null, 'required');
 
         //password
-        $mform->addElement('passwordunmask', 'password', get_string('new_password','local_manager'), 'size="20"' . $purpose);
+        $mform->addElement('passwordunmask', 'password', get_string('new_password','local_sponsor'), 'size="20"' . $purpose);
         $mform->addHelpButton('password', 'password');
         $mform->disabledIf('password', 'createpassword', 'checked');
 

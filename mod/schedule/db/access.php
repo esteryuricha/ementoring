@@ -1,6 +1,5 @@
 <?php
 $capabilities = array(
-
     'mod/schedule:addinstance' => array(
         'riskbitmask' => RISK_XSS,
         'captype' => 'write',

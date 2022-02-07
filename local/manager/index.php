@@ -3,6 +3,7 @@ use local_manager\manager;
 
 require_once(__DIR__.'/../../config.php');
 require_login();
+require_capability('local/manager:addinstance', context_system::instance());
 
 global $DB;
 
@@ -14,8 +15,7 @@ $PAGE->set_heading($title);
 $PAGE->set_pagelayout('course');
 $PAGE->set_pagetype('my-index');
 $PAGE->blocks->add_region('content');
-
-$PAGE->requires->js_call_amd('local_manager/confirm');
+$PAGE->requires->js('/local/manager/assets/main.js');
 
 echo $OUTPUT->header();
 
