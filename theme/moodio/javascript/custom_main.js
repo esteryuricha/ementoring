@@ -198,3 +198,15 @@ if (document.querySelector('#assignform .generaltable.generalbox.boxaligncenter'
         searchEnrollableWrapper.prepend(searchEnrollableForm)
     }
 }
+
+if (document.querySelector('.page-context-header .page-header-image')) {
+    const profileImage = document.querySelector('.page-context-header .page-header-image')
+    if (document.querySelector('.userprofile')) {
+        const profileActions = document.querySelector('.btn-group.header-button-group')
+        const profileArea = document.querySelector('.userprofile')
+        const createHr = document.createElement('hr')
+        profileArea.prepend(createHr)
+        profileArea.prepend(profileActions)
+        profileArea.prepend(profileImage)
+    }
+}

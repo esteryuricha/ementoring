@@ -166,7 +166,7 @@ if (mediaQuery.matches) {
             if (userMenuCheck) {
                 for (const element of userMenuCheck) {
                     // console.log(element.innerHTML)
-                    if (element.innerHTML == "Managers" || element.innerHTML == "Mentors" || element.innerHTML == "Participants") {
+                    if (element.innerHTML == "Managers" || element.innerHTML == "Mentors" || element.innerHTML == "Participants" | element.innerHTML == "Sponsors") {
                         // console.log(element.innerHTML + " selected")
                         const targetedMenu = element.parentElement.parentElement.parentElement.parentElement
                         if (targetedMenu) {
@@ -196,5 +196,17 @@ if (document.querySelector('#assignform .generaltable.generalbox.boxaligncenter'
         searchEnrollableForm.style.minHeight = '4rem'
         searchEnrollableForm.childNodes[1].placeholder = 'Search'
         searchEnrollableWrapper.prepend(searchEnrollableForm)
+    }
+}
+
+if (document.querySelector('.page-context-header .page-header-image')) {
+    const profileImage = document.querySelector('.page-context-header .page-header-image')
+    if (document.querySelector('.userprofile')) {
+        const profileActions = document.querySelector('.btn-group.header-button-group')
+        const profileArea = document.querySelector('.userprofile')
+        const createHr = document.createElement('hr')
+        profileArea.prepend(createHr)
+        profileArea.prepend(profileActions)
+        profileArea.prepend(profileImage)
     }
 }
