@@ -166,7 +166,7 @@ if (mediaQuery.matches) {
             if (userMenuCheck) {
                 for (const element of userMenuCheck) {
                     // console.log(element.innerHTML)
-                    if (element.innerHTML == "Managers" || element.innerHTML == "Mentors" || element.innerHTML == "Participants") {
+                    if (element.innerHTML == "Managers" || element.innerHTML == "Mentors" || element.innerHTML == "Participants" | element.innerHTML == "Sponsors") {
                         // console.log(element.innerHTML + " selected")
                         const targetedMenu = element.parentElement.parentElement.parentElement.parentElement
                         if (targetedMenu) {
