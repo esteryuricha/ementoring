@@ -74,13 +74,15 @@ function local_boostnavigation_extend_navigation(global_navigation $navigation) 
     $node12 = $node1->add('Participants', new moodle_url($CFG->wwwroot.'/local/participant/'),navigation_node::NODETYPE_LEAF, null, null, null);
     $node12->showinflatnavigation = true;
 
-    if( has_capability('local/manager:view', context_system::instance()) || $USER->username = 'admin') {
+    if( has_capability('local/manager:addinstance', context_system::instance())) {
         $node13 = $node1->add('Managers',  new moodle_url($CFG->wwwroot.'/local/manager/'), navigation_node::NODETYPE_LEAF, null, null, null);
         $node13->showinflatnavigation = true;
     }
 
-    $node14 = $node1->add('Sponsors',  new moodle_url($CFG->wwwroot.'/local/sponsor/'), navigation_node::NODETYPE_LEAF, null, null, null);
-    $node14->showinflatnavigation = true;
+    if( has_capability('local/sponsor:addinstance', context_system::instance())) {
+        $node14 = $node1->add('Sponsors',  new moodle_url($CFG->wwwroot.'/local/sponsor/'), navigation_node::NODETYPE_LEAF, null, null, null);
+        $node14->showinflatnavigation = true;
+    }
 
     $node2 = $navigation->add('Programs', new moodle_url($CFG->wwwroot.'/local/event/'), navigation_node::NODETYPE_BRANCH, null, null, new pix_icon('i/flagged', null));
     $node2->showinflatnavigation = true;
