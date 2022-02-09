@@ -16,9 +16,7 @@ $PAGE->set_heading($title);
 $PAGE->set_pagelayout('course');
 $PAGE->set_pagetype('my-index');
 $PAGE->blocks->add_region('content');
-
-
-$PAGE->requires->js_call_amd('local_mentor/confirm');
+$PAGE->requires->js('/local/mentor/assets/main.js');
 
 echo $OUTPUT->header();
 
