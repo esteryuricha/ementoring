@@ -27,9 +27,11 @@ class editparticipant extends moodleform {
         $mform->addRule('lastname', null, 'required');
 
         //email
-        $mform->addElement('text', 'email', 'Email');
+        $mform->addElement('text', 'email', 'Email', ['id' => 'email']);
         $mform->setType('email', PARAM_NOTAGS);
         $mform->addRule('email', null, 'required');
+
+        $mform->addElement('html', '<div id="email_check" style="margin-left:30%"></div>');
 
         //handphone
         $mform->addElement('text', 'phone1', 'Handphone');
