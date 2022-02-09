@@ -1,6 +1,6 @@
 <?php
 $capabilities = array(
-    'local/manager:addinstance' => array(
+    'local/participant:addinstance' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'archetypes' => array(
