@@ -8,7 +8,7 @@ require_login();
 
 global $DB, $SESSION;
 
-$title = "Add New Course";
+$title = get_string('add_new_course', 'local_class');
 $PAGE->set_url(new moodle_url('/local/class/editclass.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
@@ -19,7 +19,7 @@ $PAGE->blocks->add_region('content');
     
 
 //breadcrumb
-$previewnode = $PAGE->navigation->add('Program Management', new moodle_url('/local/class/index.php'), navigation_node::TYPE_CONTAINER);
+$previewnode = $PAGE->navigation->add(get_string('header', 'local_class'), new moodle_url('/local/class/index.php'), navigation_node::TYPE_CONTAINER);
 $thingnode = $previewnode->add($title, new moodle_url('/local/class/editclass.php'));
 $thingnode->make_active();
 

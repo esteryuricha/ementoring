@@ -6,7 +6,7 @@ require_login();
 
 global $DB;
 
-$title = "Program Management";
+$title = get_string('header', 'local_event');
 $PAGE->set_url(new moodle_url('/local/event/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
@@ -14,9 +14,7 @@ $PAGE->set_heading($title);
 $PAGE->set_pagelayout('course');
 $PAGE->set_pagetype('my-index');
 $PAGE->blocks->add_region('content');
-
-
-$PAGE->requires->js_call_amd('local_event/confirm');
+$PAGE->requires->js('/local/event/assets/main.js');
 
 echo $OUTPUT->header();
 

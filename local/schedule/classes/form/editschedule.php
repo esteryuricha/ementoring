@@ -16,18 +16,18 @@ class editschedule extends moodleform {
         $selectArray = array();
         $events = $DB->get_records_sql("SELECT id, name FROM {event} where eventtype='category' and categoryid='$course->category'"); //must get the current event
 
-        $selectArray[0] = "choose event type";
+        $selectArray[0] = get_string('choose_event_type', 'local_schedule');
         foreach( $events as $event ) {
             $key = $event->id;
             $value = $event->name;
             $selectArray[$key] = $value;
         }
 
-        $mform->addElement('select', 'eventid', 'Event Type', $selectArray, ['id' => 'eventid']);
+        $mform->addElement('select', 'eventid', get_string('event_type', 'local_schedule'), $selectArray, ['id' => 'eventid']);
         $mform->addRule('eventid', null, 'required');
 
         //selecteddate
-        $mform->addElement('select', 'availabledates', 'Selected Date', [], ['id' => 'availabledates']);
+        $mform->addElement('select', 'availabledates', get_string('selected_date', 'local_schedule'), [], ['id' => 'availabledates']);
         $mform->addElement('hidden', 'selecteddate', '', ['id' => 'selecteddate']);
         $mform->setType('selecteddate', PARAM_NOTAGS);
         $mform->addRule('availabledates', null, 'required');
@@ -71,7 +71,7 @@ class editschedule extends moodleform {
         ];
 
         //selectedtime
-        $mform->addElement('select', 'selectedtime', 'Selected Time', $selectTime);
+        $mform->addElement('select', 'selectedtime', get_string('selected_time', 'local_schedule'), $selectTime);
         $mform->addRule('selectedtime', null, 'required');
 
         //button

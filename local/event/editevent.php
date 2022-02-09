@@ -8,7 +8,7 @@ require_login();
 
 global $DB, $SESSION;
 
-$title = "Add New Program";
+$title = get_string('add_new_program', 'local_event');
 $PAGE->set_url(new moodle_url('/local/event/editevent.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
@@ -19,7 +19,7 @@ $PAGE->blocks->add_region('content');
 
 
 //breadcrumb
-$previewnode = $PAGE->navigation->add('Program Management', new moodle_url('/local/event/index.php'), navigation_node::TYPE_CONTAINER);
+$previewnode = $PAGE->navigation->add(get_string('header', 'local_event'), new moodle_url('/local/event/index.php'), navigation_node::TYPE_CONTAINER);
 $thingnode = $previewnode->add($title, new moodle_url('/local/event/editevent.php'));
 $thingnode->make_active();
 

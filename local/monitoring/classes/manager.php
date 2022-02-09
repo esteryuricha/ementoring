@@ -14,7 +14,7 @@ class manager {
                 FROM {groups} WHERE courseid = '$id'";
         $groups = $DB->get_records_sql($sql);
         
-        $data = "<h3>Detail Groups of <b>$course->fullname</b></h3>";
+        $data = "<h3>".get_string('subheader', 'local_monitoring')." <b>$course->fullname</b></h3>";
         $data .= "<table class='table table-bordered border-primary'>";
         $data .= "<thead>";
         $data .= "<tr>

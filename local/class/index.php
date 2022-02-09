@@ -7,7 +7,7 @@ require_login();
 
 global $DB, $USER, $SESSION;
 
-$title = "Course Management";
+$title = get_string('header', 'local_class');
 $PAGE->set_url(new moodle_url('/local/class/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);

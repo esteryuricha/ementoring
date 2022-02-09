@@ -2,7 +2,7 @@
 require_once(__DIR__.'/../../config.php');
 require_login();
 
-$title = "Statistics";
+$title = get_string('statistics', 'local_statistic');
 $PAGE->set_url(new moodle_url('/local/statistic/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
@@ -62,15 +62,15 @@ foreach( $userbyprograms as $p){
 }
 
 $chart = new core\chart_bar();
-$chart->set_title('Class Amount By Program');
-$series = new core\chart_series('class', $coursecount);
+$chart->set_title(get_string('chart1_header', 'local_statistic'));
+$series = new core\chart_series(get_string('chart1_series1', 'local_statistic'), $coursecount);
 $chart->add_series($series);
 $chart->set_labels($listprogram);
 
 $chart1 = new \core\chart_bar(); // Create a bar chart instance.
-$chart1->set_title('User Amount');
-$participants = new \core\chart_series('participant', $listparticipant);
-$mentors = new \core\chart_series('mentor', $listmentor);
+$chart1->set_title(get_string('chart2_header', 'local_statistic'));
+$participants = new \core\chart_series(get_string('chart2_series1', 'local_statistic'), $listparticipant);
+$mentors = new \core\chart_series(get_string('chart2_series2', 'local_statistic'), $listmentor);
 $chart1->add_series($participants);
 $chart1->add_series($mentors);
 $chart1->set_labels($listcategory);

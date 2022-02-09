@@ -24,4 +24,4 @@
 $string['courseheader:addinstance'] = 'Add a new profile block';
 $string['courseheader:myaddinstance'] = 'Add a new profile block to Dashboard';
 $string['courseheader'] = '(new profile block)';
-$string['pluginname'] = 'CLASS';
+$string['pluginname'] = 'Course Header';

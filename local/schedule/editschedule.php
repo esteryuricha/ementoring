@@ -12,7 +12,7 @@ global $DB, $SESSION;
 $id = optional_param('id', null, PARAM_INT);
 
 
-$title = "Add New Schedule";
+$title = get_string('add_new_schedule', 'local_schedule');
 $PAGE->set_url(new moodle_url('/local/class/editschedule.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);

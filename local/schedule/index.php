@@ -11,7 +11,7 @@ global $DB, $SESSION;
 
 $SESSION->currentcourseid = $id;
 
-$title = "Schedule Management";
+$title = get_string('header', 'local_schedule');
 $PAGE->set_url(new moodle_url('/local/schedule/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);

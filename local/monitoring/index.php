@@ -9,7 +9,7 @@ $id = optional_param('id', null, PARAM_INT);
 //get program 
 $program = $DB->get_record('course_categories', ['id' => $id]);
 
-$title = "Monitoring Program ".$program->idnumber;
+$title = get_string('header', 'local_monitoring')." ".$program->idnumber;
 $PAGE->set_url(new moodle_url('/local/monitoring/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
