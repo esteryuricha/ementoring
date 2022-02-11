@@ -7,7 +7,7 @@ require_login();
 
 global $DB;
 
-$title = "Mentor Management";
+$title = get_string('header', 'local_mentor');
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_url(new moodle_url('/local/mentor/index.php'));
 $PAGE->set_title($title);

@@ -27,9 +27,11 @@ class editmanager extends moodleform {
         $mform->addRule('lastname', null, 'required');
 
         //email
-        $mform->addElement('text', 'email', get_string('email','local_manager'));
+        $mform->addElement('text', 'email', get_string('email','local_manager'), ['id' => 'email']);
         $mform->setType('email', PARAM_NOTAGS);
         $mform->addRule('email', null, 'required');
+
+        $mform->addElement('html', '<div id="email_check" style="margin-left:30%"></div>');
 
         //password
         $mform->addElement('passwordunmask', 'password', get_string('new_password','local_manager'), 'size="20"' . $purpose);

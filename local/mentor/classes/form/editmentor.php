@@ -27,9 +27,11 @@ class editmentor extends moodleform {
         $mform->addRule('lastname', null, 'required');
 
         //email
-        $mform->addElement('text', 'email', 'Email');
+        $mform->addElement('text', 'email', 'Email', ['id' => 'email']);
         $mform->setType('email', PARAM_NOTAGS);
         $mform->addRule('email', null, 'required');
+
+        $mform->addElement('html', '<div id="email_check" style="margin-left:30%"></div>');
 
         //password
         $mform->addElement('passwordunmask', 'password', get_string('newpassword'), 'size="20"' . $purpose);

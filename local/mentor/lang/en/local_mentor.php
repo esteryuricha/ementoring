@@ -1,6 +1,8 @@
 <?php
 $string['pluginname'] = 'Mentor';
 $string['modulenameplural'] = 'Mentors';
+$string['header'] = "Mentor Management";
+$string['add_new_mentor'] = "Add New Mentor";
 $string['mentor:addinstance'] = 'Add New Mentor';
 $string['active'] = 'Active';
 $string['first_name'] = 'First Name';
