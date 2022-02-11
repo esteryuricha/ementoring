@@ -37,4 +37,4 @@ if ($this->page->pagetype == 'login-signup') {
     $templatecontext['logourl'] = $OUTPUT->get_logo();
 }
 
-echo $OUTPUT->render_from_template('theme_moodio/login', $templatecontext);
+echo $OUTPUT->render_from_template('theme_moodio_green/login', $templatecontext);

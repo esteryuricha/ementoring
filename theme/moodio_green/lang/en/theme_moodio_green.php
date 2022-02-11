@@ -7,7 +7,7 @@ defined('MOODLE_INTERNAL') || die();
 // A description shown in the admin theme selector.                                                                                 
 $string['choosereadme'] = 'Theme Moodio is a child theme of Boost.';                
 // The name of our plugin.                                                                                                          
-$string['pluginname'] = 'Moodio theme';                                                                                                    
+$string['pluginname'] = 'Moodio Green Theme';                                                                                                    
 // We need to include a lang string for each block region.                                                                          
 $string['region-side-pre'] = 'Right';
 
