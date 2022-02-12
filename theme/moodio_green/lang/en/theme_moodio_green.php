@@ -5,7 +5,7 @@
 defined('MOODLE_INTERNAL') || die();                                                                                                
                                                                                                                                     
 // A description shown in the admin theme selector.                                                                                 
-$string['choosereadme'] = 'Theme Moodio is a child theme of Boost.';                
+$string['choosereadme'] = 'Theme Moodio Green is a child theme of Boost.';                
 // The name of our plugin.                                                                                                          
 $string['pluginname'] = 'Moodio Green Theme';                                                                                                    
 // We need to include a lang string for each block region.                                                                          
@@ -18,9 +18,9 @@ $string['brandcolor'] = 'Brand colour';
 // The brand colour setting description.                                                                                            
 $string['brandcolor_desc'] = 'The accent colour.';     
 // Name of the settings pages.                                                                                                      
-$string['configtitle'] = 'Moodio settings';                                                                                          
+$string['configtitle'] = 'Moodio Green Settings';                                                                                          
 // Name of the first settings tab.                                                                                                  
-$string['generalsettings'] = 'General settings';                                                                                    
+$string['generalsettings'] = 'General Settings';                                                                                    
 // Preset files setting.                                                                                                            
 $string['presetfiles'] = 'Additional theme preset files';                                                                           
 // Preset files help text.                                                                                                          
