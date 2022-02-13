@@ -7,7 +7,7 @@ require_capability('local/sponsor:addinstance', context_system::instance());
 
 global $DB;
 
-$title = "Sponsor Management";
+$title = get_string('header', 'local_sponsor');
 $PAGE->set_url(new moodle_url('/local/sponsor/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);

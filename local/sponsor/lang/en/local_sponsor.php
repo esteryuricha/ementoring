@@ -1,5 +1,7 @@
 <?php
 $string['pluginname'] = 'Sponsor';
+$string['header'] = 'Sponsor Management';
+$string['add_new_sponsor'] = 'Add New Sponsor';
 $string['modulenameplural'] = 'Sponsors';
 $string['sponsor:addinstance'] = 'Add New Sponsor';
 $string['active'] = 'Active';

@@ -8,7 +8,7 @@ require_login();
 
 global $DB, $SESSION;
 
-$title = "Add New Sponsor";
+$title = get_string('add_new_sponsor', 'local_sponsor');
 $PAGE->set_url(new moodle_url('/local/sponsor/editsponsor.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title($title);
@@ -16,10 +16,11 @@ $PAGE->set_heading($title);
 $PAGE->set_pagelayout('course');
 $PAGE->set_pagetype('my-index');
 $PAGE->blocks->add_region('content');
+$PAGE->requires->js('/local/sponsor/assets/form.js');
 
 
 //breadcrumb
-$previewnode = $PAGE->navigation->add('Sponsor Management', new moodle_url('/local/sponsor/index.php'), navigation_node::TYPE_CONTAINER);
+$previewnode = $PAGE->navigation->add(get_string('header', 'local_sponsor'), new moodle_url('/local/sponsor/index.php'), navigation_node::TYPE_CONTAINER);
 $thingnode = $previewnode->add($title, new moodle_url('/local/sponsor/editsponsor.php'));
 $thingnode->make_active();
 

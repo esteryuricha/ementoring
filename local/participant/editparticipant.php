@@ -16,7 +16,7 @@ $PAGE->set_heading($title);
 $PAGE->set_pagelayout('course');
 $PAGE->set_pagetype('my-index');
 $PAGE->blocks->add_region('content');
-$PAGE->requires->js('/local/participant/assets/main.js');
+$PAGE->requires->js('/local/participant/assets/form.js');
 
 
 //breadcrumb

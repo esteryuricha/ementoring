@@ -27,9 +27,11 @@ class editsponsor extends moodleform {
         $mform->addRule('lastname', null, 'required');
 
         //email
-        $mform->addElement('text', 'email', get_string('email','local_sponsor'));
+        $mform->addElement('text', 'email', get_string('email','local_sponsor'), ['id' => 'email']);
         $mform->setType('email', PARAM_NOTAGS);
         $mform->addRule('email', null, 'required');
+
+        $mform->addElement('html', '<div id="email_check"></div>');
 
         //password
         $mform->addElement('passwordunmask', 'password', get_string('new_password','local_sponsor'), 'size="20"' . $purpose);

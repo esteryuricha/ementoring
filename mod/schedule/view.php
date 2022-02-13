@@ -63,7 +63,7 @@ if( $role_assignment->id != 5 ){
     if($checklocalschedule) {
         $scheduledate = date('Y-m-d', $checklocalschedule->selecteddate);
         
-        if($scheduledate >= date('Y-m-d')) {
+        if($scheduledate <= date('Y-m-d')) {
             $allowedtoedit = false;
         }
         

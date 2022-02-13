@@ -95,4 +95,24 @@ class manager {
 
         return true;
     }
+
+    function check_email($email) {
+        global $DB;
+
+        $sql = "SELECT email FROM {user} WHERE email = '$email' LIMIT 1";
+        $available_email = $DB->get_records_sql($sql);
+
+        if( $available_email ) {
+            $return_value = "Not Allowed";
+        }else{
+            $return_value = "Allowed";
+        }
+
+        if( $email == "" ){
+            $return_value = "Not Allowed";
+        }
+
+        return $return_value;
+    }
+
 }

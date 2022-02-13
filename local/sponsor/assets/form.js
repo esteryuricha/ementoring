@@ -8,7 +8,7 @@ require(['jquery', 'core/modal_factory', 'core/modal_events', 'core/ajax', 'core
    $("#email").blur(function() {
       var email = this.value;
       let request = {
-          methodname: 'local_manager_check_email',
+          methodname: 'local_sponsor_check_email',
           args: {email: email},
       };
       Ajax.call([request])[0].done(function(data) {      
