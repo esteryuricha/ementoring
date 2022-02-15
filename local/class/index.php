@@ -56,6 +56,8 @@ foreach($course_categories as $category){
     $selected = "";
     if($category->id == $SESSION->selectedcategory) {
         $selected = "selected";
+    }else{
+        $selected = "";
     }
 
     $categories[] = array(

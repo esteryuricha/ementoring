@@ -389,6 +389,14 @@ function core_login_get_return_url() {
                 $category = $DB->get_record_sql($sql);
                 $SESSION->selectedcategory = $category->id;
             }
+        }else{
+            //especially for admin to store the session first
+            $sql = "SELECT id 
+                    FROM {course_categories} cc
+                    ORDER BY id DESC
+                    LIMIT 1";
+            $category = $DB->get_record_sql($sql);
+            $SESSION->selectedcategory = $category->id;
         }
     }
     return $urltogo;

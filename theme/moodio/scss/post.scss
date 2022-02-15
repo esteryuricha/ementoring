@@ -84,7 +84,6 @@ $course-title-font-weight: 600;
     -webkit-text-fill-color: transparent;
 }
 
-// ugly moodle button group fix be like
 .show > .btn-outline-secondary.dropdown-toggle {
     border-color: $primary;
     color: darken($color: $primary, $amount: 8%);
@@ -269,7 +268,6 @@ nav {
                 .row {
                     max-width: 25rem;
                     margin: 0 auto;
-                    // another Moodle ugly shit codes
                     .col-xl-6.col-sm-8 {
                         max-width: 100%;
                         flex: none;
@@ -358,7 +356,6 @@ nav {
                 div[role="main"] {
                     > div {
                         @extend .white-box;
-                        // moodle super ugly way of coding
                         &.d-flex.justify-content-end {
                             display: none !important;
                         }
